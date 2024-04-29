@@ -32,7 +32,9 @@ ft_atoi.c \
 ft_calloc.c \
 ft_strdup.c \
 ft_substr.c \
-ft_strjoin.c
+ft_strjoin.c \
+ft_strtrim.c \
+ft_itoa.c
 
 # Archivos objeto
 #OBJ := $(patsubst %.c,%.o,$(FT_FILES))
