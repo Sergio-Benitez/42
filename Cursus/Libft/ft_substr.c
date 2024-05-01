@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:39:27 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/01 18:46:29 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/01 19:00:48 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = 0;
 	else if (len > (ft_strlen(s) - start))
 		len = ft_strlen(s) - start;
-	str = (char *)malloc(len + 1);
+	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
 	while (s[i])
