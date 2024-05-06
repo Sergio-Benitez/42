@@ -6,13 +6,13 @@
 /*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 20:13:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/03 19:36:53 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:37:14 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_wordcounter(char const *s, char c)
+int	ft_wordcount(char const *s, char c)
 {
 	int	i;
 	int cont;
@@ -30,35 +30,57 @@ int	ft_wordcounter(char const *s, char c)
 	return (cont);
 }
 
-char	**ft_split(char const *s, char c)
+char	*ft_wordalloc(char const *s, char c)
 {
-	char	**splitted;
 	int		i;
-	int		j;
-	int		k;
+	int		len;
+	char	*word;
 
-	splitted = NULL;
 	i = 0;
-	j = 0;
-	k = 0;
-	
-}	
-
-/*	while (i < ft_wordcounter(s, c))
+	word = NULL;
+	while (s[i] != '\0')
 	{
-		while (s[k] == c && s[k] != '\0')
-			k++;
-		while (s[k] != c && s[k] != '\0')
+		if (s[i - 1] == c && s[i] != c)
 		{
-			splitted[i][j] = s[k];
-			j++;
-			k++;
+			len = 0;
+			while (s[i] != c)
+			{
+				i++;
+				len++;
+			}
+			word = ft_substr(s, i, len);
 		}
-		splitted[i][j] = '\0';
 		i++;
-		j = 0;
 	}
-	splitted[i] = NULL;
-	return (splitted);
+	return (word);
 }
-*/
+
+/*char	**ft_split(char const *s, char c)
+{
+	char	**splitted;//	splitted[i][j]
+	int		i;
+	int		cont;
+
+	i = 0;
+	cont = ft_wordcount(s, c);
+	
+	if (s == NULL)
+		return (NULL);
+	splitted = (char **)malloc(sizeof(char *) * (cont + 1));
+	if (!splitted)
+		return (NULL);
+	splitted[cont] = NULL;
+	while (i < cont)
+	{
+		splitted[i] = ft_wordalloc(s, c);
+	}
+}*/
+
+#include <stdio.h>
+
+int	main(void)
+{
+	const char	str[] = "   No vea lo cara   que está  Málaga   ";
+	printf("%s", ft_wordalloc(str, ' '));
+	return (0);
+}
