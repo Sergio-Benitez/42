@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 19:30:49 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/08 19:32:22 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/08 20:05:26 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/08 20:05:27 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	
+	t_list	*newlist;
+
+	newlist = (t_list *)malloc(sizeof(t_list));
+	if (!newlist)
+		return (NULL);
+	newlist -> content = content;
+	newlist -> next = NULL;
+	return (newlist);
 }

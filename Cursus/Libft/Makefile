@@ -43,9 +43,14 @@ ft_putstr_fd.c \
 ft_putendl_fd.c \
 ft_putnbr_fd.c \
 
+# Archivos .c bonus
+FT_BONUSFILES := ft_lstnew_bonus.c \
+
+
 # Archivos objeto
-#OBJ := $(patsubst %.c,%.o,$(FT_FILES))
 OBJ := $(FT_FILES:%.c=%.o)
+
+OBJ_BON := $(FT_BONUSFILES:%.c=%.o)
 
 # Flags compilador
 CC_FLAGS := -Wall -Wextra -Werror
@@ -62,24 +67,29 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(AR) $(AR_FLAGS) $(NAME) $?
 
+# Compilamos el bonus
+
+bonus : all $(OBJ_BON)
+			$(AR) $(AR_FLAGS) $(NAME) $(OBJ_BON)
+
 # Creación archivos objeto 
 %.o: %.c
 	$(CC) $(CC_FLAGS) -c -o $@ $<
 
 # Clean
 clean :
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BON)
 
 # FClean
 fclean : clean 
 	rm -f $(NAME)
 
 # FClean y rehacer todo
-re : fclean all
+re : fclean all bonus
 
 # Test con main.c
 test : all
 	$(CC) $(CC_FLAGS) -I $(INCLUDES) -o $@ main.c $(NAME)
 
 # Targets sin archivo
-.PHONY: all clean fclean re test
+.PHONY: bonus all clean fclean re test

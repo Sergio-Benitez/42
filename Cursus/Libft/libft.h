@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:38:13 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/08 19:28:11 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/08 19:55:16 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+t_list	*ft_lstnew(void *content);
 
 #endif
