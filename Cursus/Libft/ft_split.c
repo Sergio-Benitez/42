@@ -6,81 +6,67 @@
 /*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 20:13:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/06 19:37:14 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/08 00:43:24 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_wordcount(char const *s, char c)
+static size_t	ft_wordcount(char *s, char c)
 {
-	int	i;
-	int cont;
+	size_t	count;
+	size_t	i;
 
+	if (!s)
+		return (0);
+	if (!ft_strlen(s))
+		return (0);
 	i = 0;
-	cont = 0;
-	if (s[0] != c && s[0] != '\0')
-		cont = 1;
-	while (s[i] != '\0')
+	count = s[i] != c;
+	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
-			cont++;
+		count += (s[i] == c && s[i + 1] != c && s[i + 1] != '\0');
 		i++;
 	}
-	return (cont);
+	return (count);
 }
 
-char	*ft_wordalloc(char const *s, char c)
+static int	ft_next_worlen(char const *s, int i, char c)
 {
-	int		i;
-	int		len;
-	char	*word;
+	int	count;
 
-	i = 0;
-	word = NULL;
-	while (s[i] != '\0')
+	count = 0;
+	while (s[i])
 	{
-		if (s[i - 1] == c && s[i] != c)
-		{
-			len = 0;
-			while (s[i] != c)
-			{
-				i++;
-				len++;
-			}
-			word = ft_substr(s, i, len);
-		}
+		if (s[i] == c || s[i] == '\0')
+			return (count);
+		i++;
+		count++;
+	}
+	return (count);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	size_t	tab_index;
+	size_t	end;
+	char	**tab;
+
+	tab = ft_calloc(ft_wordcount((char *)s, c) + 1, sizeof(char *));
+	if (!tab || !s)
+		return (NULL);
+	i = 0;
+	tab_index = 0;
+	while (tab_index < ft_wordcount((char *)s, c))
+	{
+		while (s[i] == c)
+			i++;
+		end = ft_next_worlen(s, i, c);
+		tab[tab_index] = ft_substr(s, i, end);
+		i += end;
+		tab_index++;
 		i++;
 	}
-	return (word);
-}
-
-/*char	**ft_split(char const *s, char c)
-{
-	char	**splitted;//	splitted[i][j]
-	int		i;
-	int		cont;
-
-	i = 0;
-	cont = ft_wordcount(s, c);
-	
-	if (s == NULL)
-		return (NULL);
-	splitted = (char **)malloc(sizeof(char *) * (cont + 1));
-	if (!splitted)
-		return (NULL);
-	splitted[cont] = NULL;
-	while (i < cont)
-	{
-		splitted[i] = ft_wordalloc(s, c);
-	}
-}*/
-
-#include <stdio.h>
-
-int	main(void)
-{
-	const char	str[] = "   No vea lo cara   que está  Málaga   ";
-	printf("%s", ft_wordalloc(str, ' '));
-	return (0);
+	return (tab);
 }
