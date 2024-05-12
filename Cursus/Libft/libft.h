@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:38:13 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/08 21:31:03 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/12 19:43:37 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 int	ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 #endif

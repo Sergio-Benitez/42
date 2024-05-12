@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:57:23 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/08 21:18:13 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/12 19:29:08 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_lstsize(t_list *lst)
 	i = 0;
 	while (lst != NULL)
 	{
-		lst = lst -> next;
+		lst = lst->next;
 		i++;
 	}
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:27:15 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/08 21:42:54 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/12 19:37:06 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return;
 	}
 	last = ft_lstlast(*lst);
-	last -> next = new;
+	last->next = new;
 }
