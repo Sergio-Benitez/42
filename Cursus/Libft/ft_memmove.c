@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 15:46:40 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/04/17 16:15:19 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:18:00 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:18:01 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

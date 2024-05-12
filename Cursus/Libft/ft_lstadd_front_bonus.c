@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 20:34:15 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/12 19:36:58 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:16:53 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:16:54 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/01 17:30:50 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/01 17:40:20 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:18:11 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:18:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 15:35:42 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/04/12 16:50:37 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:19:39 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:19:40 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

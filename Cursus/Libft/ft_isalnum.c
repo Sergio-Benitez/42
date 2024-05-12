@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 16:39:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/04/13 18:51:01 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:16:03 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:16:04 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

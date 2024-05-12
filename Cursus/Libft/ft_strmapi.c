@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 20:14:34 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/01 17:19:24 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:19:29 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:19:30 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

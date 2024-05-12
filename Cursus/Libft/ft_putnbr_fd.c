@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/01 18:08:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/01 18:24:36 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:18:27 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:18:28 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

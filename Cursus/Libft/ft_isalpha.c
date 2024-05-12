@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 16:35:09 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/04/11 13:55:52 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:16:11 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:16:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

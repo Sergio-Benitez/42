@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 16:58:52 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/04/11 13:56:25 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:16:32 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:16:33 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

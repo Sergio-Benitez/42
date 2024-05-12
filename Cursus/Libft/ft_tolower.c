@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 19:14:01 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/04/11 13:57:09 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:20:08 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:20:09 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

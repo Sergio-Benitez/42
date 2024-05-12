@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 16:36:37 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/04/13 18:51:13 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:16:22 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:16:23 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

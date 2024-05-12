@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 19:22:59 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/12 19:23:00 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:17:04 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:17:05 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

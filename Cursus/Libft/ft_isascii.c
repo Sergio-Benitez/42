@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 16:43:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/04/11 13:56:02 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/12 20:16:16 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/12 20:16:17 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
