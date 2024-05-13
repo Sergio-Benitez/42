@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:18:39 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/13 19:45:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:43:19 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ char	**ft_split(char const *s, char c)
 		{
 			while (tab_index > 0)
 				free(tab[--tab_index]);
-			return (free(tab), NULL);
+			free(tab);
+			return (NULL);
 		}
 		i = i + ft_next_worlen(s, i, c) + 1;
 		tab_index++;
