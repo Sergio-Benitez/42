@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:16:58 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/12 20:16:59 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:20:16 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*n;
-	
-	while(lst)
+	t_list	*p;
+
+	p = *lst;
+	while (*lst)
 	{
-		n = (*lst)->next;
-		ft_lstdelone((*lst), del);
-		*lst = n;
+		p = p->next;
+		ft_lstdelone(*lst, del);
+		*lst = p;
 	}
-	*lst = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:16:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/12 20:16:48 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:15:05 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
-	
+
 	if (!lst || !new)
-		return;
+		return ;
 	if (*lst == NULL)
 	{
 		*lst = new;
-		return;
+		return ;
 	}
 	last = ft_lstlast(*lst);
 	last->next = new;
