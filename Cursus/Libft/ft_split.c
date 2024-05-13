@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:18:39 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/13 18:20:22 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:45:35 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	tab_index;
-	size_t	end;
 	char	**tab;
 
 	tab = ft_calloc(ft_wordcount((char *)s, c) + 1, sizeof(char *));
@@ -69,7 +68,7 @@ char	**ft_split(char const *s, char c)
 				free(tab[--tab_index]);
 			return (free(tab), NULL);
 		}
-		i = i + end + 1;
+		i = i + ft_next_worlen(s, i, c) + 1;
 		tab_index++;
 	}
 	return (tab);
