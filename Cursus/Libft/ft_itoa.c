@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:16:40 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/12 20:16:41 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:58:50 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_itoa(int n)
 
 	len = ft_numsize(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	if (n < 0)
 	{
