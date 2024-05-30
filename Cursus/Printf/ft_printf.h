@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/30 13:51:58 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/05/30 13:09:13 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/05/30 21:23:22 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <unistd.h>
+#include <stdarg.h>
 
-int	ft_printf(char const *, ...)
-{
-	
-}
+int	ft_printf(char const *format, ...);
