@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/30 22:48:57 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/05/30 22:58:59 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	ft_printf(char const *format, ...)
 {
-	unsigned int	i;
+	int	i;
+	int	count;
 	va_list	args;
 
 	i = 0;
+	count = 0;
 	va_start(args, format);
 	while(format[i])
 	{
