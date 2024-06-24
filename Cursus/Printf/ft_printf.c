@@ -6,11 +6,12 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/24 22:07:32 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:19:17 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>    // BORRAR BORRAR BORRAR
 
 int	ft_printf(char const *format, ...)
 {
@@ -56,11 +57,9 @@ int	ft_printf(char const *format, ...)
 	return (count);
 }
 
-#include <stdio.h>    // BORRAR BORRAR BORRAR
-
 int	main(void)
 {
-	ft_printf("FT_PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i\n", 'c', "loco", -3, 5);
-	printf("   PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i\n", 'c', "loco", -3, 5);
+	ft_printf(" || Count = %d\n", ft_printf("FT_PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i", 'c', "loco", -3, 5));
+	printf(" || Count = %d\n", printf("   PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i", 'c', "loco", -3, 5));
 	return (0);
 }
