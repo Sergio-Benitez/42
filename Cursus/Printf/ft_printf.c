@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/24 17:00:05 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:56:17 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ int	ft_printf(char const *format, ...)
 	while(format[i])
 	{
 		if(format[i] != '%')		
-			printchar(format[i++]);
+			printchar(format[i++], &count);
 		else
 			if(format[i+1] == 'c')
 			{
 				i += 2;
-				printchar(va_arg(ap, int));
+				printchar(va_arg(ap, int), &count);
 			}
-			if(format[i+1] == 's')
+			else if(format[i+1] == 's')
 			{
 				i += 2;
-				printstr(va_arg(ap, char *));
+				printstr(va_arg(ap, char *), &count);
 			}
 			if(format[i+1] == 'p')
 			if(format[i+1] == 'd')
@@ -46,7 +46,7 @@ int	ft_printf(char const *format, ...)
 ;	}
 	///
 	va_end(ap);
-	return (i);
+	return (count);
 }
 
 #include <stdio.h>
