@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/24 22:24:06 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:31:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ int	ft_printf(char const *format, ...)
 				i += 2;
 				printint(va_arg(ap, int), &count);
 			}
-//			else if(format[i+1] == 'u')
+			else if(format[i+1] == 'u')
+			{
+				i += 2;
+				printuns(va_arg(ap, unsigned int), &count);
+			}
 //			else if(format[i+1] == 'x' || format[i+1] == 'X')
 	}
 	va_end(ap);
@@ -57,7 +61,7 @@ int	ft_printf(char const *format, ...)
 
 int	main(void)
 {
-	ft_printf(" || Count = %d\n", ft_printf("FT_PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i", 'c', "loco", -3, 5));
-	printf(" || Count = %d\n", printf("   PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i", 'c', "loco", -3, 5));
+	ft_printf(" || Count = %d\n", ft_printf("FT_PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i, %%u = %u", 'c', "loco", -3, 5, 32));
+	printf(" || Count = %d\n", printf("   PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i, %%u = %u", 'c', "loco", -3, 5, 32));
 	return (0);
 }
