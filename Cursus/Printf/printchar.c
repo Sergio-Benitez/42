@@ -6,13 +6,13 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 22:09:51 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/30 22:28:38 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:42:23 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	printchar(char c)
+int	printchar(int c)
 {
 	write(1, &c, 1);
 }

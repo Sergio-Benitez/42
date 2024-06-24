@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/05/30 22:58:59 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:00:05 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,26 @@ int	ft_printf(char const *format, ...)
 {
 	int	i;
 	int	count;
-	va_list	args;
+	va_list	ap;
 
 	i = 0;
 	count = 0;
-	va_start(args, format);
+	va_start(ap, format);
 	while(format[i])
 	{
 		if(format[i] != '%')		
 			printchar(format[i++]);
 		else
 			if(format[i+1] == 'c')
-				printchar(format[++i]);
+			{
+				i += 2;
+				printchar(va_arg(ap, int));
+			}
 			if(format[i+1] == 's')
-//				printstr();
+			{
+				i += 2;
+				printstr(va_arg(ap, char *));
+			}
 			if(format[i+1] == 'p')
 			if(format[i+1] == 'd')
 			if(format[i+1] == 'i')
@@ -37,15 +43,17 @@ int	ft_printf(char const *format, ...)
 			if(format[i+1] == 'x')
 			if(format[i+1] == 'X')
 			if(format[i+1] == '%')
-;
-	}
+;	}
 	///
-	va_end(args);
+	va_end(ap);
 	return (i);
 }
 
+#include <stdio.h>
+
 int	main(void)
 {
-	ft_printf("Me como una tremenda %c", "verga");
+	ft_printf("Me como una tremenda %s de locos\n", "verga");
+	printf("Me como una tremenda %s de locos\n", "verga");
 	return (0);
 }
