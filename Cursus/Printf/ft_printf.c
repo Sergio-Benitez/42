@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/24 19:56:17 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:07:32 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ int	ft_printf(char const *format, ...)
 		if(format[i] != '%')		
 			printchar(format[i++], &count);
 		else
-			if(format[i+1] == 'c')
+			if(format[i+1] == '%')
+			{
+				i += 2;
+				printchar('%', &count);
+			}
+			else if(format[i+1] == 'c')
 			{
 				i += 2;
 				printchar(va_arg(ap, int), &count);
@@ -36,24 +41,26 @@ int	ft_printf(char const *format, ...)
 				i += 2;
 				printstr(va_arg(ap, char *), &count);
 			}
-			if(format[i+1] == 'p')
-			if(format[i+1] == 'd')
-			if(format[i+1] == 'i')
-			if(format[i+1] == 'u')
-			if(format[i+1] == 'x')
-			if(format[i+1] == 'X')
-			if(format[i+1] == '%')
+//			else if(format[i+1] == 'p')
+			else if(format[i+1] == 'd' || format[i+1] == 'i')
+			{
+				i += 2;
+				printint(va_arg(ap, int), &count);
+			}
+//			else if(format[i+1] == 'u')
+//			else if(format[i+1] == 'x')
+//			else if(format[i+1] == 'X')
 ;	}
 	///
 	va_end(ap);
 	return (count);
 }
 
-#include <stdio.h>
+#include <stdio.h>    // BORRAR BORRAR BORRAR
 
 int	main(void)
 {
-	ft_printf("Me como una tremenda %s de locos\n", "verga");
-	printf("Me como una tremenda %s de locos\n", "verga");
+	ft_printf("FT_PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i\n", 'c', "loco", -3, 5);
+	printf("   PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i\n", 'c', "loco", -3, 5);
 	return (0);
 }
