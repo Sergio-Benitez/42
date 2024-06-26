@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 22:10:34 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/24 21:58:37 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:39:50 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	printstr(char *str, int *count)
 {
-	while(*str)
+	while (*str)
 	{
 		*count += write(1, str++, 1);
 	}

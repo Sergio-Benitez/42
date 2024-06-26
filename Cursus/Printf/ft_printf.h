@@ -6,15 +6,15 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:09:13 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/26 16:13:12 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:30:13 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <unistd.h>
-#include <stdarg.h>
+# include <unistd.h>
+# include <stdarg.h>
 
 int		ft_printf(char const *format, ...);
 void	printchar(int c, int *count);

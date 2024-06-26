@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 22:10:08 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/26 16:45:09 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:38:48 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	printhex(unsigned int n, const char x, int *count)
 {
-	const char*	base;
-	
+	const char	*base;
+
 	if (x == 'x')
 	{
 		base = "0123456789abcdef";
