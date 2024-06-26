@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 22:10:08 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/26 16:39:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:45:09 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	printhex(unsigned int n, const char x, int *count)
 			printhex(n / 16, 'x', count);
 		printchar(base[n % 16], count);
 	}
-	else
+	if (x == 'X')
 	{
 		base = "0123456789ABCDEF";
 		if (n >= 16)

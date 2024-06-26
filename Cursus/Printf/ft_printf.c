@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/26 16:13:28 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:44:39 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_printf(char const *format, ...)
 			else if(format[i+1] == 'x' || format[i+1] == 'X')
 			{
 				i += 2;
-				printhex(va_arg(ap, unsigned int), format[i+1], &count);
+				printhex(va_arg(ap, unsigned int), format[i-1], &count);
 			}
 	}
 	va_end(ap);
