@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/26 21:26:49 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:31:03 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static void	check_param(char f, va_list *ap, int *i, int *count)
 		printuns(va_arg(*ap, unsigned int), count);
 	else if (f == 'x' || f == 'X')
 		printhex(va_arg(*ap, unsigned int), f, count);
+	else
+		(*i)--;
 }
 
 int	ft_printf(char const *format, ...)
@@ -56,15 +58,3 @@ int	ft_printf(char const *format, ...)
 	va_end(ap);
 	return (count);
 }
-
-/*#include <stdio.h>    // BORRAR BORRAR BORRAR
-
-int	main(void)
-{
-	 int	x;
-	
-	x = 98988989;
-	ft_printf(" || Count = %d\n", ft_printf("FT_PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i, %%u = %u, %%p = %p, %%x = %x, %%X = %X", 'c', "loco", -3, 5, 32, (void *)&x, x, x));
-	printf(" || Count = %d\n", printf("   PRINTF: %%c = %c, %%s = %s, %%d = %d, %%i = %i, %%u = %u, %%p = %p, %%x = %x, %%X = %X", 'c', "loco", -3, 5, 32, (void *)&x, x, x));
-	return (0);
-}*/
