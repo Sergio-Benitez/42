@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/06/26 21:31:03 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:56:15 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ static void	check_param(char f, va_list *ap, int *i, int *count)
 	else if (f == 's')
 		printstr(va_arg(*ap, char *), count);
 	else if (f == 'p')
-	{
-		*count += write(1, "0x", 2);
-		printptr(va_arg(*ap, void *), count);
-	}
+		check_ptr(va_arg(*ap, void *), count);
 	else if (f == 'd' || f == 'i')
 		printint(va_arg(*ap, int), count);
 	else if (f == 'u')
