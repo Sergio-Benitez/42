@@ -6,52 +6,63 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 19:44:34 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/07/04 13:56:38 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:47:55 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+static char	*read_to_buffer(int fd, char **buf, ssize_t *bytes_read)
 {
-	ssize_t		bytes_read = 0;
-	char		*buf;
-	static char	*temp;
-
-	buf = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	*buf = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buf)
 		return (NULL);
-	while (buf[bytes_read] != '\n')
+	bytes_read += read(fd, *buf, BUFFER_SIZE);
+	if ((ssize_t)bytes_read <= 0)
+		return ((free(*buf)), *buf = NULL, (NULL));
+	return (*buf);
+}
+
+char	*get_next_line(int fd)
+{
+	ssize_t		bytes_read;
+	int			i;
+	static char	*buf;
+
+	bytes_read = 0;
+	i = 0;
+	if (!read_to_buffer(fd, &buf, &bytes_read))
+		return (NULL);
+	while (buf[i] != '\n')
 	{
-		bytes_read = read(fd, temp, BUFFER_SIZE);
-		buf = ft_strjoin(buf, temp);
+		while (i < bytes_read)
+			i++;
 	}
-	if (bytes_read <= 0)
-		return ((free(buf)), NULL);
+	buf[bytes_read] = '\0';
 	return (buf);
 }
 
-
-#include <stdio.h>
 #include <fcntl.h>
+#include <stdio.h> 
 
-int main(int argc, char **argv)
-{
-	int		fd;
-	char	*line;
-	
-	if (argc != 2)
-		return (1);
+int main(int argc, char **argv) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        return 1;
+    }
 
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (1);
+    int fd = open(argv[1], O_RDONLY);
+    if (fd == -1) {
+        perror("Error opening file");
+        return 1;
+    }
 
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("42:\n%s\n", line);
-		free(line);
-	}
-	close(fd);
-	return (0);
+    char *line;
+    while ((line = get_next_line(fd)) != NULL) {
+        printf("42: %s\n", line);
+        free(line);
+    }
+
+    close(fd);
+    return 0;
 }
