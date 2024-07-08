@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 19:44:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/07/08 12:59:19 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/07/08 20:46:40 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ void	*ft_calloc(size_t count, size_t size)
 	char	*result;
 	size_t	i;
 
-	i = 0;
 	result = malloc(count * size);
 	if (!result)
-	{
-		while (i < size * count)
-			result[i++] = 0;
-	}
+		return (NULL);
+	i = 0;
+	while (i < size * count)
+		result[i++] = 0;
 	return ((void *)result);
 }
 
