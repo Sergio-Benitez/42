@@ -6,12 +6,11 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:58:32 by gmontoro          #+#    #+#             */
-/*   Updated: 2024/07/08 20:30:37 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/07/08 20:54:24 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*ft_joinfree(char *buffer, char *aux)
 {
