@@ -6,11 +6,10 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:26:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/07/15 22:29:49 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/07/17 00:29:06 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "get_next_line.h"
 
 char	*ft_joinfree(char *buffer, char *aux)
@@ -26,7 +25,7 @@ char	*ft_readbuffer(int fd, char *buffer)
 {
 	int		i;
 	char	*aux;
-	
+
 	if (!buffer)
 	{
 		buffer = ft_calloc(1, 1);
@@ -53,7 +52,7 @@ char	*ft_readline(char *buffer)
 {
 	char	*line;
 	int		i;
-	
+
 	i = 0;
 	if (!buffer[i])
 		return (NULL);
@@ -92,14 +91,14 @@ char	*ft_updatebuffer(char *buffer)
 	while (buffer[i])
 		upt[j++] = buffer[i++];
 	free(buffer);
-	return (upt);	
+	return (upt);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*line;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer = ft_readbuffer(fd, buffer);
@@ -110,6 +109,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
+/*#include <stdio.h>
 #include <fcntl.h>
 
 int	main(int argc, char **argv)
@@ -136,4 +136,4 @@ int	main(int argc, char **argv)
 
 	close(fd);
 	return (0);
-}
+}*/
