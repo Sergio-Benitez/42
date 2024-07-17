@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:58:32 by gmontoro          #+#    #+#             */
-/*   Updated: 2024/07/08 20:54:24 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:12:10 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include <fcntl.h>
+/*#include <fcntl.h>
 #include <stdio.h> 
 #include <unistd.h>
 #include <stdlib.h>
@@ -140,4 +140,4 @@ int main(int argc, char **argv)
 
     close(fd);
     return 0;
-}
+}*/
