@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 21:26:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/07/23 10:30:18 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/07/23 10:37:37 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/07/23 11:13:20 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_joinfree(char *buffer, char *aux)
 {
@@ -96,44 +96,15 @@ char	*ft_updatebuffer(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[FD_SETSIZE];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer = ft_readbuffer(fd, buffer);
-	if (!buffer)
+	buffer[fd] = ft_readbuffer(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = ft_readline(buffer);
-	buffer = ft_updatebuffer(buffer);
+	line = ft_readline(buffer[fd]);
+	buffer[fd] = ft_updatebuffer(buffer[fd]);
 	return (line);
 }
-
-/*#include <stdio.h>
-#include <fcntl.h>
-
-int	main(int argc, char **argv)
-{
-	int		fd;
-	char	*line;
-	
-	if (argc < 2)
-	{
-		printf("Mete archivo, cabrón.");
-		return (1);
-	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error al abrir el archivo");
-		return (1);
-	}
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-
-	close(fd);
-	return (0);
-}*/
