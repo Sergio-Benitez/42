@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:37:37 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/07/23 11:45:17 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:47:01 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*get_next_line(int fd)
 	static char	*buffer[FD_SETSIZE];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer[fd] = ft_readbuffer(fd, buffer[fd]);
 	if (!buffer[fd])
@@ -108,3 +108,48 @@ char	*get_next_line(int fd)
 	buffer[fd] = ft_updatebuffer(buffer[fd]);
 	return (line);
 }
+
+/*#include <fcntl.h>
+#include <stdio.h>
+
+int	main(void)
+{
+	int		fd1;
+	int		fd2;
+	int		fd3;
+	char	*line;
+
+	fd1 = open("mama.txt", O_RDONLY);
+	line = get_next_line(fd1);
+	while (line)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd1);
+	}
+	free(line);
+	close(fd1);
+	
+	fd2 = open("papa.txt", O_RDONLY);
+	line = get_next_line(fd2);
+	while (line)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd2);
+	}
+	free(line);
+	close(fd2);
+
+	fd3 = open("jorgito.txt", O_RDONLY);
+	line = get_next_line(fd3);
+	while (line)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd3);
+	}
+	free(line);
+	close(fd3);
+	return (0);
+}*/
