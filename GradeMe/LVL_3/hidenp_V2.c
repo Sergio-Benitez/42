@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   hidenp_V2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 20:18:04 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/08/29 13:30:42 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/08/29 12:59:06 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/08/29 12:59:13 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+int main(int argc, char **argv)
 {
 	int i = 0;
-	while(str[i])
+	int j = 0;
+	
+	if (argc == 3)
 	{
-		write(1, &str[i], 1);
-		i++;
+		while (argv[2][j] && argv[1][i])
+		{
+			if (argv[2][j] == argv[1][i])
+				i++;
+			j++;
+		}
+		if (argv[1][i] == '\0')
+			write(1, "1", 1);
+		else
+			write(1, "0", 1);
 	}
+	write(1, "\n", 1);
+	return (0);
 }
