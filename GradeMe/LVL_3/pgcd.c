@@ -1,54 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   pgcd.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 13:16:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/04 00:20:43 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/09/04 00:22:44 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/09/04 00:28:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	seen(char *str, char c, int max)
-{
-	int	i = 0;
-	while (i < max)
-	{
-		if (str[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
+#include <stdio.h>
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
-	int i = 0;
-	int j;
+	int nbr1;
+	int nbr2;
 
 	if (argc == 3)
 	{
-		while (argv[1][i])
+		if ((nbr1 = atoi(argv[1])) > 0 && (nbr2 = atoi(argv[2])) > 0)
 		{
-			if (!seen(argv[1], argv[1][i], i))
+			while (nbr1 != nbr2)
 			{
-				j = 0;
-				while (argv[2][j])
-				{
-					if (argv[1][i] == argv[2][j])
-					{
-						write(1, &argv[1][i], 1);
-						break;
-					}
-					j++;
-				}
+				if (nbr1 > nbr2)
+					nbr1 -= nbr2;
+				else
+					nbr2 -= nbr1;
 			}
-			i++;
+			printf("%d", nbr1);
 		}
 	}
-	write(1, "\n", 1);
+	printf("\n");
 	return (0);
 }
