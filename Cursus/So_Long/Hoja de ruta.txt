@@ -1,0 +1,3 @@
+- MLX42
+- Makefile
+- Verificación de mapa
