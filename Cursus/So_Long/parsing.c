@@ -6,13 +6,13 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:54:24 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/06 19:30:25 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/06 20:46:55 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-void	check_map()
+void	check_map(char **map)
 {
 	
 }
