@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 21:26:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/06 19:37:40 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/07/23 10:37:37 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/07/23 18:47:01 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_joinfree(char *buffer, char *aux)
 {
@@ -96,44 +96,60 @@ char	*ft_updatebuffer(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[FD_SETSIZE];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = ft_readbuffer(fd, buffer);
-	if (!buffer)
+	buffer[fd] = ft_readbuffer(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = ft_readline(buffer);
-	buffer = ft_updatebuffer(buffer);
+	line = ft_readline(buffer[fd]);
+	buffer[fd] = ft_updatebuffer(buffer[fd]);
 	return (line);
 }
 
-/*#include <stdio.h>
-#include <fcntl.h>
+/*#include <fcntl.h>
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int		fd;
+	int		fd1;
+	int		fd2;
+	int		fd3;
 	char	*line;
-	
-	if (argc < 2)
-	{
-		printf("Mete archivo, cabrón.");
-		return (1);
-	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error al abrir el archivo");
-		return (1);
-	}
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
 
-	close(fd);
+	fd1 = open("mama.txt", O_RDONLY);
+	line = get_next_line(fd1);
+	while (line)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd1);
+	}
+	free(line);
+	close(fd1);
+	
+	fd2 = open("papa.txt", O_RDONLY);
+	line = get_next_line(fd2);
+	while (line)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd2);
+	}
+	free(line);
+	close(fd2);
+
+	fd3 = open("jorgito.txt", O_RDONLY);
+	line = get_next_line(fd3);
+	while (line)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd3);
+	}
+	free(line);
+	close(fd3);
 	return (0);
 }*/
