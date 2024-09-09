@@ -6,15 +6,17 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:54:24 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/09 22:04:25 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/10 01:48:01 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "so_long.h"
 
-void	check_map(char **map)
+int	check_map(t_map *map)
 {
-	
+	if (!(check_frame(map)))
+		return (write(2, "Error\nInvalid map.", 18), 0);
+	return (1);
 }
 
 t_map	*get_struct(char **map_data)
@@ -30,7 +32,7 @@ t_map	*get_struct(char **map_data)
 	{
 		if (ft_strlen(map_data[0]) != ft_strlen(map_data[i]))
 		{
-			write(2, "Rows must be the same length.\n", 30);
+			write(2, "Error\nRows must be the same length.\n", 36);
 			free(map);
 			exit (1);
 		}
@@ -51,8 +53,8 @@ char	**load_create_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Error opening file.\n");
-		return (0);
+		perror("Error\nError opening file");
+		exit (1);
 	}
 	strmap = ft_calloc(100000, sizeof(char));
 	read(fd, strmap, 99999);
@@ -64,22 +66,15 @@ char	**load_create_map(char *file)
 
 int	main(int argc, char **argv)
 {
-	int i = 0;
-//	Verificar si el archivo es .ber	
 	if (argc != 2)
 	{
-		write(1, "Mete archivo, cabrón.\n", 23);
-		return (1);
+		if (argc == 1)
+			return (write(2, "Error\nEnter a map to run.\n", 26), 1);
+		else
+			return (write(2, "Error\nToo many arguments.\n", 26), 1);
 	}
-/*
-	char	**map_data = load_create_map(argv[1]);
-	while (map[i])
-		printf("%s\n", map[i++]);
-*/
+	check_extension(argv[1]);
 	t_map	*map = get_struct(load_create_map(argv[1]));
-	while (i < map->height)
-	{
-		printf("%s\n", map->data[i++]);
-	}
+	check_map(map);
 	return (0);
 }
