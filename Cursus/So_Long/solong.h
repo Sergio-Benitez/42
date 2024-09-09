@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/09 13:32:41 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:00:31 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 
 typedef struct s_map
 {
-	int			x;
-	int			y;
+	int			width;
+	int			height;
+	char		**data;
 }				t_map;
 
 char	**load_create_map(char *file);

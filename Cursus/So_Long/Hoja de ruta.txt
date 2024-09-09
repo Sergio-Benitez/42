@@ -1,9 +1,12 @@
+
+
+
 - MLX42
 - Makefile
 - Verificación de mapa
-	load_map
-		open
-		read
-	create_map
+º	load_map
+º		open
+º		read
+º		close
+º	create_map
 	check_map
-	close
