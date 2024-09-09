@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/06 19:39:00 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:32:41 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@
 # include <unistd.h>
 # include <stdio.h>
 
-typedef struct s_point
+typedef struct s_map
 {
 	int			x;
 	int			y;
-}				t_point;
+}				t_map;
 
-char	**create_map(char *strmap);
-char	*load_map(char *file);
+char	**load_create_map(char *file);
 
 #endif
