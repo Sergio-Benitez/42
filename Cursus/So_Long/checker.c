@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 00:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/10 01:49:42 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:30:56 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,10 @@ int	check_chars(t_map *map)
 	int	e;
 	int	p;
 
-	return (0);
+	return (1);
+}
+
+int	check_path(t_map *map)
+{
+	return (1);
 }

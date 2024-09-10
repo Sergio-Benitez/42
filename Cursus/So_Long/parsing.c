@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:54:24 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/10 01:48:01 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:30:06 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_map(t_map *map)
 {
-	if (!(check_frame(map)))
+	if (!(check_frame(map) || check_chars(map) || check_path(map)))
 		return (write(2, "Error\nInvalid map.", 18), 0);
 	return (1);
 }
@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 			return (write(2, "Error\nToo many arguments.\n", 26), 1);
 	}
 	check_extension(argv[1]);
-	t_map	*map = get_struct(load_create_map(argv[1]));
+	t_map	*map = get_struct(load_create_map(argv[1])); //borrar
 	check_map(map);
 	return (0);
 }
