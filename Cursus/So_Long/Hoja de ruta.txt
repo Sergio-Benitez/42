@@ -11,16 +11,12 @@
 º	create_map
 	check_map
 º		formato .ber
-		todos los caracteres necesarios (01CEP)
+º		todos los caracteres necesarios (01CEP)
 º		debe ser rectangular (lineas iguales)
 º		mapa cerrado (todo 1)
 		camino válido
+			crear mapa auxiliar
+			convertir todo en char random (flood_fill)
+			comprobar si hay algún char encerrado (!= random)
+				if yes: comprobar que no sea CEP
 
-
-
-	t_map	*map = get_struct(load_create_map(argv[1]));
-	int i = 0;
-	while (i < map->height)
-	{
-		printf("%s\n", map->data[i++]);
-	}

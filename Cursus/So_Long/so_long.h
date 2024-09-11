@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/11 01:34:02 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/11 22:30:04 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int		check_frame(t_map *map);
 int		check_path(t_map *map);
 
 t_map	*get_map(char **map_data, char *file);
-void	ft_free_exit(char *strmap, t_map *map);
+void	ft_free_exit(char **map_data, t_map *map);
 
 #endif

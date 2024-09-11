@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 00:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/11 01:59:30 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/11 22:03:20 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,40 @@
 
 int	check_type(char *name)
 {
-	int	i;
+	int	len;
 
-	i = ft_strlen(name) - 1;
-	if (name[i] != 'r' || name[i - 1] != 'e' || name[i - 2] != 'b'
-		|| name[i - 4] == '\0')
-	{
-		write(2, "Error\nInappropriate map format.\n", 32);
-		return (0);
-	}
+	len = ft_strlen(name);
+	if (len < 5 || ft_strncmp(name + len - 4, ".ber", 4) != 0)
+		return (write(2, "Error\nInappropriate map format.\n", 32), 0);
 	return (1);
 }
 
 int	check_chars(t_map *map)
 {
-	int		y;
-	int		x;
-	char	c;
+	int	y;
+	int	x;
+	int	invalid;
 
 	y = 0;
-	x = 0;
-	c = map->data[y][x];
+	invalid = 0;
 	while (y < map->height)
 	{
-		x = 0;
-		while (x < map->width)
+		x = -1;
+		while (++x < map->width)
 		{
-			if (c != '1' && c != '0' && c != 'P' && c != 'E' && c != 'C')
-				return (write(2, "Error\nInvalid character.\n", 25), 0);
-			if (c == 'P')
+			if (map->data[y][x] == 'P')
 				map->player_n++;
-			if (c == 'E')
+			else if (map->data[y][x] == 'E')
 				map->exit_n++;
-			if (c == 'C')
+			else if (map->data[y][x] == 'C')
 				map->collect_n++;
-			x++;
+			else if (map->data[y][x] != '1' && map->data[y][x] != '0')
+				invalid = 1;
 		}
 		y++;
 	}
+	if (invalid)
+		return (write(2, "Error\nInvalid character(s).\n", 28), 0);
 	return (map->player_n == 1 && map->exit_n == 1 && map->collect_n >= 1);
 }
 
