@@ -20,3 +20,5 @@
 			comprobar si hay algún char encerrado (!= random)
 				if yes: comprobar que no sea CEP
 
+
+map->data[map->player_y][map->player_x]

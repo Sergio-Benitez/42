@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:54:24 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/11 22:57:07 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/12 02:18:04 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_map(t_map *map)
 		if (map->exit_n > 1)
 			write(2, "Error\nToo many 'Exits' found.\n", 30);
 		if (map->collect_n == 0)
-			write(2, "Error\nNo 'Collectibles' found.\n", 31);
+			write(2, "Error\nNo 'Collectables' found.\n", 31);
 		return (0);
 	}
 	if (!(check_rect(map->data)))
@@ -53,7 +53,9 @@ int	main(int argc, char **argv)
 	}
 	i = 0;
 	map = load_create_map(argv[1]);
-	while (i < map->height)
-		printf("%s\n", map->data[i++]);
+	char **aux = map->data;
+	flood_fill(map, aux, map->player_y, map->player_x);
+	while (aux[i])
+		printf("%s", aux[i++]);
 	return (ft_free_exit(map->data, map), 0);
 }

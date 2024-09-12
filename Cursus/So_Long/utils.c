@@ -6,11 +6,36 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/11 23:19:14 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/12 02:17:25 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	find_pos(t_map *map)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while (++y < map->height)
+	{
+		x = -1;
+		while (++x < map->width)
+		{
+			if (map->data[y][x] == 'P')
+			{
+				map->player_y = y;
+				map->player_x = x;
+			}
+			else if (map->data[y][x] == 'E')
+			{
+				map->exit_y = y;
+				map->exit_x = x;
+			}
+		}
+	}
+}
 
 t_map	*get_map(char **map_data, char *file)
 {
@@ -32,6 +57,7 @@ t_map	*get_map(char **map_data, char *file)
 	map->player_n = 0;
 	map->exit_n = 0;
 	map->collect_n = 0;
+	find_pos(map);
 	return (map);
 }
 
@@ -82,9 +108,14 @@ void	ft_free_exit(char **map_data, t_map *map)
 	exit (1);
 }
 
-void	flood_fill(t_map *map, char n)
+void	**flood_fill(t_map *map, char **map_data, int y, int x)
 {
-	t_map	*aux;
-
-	aux = map;
+	if (y < 0 || y >= map->height || x < 0 || x >= map->width
+		|| map_data[y][x] == '1')
+		return ;
+	map_data[y][x] = 'X';
+	flood_fill(map, map_data, y - 1, x);
+	flood_fill(map, map_data, y + 1, x);
+	flood_fill(map, map_data, y, x - 1);
+	flood_fill(map, map_data, y, x + 1);
 }

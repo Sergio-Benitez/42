@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 00:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/11 22:03:20 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/12 02:17:39 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,12 @@ int	check_frame(t_map *map)
 
 int	check_path(t_map *map)
 {
+/*	char	**aux;
+
+	aux = map->data;
+	aux[map->player_y][map->player_x] = 'X';
+	flood_fill(map, aux, map->player_y, map->player_x);
+
+*/
 	return (1);
 }
