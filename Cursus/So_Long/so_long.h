@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/12 02:17:30 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/12 02:55:34 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	find_pos(t_map *map);
 t_map	*get_map(char **map_data, char *file);
 t_map	*load_create_map(char *file);
 void	ft_free_exit(char **map_data, t_map *map);
-void	**flood_fill(t_map *map, char **map_data, int y, int x);
+void	flood_fill(t_map *map, char **map_data, int y, int x);
+char	**copy_map_data(char **data, int height, int width);
+void	free_map_data(char **aux, int height);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:54:24 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/12 02:18:04 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/12 02:39:23 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ int	main(int argc, char **argv)
 	}
 	i = 0;
 	map = load_create_map(argv[1]);
-	char **aux = map->data;
-	flood_fill(map, aux, map->player_y, map->player_x);
-	while (aux[i])
-		printf("%s", aux[i++]);
+	while (map->data[i])
+		printf("%s\n", map->data[i++]);
 	return (ft_free_exit(map->data, map), 0);
 }

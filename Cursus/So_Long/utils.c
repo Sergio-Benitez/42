@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/12 02:17:25 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/12 02:55:25 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,48 @@ void	ft_free_exit(char **map_data, t_map *map)
 	exit (1);
 }
 
-void	**flood_fill(t_map *map, char **map_data, int y, int x)
+void	flood_fill(t_map *map, char **map_data, int y, int x)
 {
 	if (y < 0 || y >= map->height || x < 0 || x >= map->width
-		|| map_data[y][x] == '1')
+		|| map_data[y][x] == '1' || map_data[y][x] == 'X')
 		return ;
 	map_data[y][x] = 'X';
 	flood_fill(map, map_data, y - 1, x);
 	flood_fill(map, map_data, y + 1, x);
 	flood_fill(map, map_data, y, x - 1);
 	flood_fill(map, map_data, y, x + 1);
+}
+
+char	**copy_map_data(char **data, int height, int width)
+{
+	char	**copy;
+	int		y;
+	int		x;
+
+	copy = malloc(sizeof(char *) * height);
+	if (!copy)
+		return (NULL);
+	y = 0;
+	while (y < height)
+	{
+		copy[y] = malloc(sizeof(char) * (width + 1));
+		if (!copy[y])
+			return (NULL); // Manejo de errores adicional necesario aquí
+		x = 0;
+		while (x < width)
+		{
+			copy[y][x] = data[y][x];
+			x++;
+		}
+		copy[y][x] = '\0'; // Final de la cadena
+		y++;
+	}
+	return (copy);
+}
+
+void	free_map_data(char **aux, int height)
+{
+	while (--height >= 0)
+		free(aux[height]);
+	free(aux);
 }

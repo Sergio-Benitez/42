@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 00:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/12 02:17:39 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/09/12 02:57:58 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,24 @@ int	check_frame(t_map *map)
 
 int	check_path(t_map *map)
 {
-/*	char	**aux;
+	int		y;
+	int		x;
+	char	**aux;
 
-	aux = map->data;
-	aux[map->player_y][map->player_x] = 'X';
+	aux = copy_map_data(map->data, map->height, map->width);
+	if (!aux)
+		return (0);
 	flood_fill(map, aux, map->player_y, map->player_x);
-
-*/
+	y = -1;
+	while (++y < map->height)
+	{
+		x = -1;
+		while (++x < map->width)
+		{
+			if (aux[y][x] == 'E' || aux[y][x] == 'C' || aux[y][x] == 'P')
+				return (free_map_data(aux, y), 0);
+		}
+	}
+	free_map_data(aux, map->height);
 	return (1);
 }
