@@ -22,3 +22,6 @@
 
 
 map->data[map->player_y][map->player_x]
+
+
+gcc -o test main.c -ldl -lglfw -lm -lpthread -LMLX42/build -lmlx42 -IMLX42/include -lglfw
