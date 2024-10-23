@@ -20,6 +20,22 @@
 			comprobar si hay algún char encerrado (!= random)
 				if yes: comprobar que no sea CEP
 
+Game checklist
+
+	Create a window using MiniLibX
+		Create the required structure to store all the necessary information
+	Load all the required sprites (images) for your game and store them into memory
+	Create the different hooks
+		key_handler
+		mouse_handler (if necessary)
+		close_handler, this is a hook on the red cross that closes the program correctly
+		loop_hook (=> you game loop)
+
+Render checklist
+
+	Draw the background
+	Draw the not movable parts of the map
+	Draw the player
 
 map->data[map->player_y][map->player_x]
 

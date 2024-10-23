@@ -6,26 +6,27 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/12 02:55:34 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/23 20:23:29 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-/*
-# ifndef MAX_WIDTH
-#  define MAX_WIDTH	15
-# endif
 
-# ifndef MAX_HEIGHT
-#  define MAX_HEIGHT	15
-# endif
-*/
 # include "Libft/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
-
+/*
+typedef struct mlx
+{
+	void*		window;
+	void*		context;
+	int32_t		width;
+	int32_t		height;
+	double		delta_time;
+}				mlx_t;
+*/
 typedef struct s_map
 {
 	char		*filename;
