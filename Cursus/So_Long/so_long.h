@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/23 20:23:29 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:26:47 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
+#include <stdlib.h>
+
 /*
 typedef struct mlx
 {

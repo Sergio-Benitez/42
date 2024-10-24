@@ -1,14 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 20:35:03 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/23 20:54:18 by sbenitez         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// -----------------------------------------------------------------------------
+// Codam Coding College, Amsterdam @ 2022-2023 by W2Wizard.
+// See README in the root project for more information.
+// -----------------------------------------------------------------------------
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,51 +11,78 @@
 #define WIDTH 512
 #define HEIGHT 512
 
-mlx_image_t* background;  // Variable global para el fondo
+static mlx_image_t* image;
 
-void render_background(void* param)
+// -----------------------------------------------------------------------------
+
+int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-    mlx_t* mlx = (mlx_t*) param;
-
-    int texture_width = background->width;
-    int texture_height = background->height;
-
-    int x = 0;
-    while (x < WIDTH)
-    {
-        int y = 0;
-        while (y < HEIGHT)
-        {
-            mlx_image_to_window(mlx, background, x, y);
-            y += texture_height;  // Avanzar en la dirección vertical
-        }
-        x += texture_width;  // Avanzar en la dirección horizontal
-    }
+    return (r << 24 | g << 16 | b << 8 | a);
 }
 
-int main(void)
+void ft_randomize(void* param)
 {
-    mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "so_long", true);
-    if (!mlx)
-    {
-        printf("Error al iniciar MLX42: %s\n", mlx_strerror(mlx_errno));
-        return (EXIT_FAILURE);
-    }
+	(void)param;
+	for (uint32_t i = 0; i < image->width; ++i)
+	{
+		for (uint32_t y = 0; y < image->height; ++y)
+		{
+			uint32_t color = ft_pixel(
+				rand() % 0xFF, // R
+				rand() % 0xFF, // G
+				rand() % 0xFF, // B
+				rand() % 0xFF  // A
+			);
+			mlx_put_pixel(image, i, y, color);
+		}
+	}
+}
 
-    // Cargar la textura de fondo
-    background = mlx_texture_to_image(mlx, mlx_load_png("Graphics/floor.png"));
-    if (!background)
-    {
-        printf("Error cargando la textura: %s\n", mlx_strerror(mlx_errno));
-        mlx_terminate(mlx);
-        return (EXIT_FAILURE);
-    }
+void ft_hook(void* param)
+{
+	mlx_t* mlx = param;
 
-    // Configurar el hook para renderizar el fondo
-    mlx_loop_hook(mlx, render_background, mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+		image->instances[0].y -= 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+		image->instances[0].y += 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+		image->instances[0].x -= 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+		image->instances[0].x += 5;
+}
 
-    // Bucle principal
-    mlx_loop(mlx);
-    mlx_terminate(mlx);
-    return (EXIT_SUCCESS);
+// -----------------------------------------------------------------------------
+
+int32_t main(void)
+{
+	mlx_t* mlx;
+
+	// Gotta error check this stuff
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
+	{
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	if (!(image = mlx_new_image(mlx, 128, 128)))
+	{
+		mlx_close_window(mlx);
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
+	{
+		mlx_close_window(mlx);
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	
+	mlx_loop_hook(mlx, ft_randomize, mlx);
+	mlx_loop_hook(mlx, ft_hook, mlx);
+
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
+	return (EXIT_SUCCESS);
 }
