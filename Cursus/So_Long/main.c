@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/25 20:52:48 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/25 22:54:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 {
 	t_map		*map;
 	t_game		*game;
-	int			i;
 
 	if (argc != 2)
 	{
@@ -25,19 +24,18 @@ int	main(int argc, char **argv)
 		else
 			return (write(2, "Error\nToo many arguments.\n", 26), 1);
 	}
-	i = 0;
 	map = load_create_map(argv[1]);
 	if (!map)
 		return (1);
 	game = (t_game *)malloc(sizeof(t_game));
-    if (!game)
-        return (write(2, "Error\nMemory allocation failed.\n", 33), EXIT_FAILURE);
+	if (!game)
+		return (write(2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
 	game->mlx = mlx_init(map->width_px, map->height_px, "so_long", true);
 	if (!game->mlx)
-		return (write(2, "Error starting MLX42\n",21), EXIT_FAILURE);
+		return (write(2, "Error starting MLX42.\n", 21), EXIT_FAILURE);
 	charge_textures(game);
-	game->map = map->data;
-	mlx_loop_hook(game->mlx, (void (*)(void *))render_map, game);
+	game->map = map;
+	mlx_loop_hook(game->mlx, ft_hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	free(game);

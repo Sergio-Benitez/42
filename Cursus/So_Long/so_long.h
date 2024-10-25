@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/25 20:46:30 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/25 22:52:47 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_map
 typedef struct	s_game
 {
 	mlx_t		*mlx;
-	char		**map;
+	t_map		*map;
 	mlx_image_t	*img_bg;
 	mlx_image_t	*img_wall;
 	mlx_image_t	*img_player;
@@ -64,6 +64,8 @@ void	flood_fill(t_map *map, char **map_data, int y, int x);
 char	**copy_map_data(char **data, int height, int width);
 void	free_map_data(char **aux, int height);
 
+void ft_hook(void *param);
+void handle_input(t_game *game);
 int		charge_textures(t_game *game);
 void	render_map(t_game *game);
 
