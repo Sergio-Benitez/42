@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/09/12 02:55:25 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:24:27 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ t_map	*get_map(char **map_data, char *file)
 		return (NULL);
 	map->filename = file;
 	map->width = ft_strlen(map_data[0]);
+	map->width_px = map->width * TILE_SIZE;
 	map->height = i;
+	map->height_px = map->height * TILE_SIZE;
 	map->data = map_data;
 	map->player_n = 0;
 	map->exit_n = 0;

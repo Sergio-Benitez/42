@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:54:24 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/23 20:32:13 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:17:20 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_map(t_map *map)
 		return (write(2, "Error\nInvalid path.\n", 20), 0);
 	return (1);
 }
-
+/*
 int	main(int argc, char **argv)
 {
 	t_map	*map;
@@ -57,3 +57,4 @@ int	main(int argc, char **argv)
 		printf("%s\n", map->data[i++]);
 	return (ft_free_exit(map->data, map), 0);
 }
+*/
