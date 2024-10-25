@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/25 11:24:27 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:13:08 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,14 +136,14 @@ char	**copy_map_data(char **data, int height, int width)
 	{
 		copy[y] = malloc(sizeof(char) * (width + 1));
 		if (!copy[y])
-			return (NULL); // Manejo de errores adicional necesario aquí
+			return (NULL);
 		x = 0;
 		while (x < width)
 		{
 			copy[y][x] = data[y][x];
 			x++;
 		}
-		copy[y][x] = '\0'; // Final de la cadena
+		copy[y][x] = '\0';
 		y++;
 	}
 	return (copy);
