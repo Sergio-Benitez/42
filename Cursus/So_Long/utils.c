@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/25 20:13:08 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/27 18:53:44 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_map	*get_map(char **map_data, char *file)
 	map->player_n = 0;
 	map->exit_n = 0;
 	map->collect_n = 0;
+	update_flags(map);
 	find_pos(map);
 	return (map);
 }
@@ -120,38 +121,4 @@ void	flood_fill(t_map *map, char **map_data, int y, int x)
 	flood_fill(map, map_data, y + 1, x);
 	flood_fill(map, map_data, y, x - 1);
 	flood_fill(map, map_data, y, x + 1);
-}
-
-char	**copy_map_data(char **data, int height, int width)
-{
-	char	**copy;
-	int		y;
-	int		x;
-
-	copy = malloc(sizeof(char *) * height);
-	if (!copy)
-		return (NULL);
-	y = 0;
-	while (y < height)
-	{
-		copy[y] = malloc(sizeof(char) * (width + 1));
-		if (!copy[y])
-			return (NULL);
-		x = 0;
-		while (x < width)
-		{
-			copy[y][x] = data[y][x];
-			x++;
-		}
-		copy[y][x] = '\0';
-		y++;
-	}
-	return (copy);
-}
-
-void	free_map_data(char **aux, int height)
-{
-	while (--height >= 0)
-		free(aux[height]);
-	free(aux);
 }

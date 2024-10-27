@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/25 22:52:47 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:35:42 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 typedef struct s_map
 {
 	char		*filename;
+	char		**data;
+	bool		**update_flags;
 	int			width;
 	int			height;
 	int			width_px;
 	int			height_px;
-	char		**data;
 	int			player_n;
 	int			player_y;
 	int			player_x;
@@ -61,11 +63,13 @@ t_map	*get_map(char **map_data, char *file);
 t_map	*load_create_map(char *file);
 void	ft_free_exit(char **map_data, t_map *map);
 void	flood_fill(t_map *map, char **map_data, int y, int x);
+
 char	**copy_map_data(char **data, int height, int width);
 void	free_map_data(char **aux, int height);
+void	update_flags(t_map *map);
 
-void ft_hook(void *param);
-void handle_input(t_game *game);
+void	ft_hook(void *param);
+void	handle_input(t_game *game);
 int		charge_textures(t_game *game);
 void	render_map(t_game *game);
 

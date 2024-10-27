@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/25 22:54:12 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:27:30 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	if (!game->mlx)
 		return (write(2, "Error starting MLX42.\n", 21), EXIT_FAILURE);
 	charge_textures(game);
-	game->map = map;
+	game->map = map;	
 	mlx_loop_hook(game->mlx, ft_hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
