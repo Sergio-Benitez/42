@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:48:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/27 18:56:44 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/27 23:24:23 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,34 @@ void	update_flags(t_map *map)
 		}
 		i++;
 	}
+}
+
+mlx_image_t *get_weighted_random_wall_texture(t_game *game)
+{
+    int total_weight = 0;
+    int i = 0;
+
+    // Sumar los pesos totales
+    while (i < NUM_WALL_TEXTURES)
+    {
+        total_weight += game->wall_weights[i];
+        i++;
+    }
+
+    int random_value = rand() % total_weight;
+    int cumulative_weight = 0;
+    i = 0;
+
+    // Seleccionar una textura basada en los pesos
+    while (i < NUM_WALL_TEXTURES)
+    {
+        cumulative_weight += game->wall_weights[i];
+        if (random_value < cumulative_weight)
+        {
+            return game->img_wall[i];
+        }
+        i++;
+    }
+
+    return game->img_wall[0]; // Fallback, no debería ocurrir
 }

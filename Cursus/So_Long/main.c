@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/27 19:27:30 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/27 23:17:14 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	main(int argc, char **argv)
 	game->mlx = mlx_init(map->width_px, map->height_px, "so_long", true);
 	if (!game->mlx)
 		return (write(2, "Error starting MLX42.\n", 21), EXIT_FAILURE);
+	game->move_count = 0;
+	game->frame_count = 0;
 	charge_textures(game);
 	game->map = map;	
 	mlx_loop_hook(game->mlx, ft_hook, game);
