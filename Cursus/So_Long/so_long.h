@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/27 23:15:20 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/28 19:31:41 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 # include <stdlib.h>
 # include <time.h>
 
+typedef struct	s_coords
+{
+	int			x;
+	int			y;
+}				t_coords;
+
 typedef struct s_map
 {
 	char		*filename;
@@ -33,11 +39,9 @@ typedef struct s_map
 	int			width_px;
 	int			height_px;
 	int			player_n;
-	int			player_y;
-	int			player_x;
+	t_coords	player_pos;
 	int			exit_n;
-	int			exit_y;
-	int			exit_x;
+	t_coords	exit_pos;
 	int			collect_n;
 }				t_map;
 

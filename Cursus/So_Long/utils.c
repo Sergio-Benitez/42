@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/27 18:53:44 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:34:52 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ t_map	*load_create_map(char *file)
 		perror("Error\nError opening file");
 		exit (1);
 	}
-	strmap = ft_calloc(100000, sizeof(char));
+	strmap = ft_calloc(1000000, sizeof(char));
 	if (!strmap)
 		return (close(fd), NULL);
-	read(fd, strmap, 99999);
+	read(fd, strmap, 999999);
 	close(fd);
 	map_data = ft_split(strmap, '\n');
 	free(strmap);
