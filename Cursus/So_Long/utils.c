@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 18:34:52 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/28 20:20:35 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	find_pos(t_map *map)
 		{
 			if (map->data[y][x] == 'P')
 			{
-				map->player_y = y;
-				map->player_x = x;
+				map->player_pos.y = y;
+				map->player_pos.x = x;
 			}
 			else if (map->data[y][x] == 'E')
 			{
-				map->exit_y = y;
-				map->exit_x = x;
+				map->exit_pos.y = y;
+				map->exit_pos.x = x;
 			}
 		}
 	}

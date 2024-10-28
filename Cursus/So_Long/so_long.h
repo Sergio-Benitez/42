@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 19:31:41 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/28 21:47:00 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdlib.h>
 # include <time.h>
 
-typedef struct	s_coords
+typedef struct s_coords
 {
 	int			x;
 	int			y;
@@ -45,7 +45,7 @@ typedef struct s_map
 	int			collect_n;
 }				t_map;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	mlx_t		*mlx;
 	t_map		*map;
@@ -60,7 +60,6 @@ typedef struct	s_game
 	int			frame_count;
 }				t_game;
 
-int			check_map(t_map *map);
 int			check_type(char *name);
 int			check_chars(t_map *map);
 int			check_rect(char **map_data);
@@ -76,12 +75,16 @@ void		flood_fill(t_map *map, char **map_data, int y, int x);
 char		**copy_map_data(char **data, int height, int width);
 void		free_map_data(char **aux, int height);
 void		update_flags(t_map *map);
-//mlx_image_t *get_random_wall_texture(t_game *game);
-mlx_image_t *get_weighted_random_wall_texture(t_game *game);
+mlx_image_t	*weight_wall(t_game *game);
+int			check_map(t_map *map);
 
 void		ft_hook(void *param);
-void		handle_input(t_game *game);
 int			charge_textures(t_game *game);
+void		handle_input(t_game *game);
+void		handle_movement(t_game *game, t_coords old_pos, t_coords new_pos);
+void		mark_exit_for_update(t_game *game);
+
 void		render_map(t_game *game);
+void		render_tile(t_game *game, int i, int j);
 
 #endif

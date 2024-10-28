@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:53:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 19:41:34 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/28 21:32:57 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	handle_input(t_game *game)
 	t_coords	new_pos;
 
 	old_pos = game->map->player_pos;
-    new_pos = old_pos;
+	new_pos = old_pos;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(game->mlx);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_UP)
@@ -81,7 +81,9 @@ void	handle_input(t_game *game)
 
 void	handle_movement(t_game *game, t_coords old_pos, t_coords new_pos)
 {
-	if (game->map->data[new_pos.y][new_pos.x] != '1' && !(game->map->data[new_pos.y][new_pos.x] == 'E' && game->map->collect_n > 0))
+	if (game->map->data[new_pos.y][new_pos.x] != '1' && !(
+			game->map->data[new_pos.y][new_pos.x] == 'E'
+			&& game->map->collect_n > 0))
 	{
 		if (new_pos.x != old_pos.x || new_pos.y != old_pos.y)
 		{
@@ -95,7 +97,8 @@ void	handle_movement(t_game *game, t_coords old_pos, t_coords new_pos)
 			game->map->player_pos = new_pos;
 			game->move_count++;
 			printf("Movimientos: %d\n", game->move_count);
-			if (game->map->data[new_pos.y][new_pos.x] == 'E' && game->map->collect_n == 0)
+			if (game->map->data[new_pos.y][new_pos.x] == 'E'
+				&& game->map->collect_n == 0)
 				game->frame_count = -20;
 			game->map->update_flags[old_pos.y][old_pos.x] = true;
 			game->map->update_flags[new_pos.y][new_pos.x] = true;
@@ -121,146 +124,3 @@ void	mark_exit_for_update(t_game *game)
 		i++;
 	}
 }
-
-void	render_map(t_game *game)
-{
-	int			i;
-	int			j;
-    mlx_image_t	*wall_texture;
-
-	i = 0;
-	while (i < game->map->height)
-	{
-		j = 0;
-		while (j < game->map->width)
-		{
-			if (game->map->update_flags[i][j])
-			{
-				render_tile(game, i, j);
-				game->map->update_flags[i][j] = false;
-			}
-			j++;
-		}
-		i++;
-	}
-	mlx_image_to_window(game->mlx, game->img_player, game->map->player_pos.x * TILE_SIZE, game->map->player_pos.y * TILE_SIZE);
-}
-
-void	render_tile(t_game *game, int i, int j)
-{
-	mlx_image_t *wall_texture;
-
-	mlx_image_to_window(game->mlx, game->img_bg, j * TILE_SIZE, i * TILE_SIZE);
-	if (game->map->data[i][j] == '1')
-	{
-		wall_texture = get_weighted_random_wall_texture(game);
-		mlx_image_to_window(game->mlx, wall_texture, j * TILE_SIZE, i * TILE_SIZE);
-	}
-	else if (game->map->data[i][j] == 'C')
-		mlx_image_to_window(game->mlx, game->img_collect, j * TILE_SIZE, i * TILE_SIZE);
-	else if (game->map->data[i][j] == 'E')
-	{
-		if (game->map->collect_n == 0)
-			mlx_image_to_window(game->mlx, game->img_exit_open, j * TILE_SIZE, i * TILE_SIZE);
-		else
-			mlx_image_to_window(game->mlx, game->img_exit_closed, j * TILE_SIZE, i * TILE_SIZE);
-	}
-}
-
-/*void	handle_input(t_game *game)
-{
-	int	old_x = game->map->player_x;
-	int	old_y = game->map->player_y;
-	int	new_x = old_x;
-	int	new_y = old_y;
-
-	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(game->mlx);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_UP))
-		new_y -= 1;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
-		new_y += 1;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		new_x -= 1;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-		new_x += 1;
-	// Verifica colisiones con paredes y puerta cerrada
-	if (game->map->data[new_y][new_x] != '1' && !(game->map->data[new_y][new_x] == 'E' && game->map->collect_n > 0))
-	{
-		if (new_x != old_x || new_y != old_y)
-		{
-			// Verifica si el jugador recoge un coleccionable
-			if (game->map->data[new_y][new_x] == 'C')
-			{
-				game->map->data[new_y][new_x] = '0'; // Elimina el coleccionable del mapa
-				game->map->collect_n--; // Decrementa el contador de coleccionables
-				// Marca la casilla de salida para actualización si se han recogido todos los coleccionables
-				if (game->map->collect_n == 0)
-				{
-					int	i = 0;
-					while (i < game->map->height)
-					{
-						int	j = 0;
-						while (j < game->map->width)
-						{
-							if (game->map->data[i][j] == 'E')
-								game->map->update_flags[i][j] = true;
-							j++;
-						}
-						i++;
-					}
-				}
-			}
-			game->map->player_x = new_x;
-			game->map->player_y = new_y;
-			// Incrementa el contador de movimientos y muestra el número de movimientos en la terminal
-			game->move_count++;
-			printf("Movimientos: %d\n", game->move_count);
-			// Verifica si el jugador pisa la salida
-			if (game->map->data[new_y][new_x] == 'E' && game->map->collect_n == 0)
-				game->frame_count = -20;
-			// Marca las posiciones antiguas y nuevas del jugador para actualización
-			game->map->update_flags[old_y][old_x] = true;
-			game->map->update_flags[new_y][new_x] = true;
-		}
-	}
-}
-
-void	render_map(t_game *game)
-{
-	int			i;
-	int			j;
-	mlx_image_t	*wall_texture;
-
-	i = 0;
-	while (i < game->map->height)
-	{
-		j = 0;
-		while (j < game->map->width)
-		{
-			if (game->map->update_flags[i][j])
-			{
-				mlx_image_to_window(game->mlx, game->img_bg, j * TILE_SIZE, i * TILE_SIZE);
-				if (game->map->data[i][j] == '1')
-				{
-					wall_texture = get_weighted_random_wall_texture(game);
-					mlx_image_to_window(game->mlx, wall_texture, j * TILE_SIZE, i * TILE_SIZE);
-				}
-				else if (game->map->data[i][j] == 'C')
-					mlx_image_to_window(game->mlx, game->img_collect, j * TILE_SIZE, i * TILE_SIZE);
-				else if (game->map->data[i][j] == 'E')
-				{
-					if (game->map->collect_n == 0)
-						mlx_image_to_window(game->mlx, game->img_exit_open, j * TILE_SIZE, i * TILE_SIZE);
-					else
-						mlx_image_to_window(game->mlx, game->img_exit_closed, j * TILE_SIZE, i * TILE_SIZE);
-				}
-				game->map->update_flags[i][j] = false;
-			}
-			j++;
-		}
-		i++;
-	}
-	mlx_image_to_window(game->mlx, game->img_player, game->map->player_x * TILE_SIZE, game->map->player_y * TILE_SIZE);
-}
-*/
