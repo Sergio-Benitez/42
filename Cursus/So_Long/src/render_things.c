@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:24:25 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 20:01:07 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 21:05:25 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,30 @@ void cleanup(t_game *game)
             }
             free(game->map);
         }
+		free_textures(game);
         mlx_terminate(game->mlx);
         free(game);
+    }
+}
+
+void	free_textures(t_game *game)
+{
+    if (game->img_bg)
+        mlx_delete_image(game->mlx, game->img_bg);
+    if (game->img_player)
+        mlx_delete_image(game->mlx, game->img_player);
+    if (game->img_collect)
+        mlx_delete_image(game->mlx, game->img_collect);
+    if (game->img_exit_open)
+        mlx_delete_image(game->mlx, game->img_exit_open);
+    if (game->img_exit_closed)
+        mlx_delete_image(game->mlx, game->img_exit_closed);
+
+    int i = 0;
+    while (i < NUM_WALL_TEXTURES)
+    {
+        if (game->img_wall[i])
+            mlx_delete_image(game->mlx, game->img_wall[i]);
+        i++;
     }
 }
