@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:53:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:48:25 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:46:34 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,24 @@ void	ft_hook(void *param)
 int	charge_textures(t_game *game)
 {
 	game->img_bg = mlx_texture_to_image(
-			game->mlx, mlx_load_png("Graphics/floor2.png"));
+			game->mlx, mlx_load_png("textures/floor2.png"));
 	game->img_wall[0] = mlx_texture_to_image(
-			game->mlx, mlx_load_png("Graphics/wall2.png"));
+			game->mlx, mlx_load_png("textures/wall2.png"));
 	game->wall_weights[0] = 50;
 	game->img_wall[1] = mlx_texture_to_image(
-			game->mlx, mlx_load_png("Graphics/wall3.png"));
+			game->mlx, mlx_load_png("textures/wall3.png"));
 	game->wall_weights[1] = 10;
 	game->img_wall[3] = mlx_texture_to_image(
-			game->mlx, mlx_load_png("Graphics/wall5.png"));
+			game->mlx, mlx_load_png("textures/wall5.png"));
 	game->wall_weights[3] = 20;
 	game->img_player = mlx_texture_to_image(
-			game->mlx, mlx_load_png("Graphics/player2.png"));
+			game->mlx, mlx_load_png("textures/player2.png"));
 	game->img_collect = mlx_texture_to_image(
-			game->mlx, mlx_load_png("Graphics/soul2.png"));
+			game->mlx, mlx_load_png("textures/soul2.png"));
 	game->img_exit_open = mlx_texture_to_image(
-			game->mlx, mlx_load_png("Graphics/exit_open.png"));
+			game->mlx, mlx_load_png("textures/exit_open.png"));
 	game->img_exit_closed = mlx_texture_to_image(
-			game->mlx, mlx_load_png("Graphics/exit_closed.png"));
+			game->mlx, mlx_load_png("textures/exit_closed.png"));
 	return (EXIT_SUCCESS);
 }
 

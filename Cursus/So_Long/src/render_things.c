@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:24:25 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:51:46 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:01:07 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,29 @@ void	render_tile(t_game *game, int i, int j)
 			mlx_image_to_window(game->mlx, game->img_exit_closed,
 				j * TILE_SIZE, i * TILE_SIZE);
 	}
+}
+
+void cleanup(t_game *game)
+{
+	int	i;
+
+	i = 0;
+    if (game)
+    {
+        if (game->map)
+        {
+            if (game->map->data)
+            {
+                while (i < game->map->height)
+                {
+                    free(game->map->data[i]);
+                    i++;
+                }
+                free(game->map->data);
+            }
+            free(game->map);
+        }
+        mlx_terminate(game->mlx);
+        free(game);
+    }
 }

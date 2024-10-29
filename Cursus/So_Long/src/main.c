@@ -6,48 +6,96 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:48:22 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:55:36 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
+void	init_map(t_map *map)
+{
+	if (map)
+	{
+		map->data = NULL;
+		map->height = 0;
+		map->width = 0;
+		map->width_px = 0;
+		map->height_px = 0;
+		map->player_n = 0;
+		map->player_pos.x = 0;
+		map->player_pos.y = 0;
+		map->exit_n = 0;
+		map->exit_pos.x = 0;
+		map->exit_pos.y = 0;
+		map->collect_n = 0;
+	}
+}
+
+void	init_game_struct(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	if (game)
+	{
+		game->mlx = NULL;
+		game->map = NULL;
+		game->img_bg = NULL;
+		while (i < NUM_WALL_TEXTURES)
+		{
+			game->img_wall[i] = NULL;
+			game->wall_weights[i] = 0;
+			i++;
+		}
+		game->img_player = NULL;
+		game->img_collect = NULL;
+		game->img_exit_open = NULL;
+		game->img_exit_closed = NULL;
+		game->move_count = 0;
+		game->frame_count = 0;
+	}
+}
+
 void	init_game(t_game *game, t_map *map)
 {
+	game->map = map;
 	game->mlx = mlx_init(map->width_px, map->height_px, "so_long", true);
 	if (!game->mlx)
 	{
-		write(2, "Error starting MLX42.\n", 21);
-		exit(EXIT_FAILURE);
+		cleanup(game);
+		return ;
 	}
 	game->move_count = 0;
 	game->frame_count = 0;
 	charge_textures(game);
-	game->map = map;
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_map	*map;
-	t_game	*game;
+    t_map *map;
+    t_game *game;
 
-	if (argc != 2)
-	{
-		if (argc == 1)
-			return (write(2, "Error\nEnter a map to run.\n", 26), 1);
-		else
-			return (write(2, "Error\nToo many arguments.\n", 26), 1);
-	}
-	map = load_create_map(argv[1]);
-	if (!map)
-		return (1);
-	game = (t_game *)malloc(sizeof(t_game));
-	if (!game)
-		return (write(2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
-	init_game(game, map);
-	mlx_loop_hook(game->mlx, ft_hook, game);
-	mlx_loop(game->mlx);
-	mlx_terminate(game->mlx);
-	free(game);
-	return (ft_free_exit(map->data, map), EXIT_SUCCESS);
+    if (argc != 2)
+    {
+        if (argc == 1)
+            return (write(2, "Error\nEnter a map to run.\n", 26), 1);
+        else
+            return (write(2, "Error\nToo many arguments.\n", 26), 1);
+    }
+    map = malloc(sizeof(t_map));
+    if (!map)
+        return (write(2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
+    init_map(map);
+    map = load_create_map(argv[1]);
+    if (!map)
+        return (free(map), 1);
+    game = malloc(sizeof(t_game));
+    if (!game)
+        return (cleanup(game), write(2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
+    init_game_struct(game);
+    init_game(game, map);
+    mlx_loop_hook(game->mlx, ft_hook, game);
+    mlx_loop(game->mlx);
+    cleanup(game);
+    return (EXIT_SUCCESS);
 }

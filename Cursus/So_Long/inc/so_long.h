@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:50:58 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:40:56 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,10 @@ void		mark_exit_for_update(t_game *game);
 
 void		render_map(t_game *game);
 void		render_tile(t_game *game, int i, int j);
+void		cleanup(t_game *game);
+
+void		init_map(t_map *map);
+void		init_game_struct(t_game *game);
+void		init_game(t_game *game, t_map *map);
 
 #endif
