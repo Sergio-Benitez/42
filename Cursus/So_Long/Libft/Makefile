@@ -1,91 +1,101 @@
-# LIB NAME
-NAME := libft.a
+# Standard
+NAME			= libft.a
 
-# SYSTEM COMPILER
-CC := cc
+# Directories
+INC				= inc/
+SRC_DIR			= src/
+OBJ_DIR			= obj/
 
-# ARCHIVER
-AR := ar
+# Compielr and Flags
+CC				= gcc
+CFLAGS			= -Wall -Wextra -Werror -I
+RM				= rm -f
+AR				= ar rcs
 
-# .c FILES
-FT_FILES := ft_isalpha.c \
-ft_isdigit.c \
-ft_isalnum.c \
-ft_isascii.c \
-ft_isprint.c \
-ft_strlen.c \
-ft_memset.c \
-ft_bzero.c \
-ft_memcpy.c \
-ft_memmove.c \
-ft_strlcpy.c \
-ft_strlcat.c \
-ft_toupper.c \
-ft_tolower.c \
-ft_strchr.c \
-ft_strrchr.c \
-ft_strncmp.c \
-ft_memchr.c \
-ft_memcmp.c \
-ft_strnstr.c \
-ft_atoi.c \
-ft_calloc.c \
-ft_strdup.c \
-ft_substr.c \
-ft_strjoin.c \
-ft_strtrim.c \
-ft_split.c \
-ft_itoa.c \
-ft_strmapi.c \
-ft_striteri.c \
-ft_putchar_fd.c \
-ft_putstr_fd.c \
-ft_putendl_fd.c \
-ft_putnbr_fd.c \
+# Source Files
+FTIS_DIR		=	$(SRC_DIR)ft_is/ft_isalnum.c \
+					$(SRC_DIR)ft_is/ft_isalpha.c \
+					$(SRC_DIR)ft_is/ft_isascii.c \
+					$(SRC_DIR)ft_is/ft_isdigit.c \
+					$(SRC_DIR)ft_is/ft_isprint.c 
 
+FTMEM_DIR		=	$(SRC_DIR)ft_mem/ft_bzero.c \
+					$(SRC_DIR)ft_mem/ft_calloc.c \
+					$(SRC_DIR)ft_mem/ft_memchr.c \
+					$(SRC_DIR)ft_mem/ft_memcmp.c \
+					$(SRC_DIR)ft_mem/ft_memcpy.c \
+					$(SRC_DIR)ft_mem/ft_memmove.c \
+					$(SRC_DIR)ft_mem/ft_memset.c 
 
-# .o FILES
-OBJ := $(FT_FILES:%.c=%.o)
+FTPUT_DIR		=	$(SRC_DIR)ft_put/ft_putchar_fd.c \
+					$(SRC_DIR)ft_put/ft_putendl_fd.c \
+					$(SRC_DIR)ft_put/ft_putnbr_fd.c \
+					$(SRC_DIR)ft_put/ft_putstr_fd.c 
 
-# BONUS .c FILES
-FT_BONUS = \
-ft_lstnew_bonus.c \
-ft_lstadd_front_bonus.c \
-ft_lstsize_bonus.c \
-ft_lstlast_bonus.c \
-ft_lstadd_back_bonus.c \
-ft_lstdelone_bonus.c \
-ft_lstclear_bonus.c \
-ft_lstiter_bonus.c\
-ft_lstmap_bonus.c
+FTTO_DIR		=	$(SRC_DIR)ft_to/ft_atoi.c \
+					$(SRC_DIR)ft_to/ft_itoa.c \
+					$(SRC_DIR)ft_to/ft_tolower.c \
+					$(SRC_DIR)ft_to/ft_toupper.c
 
-# BONUS .o FILES
-OBJ_BONUS := $(FT_BONUS:%.c=%.o)
+FTSTR_DIR		=	$(SRC_DIR)ft_str/ft_split.c \
+					$(SRC_DIR)ft_str/ft_strchr.c \
+					$(SRC_DIR)ft_str/ft_strdup.c \
+					$(SRC_DIR)ft_str/ft_striteri.c \
+					$(SRC_DIR)ft_str/ft_strjoin.c \
+					$(SRC_DIR)ft_str/ft_strlcat.c \
+					$(SRC_DIR)ft_str/ft_strlcpy.c \
+					$(SRC_DIR)ft_str/ft_strlen.c \
+					$(SRC_DIR)ft_str/ft_strmapi.c \
+					$(SRC_DIR)ft_str/ft_strncmp.c \
+					$(SRC_DIR)ft_str/ft_strnstr.c \
+					$(SRC_DIR)ft_str/ft_strrchr.c \
+					$(SRC_DIR)ft_str/ft_strtrim.c \
+					$(SRC_DIR)ft_str/ft_substr.c 
 
-# FLAGS
-CC_FLAGS := -Wall -Wextra -Werror
+FTLST_DIR		=	$(SRC_DIR)ft_lst/ft_lstadd_back.c \
+					$(SRC_DIR)ft_lst/ft_lstadd_front.c \
+					$(SRC_DIR)ft_lst/ft_lstclear.c \
+					$(SRC_DIR)ft_lst/ft_lstdelone.c \
+					$(SRC_DIR)ft_lst/ft_lstiter.c \
+					$(SRC_DIR)ft_lst/ft_lstlast.c \
+					$(SRC_DIR)ft_lst/ft_lstmap.c \
+					$(SRC_DIR)ft_lst/ft_lstnew.c \
+					$(SRC_DIR)ft_lst/ft_lstsize.c 
 
-AR_FLAGS := -csr
+FTPRINTF_DIR	=	$(SRC_DIR)ft_printf/ft_printf.c \
+					$(SRC_DIR)ft_printf/printchar.c \
+					$(SRC_DIR)ft_printf/printhex.c \
+					$(SRC_DIR)ft_printf/printint.c \
+					$(SRC_DIR)ft_printf/printptr.c \
+					$(SRC_DIR)ft_printf/printstr.c \
+					$(SRC_DIR)ft_printf/printuns.c \
 
-# TARGETS
-all : $(NAME)
+GNL_DIR			=	$(SRC_DIR)get_next_line/get_next_line.c \
+					$(SRC_DIR)get_next_line/get_next_line_utils.c
 
-$(NAME) : $(OBJ)
-	$(AR) $(AR_FLAGS) $(NAME) $?
+# Concatenate all source files
+SRC 			= $(FTIS_DIR) $(FTMEM_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTLST_DIR) $(FTPRINTF_DIR) $(GNL_DIR)
 
-%.o: %.c
-	$(CC) $(CC_FLAGS) -c -o $@ $<
+# Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
+OBJ 			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 
-clean :
-	rm -f $(OBJ) $(OBJ_BONUS)
+# Build rules
+all: 			$(NAME)
 
-fclean : clean 
-	rm -f $(NAME)
+$(NAME): 		$(OBJ)
+				@$(AR) $(NAME) $(OBJ)
 
-re : fclean all
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+				@mkdir -p $(@D)
+				@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-bonus : $(OBJ_BONUS)
-	$(AR) $(AR_FLAGS) $(NAME) $(NAME_BONUS) $?
+clean:
+				@$(RM) -r $(OBJ_DIR)
+				@$(RM) .cache_exists
 
-# NO FILE TARGETS
-.PHONY: all clean fclean re bonus
+fclean: 		clean
+				@$(RM) $(NAME)
+
+re: 			fclean all
+
+.PHONY: 		all clean fclean re
