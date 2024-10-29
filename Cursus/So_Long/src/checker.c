@@ -6,11 +6,11 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 00:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 20:21:44 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:48:11 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 int	check_type(char *name)
 {

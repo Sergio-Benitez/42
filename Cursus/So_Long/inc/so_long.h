@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 21:47:00 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:50:58 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # define TILE_SIZE 96
 # define NUM_WALL_TEXTURES 5
 
-# include "Libft/libft.h"
-# include "MLX42/include/MLX42/MLX42.h"
+# include "../Libft/inc/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>

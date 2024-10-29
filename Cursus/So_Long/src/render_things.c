@@ -6,17 +6,16 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:24:25 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 21:37:19 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:51:46 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 void	render_map(t_game *game)
 {
 	int			i;
 	int			j;
-	mlx_image_t	*wall_texture;
 
 	i = 0;
 	while (i < game->map->height)

@@ -6,11 +6,11 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:53:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 21:32:57 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:48:25 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 void	ft_hook(void *param)
 {

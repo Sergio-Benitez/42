@@ -1,7 +1,7 @@
 CFILES =	src/checker.c \
 			src/main.c \
-			src/print_window.c\
-			src/render_things.c
+			src/print_window.c \
+			src/render_things.c \
 			src/utils.c \
 			src/utils2.c
 

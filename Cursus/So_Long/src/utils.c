@@ -6,11 +6,11 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 20:20:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:48:31 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 void	find_pos(t_map *map)
 {

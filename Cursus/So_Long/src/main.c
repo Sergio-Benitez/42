@@ -6,11 +6,11 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 19:09:53 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:48:22 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 void	init_game(t_game *game, t_map *map)
 {

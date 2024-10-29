@@ -6,11 +6,11 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:48:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/28 21:40:31 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/29 15:48:34 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 char	**copy_map_data(char **data, int height, int width)
 {
