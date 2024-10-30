@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_window.c                                     :+:      :+:    :+:   */
+/*   game_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:53:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/30 20:33:36 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 00:21:21 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,6 @@ void	ft_hook(void *param)
 	game->frame_count = 0;
 	handle_input(game);
 	render_map(game);
-}
-
-int	charge_textures(t_game *game)
-{
-	game->img_bg = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/floor2.png"));
-	game->img_wall[0] = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/wall2.png"));
-	game->wall_weights[0] = 50;
-	game->img_wall[1] = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/wall3.png"));
-	game->wall_weights[1] = 10;
-	game->img_wall[3] = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/wall5.png"));
-	game->wall_weights[3] = 20;
-	game->img_player = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/player2.png"));
-	game->img_collect = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/soul2.png"));
-	game->img_exit_open = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/exit_open.png"));
-	game->img_exit_closed = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/exit_closed.png"));
-	return (EXIT_SUCCESS);
 }
 
 void	handle_input(t_game *game)
@@ -96,13 +72,33 @@ void	handle_movement(t_game *game, t_coords old_pos, t_coords new_pos)
 			}
 			game->map->player_pos = new_pos;
 			game->move_count++;
-			printf("Movimientos: %d\n", game->move_count);
+			printf("Number of movements: %d\n", game->move_count);
 			if (game->map->data[new_pos.y][new_pos.x] == 'E'
 				&& game->map->collect_n == 0)
 				game->frame_count = -20;
 			game->map->update_flags[old_pos.y][old_pos.x] = true;
 			game->map->update_flags[new_pos.y][new_pos.x] = true;
 		}
+	}
+}
+
+void	update_flags(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	map->update_flags = malloc(map->height * sizeof(bool *));
+	while (i < map->height)
+	{
+		map->update_flags[i] = malloc(map->width * sizeof(bool));
+		j = 0;
+		while (j < map->width)
+		{
+			map->update_flags[i][j] = true;
+			j++;
+		}
+		i++;
 	}
 }
 

@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/30 21:26:21 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 00:32:48 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-void	init_map(t_map *map)
-{
-	if (map)
-	{
-		map->data = NULL;
-		map->height = 0;
-		map->width = 0;
-		map->width_px = 0;
-		map->height_px = 0;
-		map->player_n = 0;
-		map->player_pos.x = 0;
-		map->player_pos.y = 0;
-		map->exit_n = 0;
-		map->exit_pos.x = 0;
-		map->exit_pos.y = 0;
-		map->collect_n = 0;
-	}
-}
 
 void	init_game_struct(t_game *game)
 {
@@ -84,15 +65,13 @@ int	main(int argc, char **argv)
 	}
 	map = malloc(sizeof(t_map));
 	if (!map)
-		return (write(2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
-	init_map(map);
+		return (EXIT_FAILURE);
 	map = load_create_map(argv[1]);
 	if (!map)
 		return (free(map), 1);
 	game = malloc(sizeof(t_game));
 	if (!game)
-		return (cleanup(game), write(
-				2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
+		return (cleanup(game), EXIT_FAILURE);
 	init_game_struct(game);
 	init_game(game, map);
 	mlx_loop_hook(game->mlx, ft_hook, game);

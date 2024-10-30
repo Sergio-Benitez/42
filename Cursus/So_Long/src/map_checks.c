@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 00:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:48:11 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 00:19:26 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ int	check_path(t_map *map)
 		while (++x < map->width)
 		{
 			if (aux[y][x] == 'E' || aux[y][x] == 'C' || aux[y][x] == 'P')
-				return (free_map_data(aux, y), 0);
+				return (free_matrix((void **)aux, y), 0);
 		}
 	}
-	free_map_data(aux, map->height);
+	free_matrix((void **)aux, map->height);
 	return (1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:48:31 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/30 23:41:36 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,23 +92,31 @@ t_map	*load_create_map(char *file)
 	return (map);
 }
 
-void	ft_free_exit(char **map_data, t_map *map)
+char	**copy_map_data(char **data, int height, int width)
 {
-	int	i;
+	char	**copy;
+	int		y;
+	int		x;
 
-	i = 0;
-	if (map_data)
+	copy = malloc(sizeof(char *) * height);
+	if (!copy)
+		return (NULL);
+	y = 0;
+	while (y < height)
 	{
-		while (i < map->height)
+		copy[y] = malloc(sizeof(char) * (width + 1));
+		if (!copy[y])
+			return (NULL);
+		x = 0;
+		while (x < width)
 		{
-			free(map_data[i]);
-			i++;
+			copy[y][x] = data[y][x];
+			x++;
 		}
-		free(map_data);
+		copy[y][x] = '\0';
+		y++;
 	}
-	if (map)
-		free(map);
-	exit (1);
+	return (copy);
 }
 
 void	flood_fill(t_map *map, char **map_data, int y, int x)

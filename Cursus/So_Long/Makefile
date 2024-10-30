@@ -6,18 +6,18 @@
 #    By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:37:52 by sbenitez          #+#    #+#              #
-#    Updated: 2024/10/30 20:07:02 by sbenitez         ###   ########.fr        #
+#    Updated: 2024/10/30 23:53:02 by sbenitez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CFILES =	src/checker.c \
-			src/main.c \
-			src/print_window.c \
-			src/render_things.c \
-			src/utils.c \
-			src/utils2.c
+CFILES =	src/free_functions.c \
+			src/game_hooks.c \
+			src/init_main.c \
+			src/map_checks.c \
+			src/map_utils.c \
+			src/textures.c
 
 #CBONUS =	src_bonus/ft_check_map.c \
 			src_bonus/ft_clean.c \

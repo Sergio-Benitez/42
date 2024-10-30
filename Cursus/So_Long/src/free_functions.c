@@ -1,96 +1,101 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 18:48:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:48:34 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/10/30 23:40:29 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/10/31 00:16:29 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-char	**copy_map_data(char **data, int height, int width)
-{
-	char	**copy;
-	int		y;
-	int		x;
-
-	copy = malloc(sizeof(char *) * height);
-	if (!copy)
-		return (NULL);
-	y = 0;
-	while (y < height)
-	{
-		copy[y] = malloc(sizeof(char) * (width + 1));
-		if (!copy[y])
-			return (NULL);
-		x = 0;
-		while (x < width)
-		{
-			copy[y][x] = data[y][x];
-			x++;
-		}
-		copy[y][x] = '\0';
-		y++;
-	}
-	return (copy);
-}
-
-void	free_map_data(char **aux, int height)
-{
-	while (--height >= 0)
-		free(aux[height]);
-	free(aux);
-}
-
-void	update_flags(t_map *map)
+void	free_matrix(void **matrix, int height)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	map->update_flags = malloc(map->height * sizeof(bool *));
-	while (i < map->height)
+	if (matrix)
 	{
-		map->update_flags[i] = malloc(map->width * sizeof(bool));
-		j = 0;
-		while (j < map->width)
+		while (i < height)
 		{
-			map->update_flags[i][j] = true;
-			j++;
+			if (matrix[i])
+				free(matrix[i]);
+			i++;
 		}
-		i++;
+		free(matrix);
 	}
 }
 
-mlx_image_t	*weight_wall(t_game *game)
+void	ft_free_exit(char **map_data, t_map *map)
 {
-	int	total_weight;
 	int	i;
-	int	random_value;
-	int	cumulative_weight;
 
-	total_weight = 0;
+	i = 0;
+	if (map_data)
+	{
+		while (i < map->height)
+		{
+			free(map_data[i]);
+			i++;
+		}
+		free(map_data);
+	}
+	if (map)
+		free(map);
+	exit (1);
+}
+
+void	free_textures(t_game *game)
+{
+	int	i;
+
+	if (game->img_bg)
+		mlx_delete_image(game->mlx, game->img_bg);
+	if (game->img_player)
+		mlx_delete_image(game->mlx, game->img_player);
+	if (game->img_collect)
+		mlx_delete_image(game->mlx, game->img_collect);
+	if (game->img_exit_open)
+		mlx_delete_image(game->mlx, game->img_exit_open);
+	if (game->img_exit_closed)
+		mlx_delete_image(game->mlx, game->img_exit_closed);
 	i = 0;
 	while (i < NUM_WALL_TEXTURES)
 	{
-		total_weight += game->wall_weights[i];
+		if (game->img_wall[i])
+			mlx_delete_image(game->mlx, game->img_wall[i]);
 		i++;
 	}
-	random_value = rand() % total_weight;
-	cumulative_weight = 0;
+}
+
+void	cleanup(t_game *game)
+{
+	int	i;
+
 	i = 0;
-	while (i < NUM_WALL_TEXTURES)
+	if (game)
 	{
-		cumulative_weight += game->wall_weights[i];
-		if (random_value < cumulative_weight)
-			return (game->img_wall[i]);
-		i++;
+		if (game->map)
+		{
+			if (game->map->data)
+			{
+				while (i < game->map->height)
+				{
+					free(game->map->data[i]);
+					i++;
+				}
+				free(game->map->data);
+			}
+			free(game->map);
+		}
+		free_textures(game);
+		free_matrix((void **)game->map->update_flags, game->map->height);
+		mlx_terminate(game->mlx);
+		free(game);
 	}
-	return (game->img_wall[0]);
 }
 
 int	check_map(t_map *map)

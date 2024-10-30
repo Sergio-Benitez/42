@@ -1,16 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_things.c                                    :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 20:24:25 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/30 21:33:46 by sbenitez         ###   ########.fr       */
+/*   Created: 2024/10/30 23:32:11 by sbenitez          #+#    #+#             */
+/*   Updated: 2024/10/31 00:28:18 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+int	charge_textures(t_game *game)
+{
+	game->img_bg = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/floor2.png"));
+	game->img_wall[0] = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/wall2.png"));
+	game->wall_weights[0] = 50;
+	game->img_wall[1] = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/wall3.png"));
+	game->wall_weights[1] = 10;
+	game->img_wall[3] = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/wall5.png"));
+	game->wall_weights[3] = 20;
+	game->img_player = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/player2.png"));
+	game->img_collect = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/soul2.png"));
+	game->img_exit_open = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/exit_open.png"));
+	game->img_exit_closed = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/exit_closed.png"));
+	return (EXIT_SUCCESS);
+}
+
+mlx_image_t	*weight_wall(t_game *game)
+{
+	int	total_weight;
+	int	i;
+	int	random_value;
+	int	cumulative_weight;
+
+	total_weight = 0;
+	i = 0;
+	while (i < NUM_WALL_TEXTURES)
+	{
+		total_weight += game->wall_weights[i];
+		i++;
+	}
+	random_value = rand() % total_weight;
+	cumulative_weight = 0;
+	i = 0;
+	while (i < NUM_WALL_TEXTURES)
+	{
+		cumulative_weight += game->wall_weights[i];
+		if (random_value < cumulative_weight)
+			return (game->img_wall[i]);
+		i++;
+	}
+	return (game->img_wall[0]);
+}
 
 void	render_map(t_game *game)
 {
@@ -58,55 +109,5 @@ void	render_tile(t_game *game, int i, int j)
 		else
 			mlx_image_to_window(game->mlx, game->img_exit_closed,
 				j * TILE_SIZE, i * TILE_SIZE);
-	}
-}
-
-void	cleanup(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	if (game)
-	{
-		if (game->map)
-		{
-			if (game->map->data)
-			{
-				while (i < game->map->height)
-				{
-					free(game->map->data[i]);
-					i++;
-				}
-				free(game->map->data);
-			}
-			free(game->map);
-		}
-		free_textures(game);
-		free_map_data(game->map->update_flags, game->map->height);
-		mlx_terminate(game->mlx);
-		free(game);
-	}
-}
-
-void	free_textures(t_game *game)
-{
-	int	i;
-
-	if (game->img_bg)
-		mlx_delete_image(game->mlx, game->img_bg);
-	if (game->img_player)
-		mlx_delete_image(game->mlx, game->img_player);
-	if (game->img_collect)
-		mlx_delete_image(game->mlx, game->img_collect);
-	if (game->img_exit_open)
-		mlx_delete_image(game->mlx, game->img_exit_open);
-	if (game->img_exit_closed)
-		mlx_delete_image(game->mlx, game->img_exit_closed);
-	i = 0;
-	while (i < NUM_WALL_TEXTURES)
-	{
-		if (game->img_wall[i])
-			mlx_delete_image(game->mlx, game->img_wall[i]);
-		i++;
 	}
 }
