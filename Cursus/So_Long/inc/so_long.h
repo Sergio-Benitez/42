@@ -6,14 +6,14 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 21:02:51 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/30 21:33:55 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # define TILE_SIZE 96
-# define NUM_WALL_TEXTURES 5
+# define NUM_WALL_TEXTURES 3
 
 # include "../Libft/inc/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -21,7 +21,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <time.h>
 
 typedef struct s_coords
 {
@@ -79,7 +78,7 @@ mlx_image_t	*weight_wall(t_game *game);
 int			check_map(t_map *map);
 
 void		ft_hook(void *param);
-int			charge_textures(t_game *game);
+int			charge_textures(t_game *game); //leak indirecto
 void		handle_input(t_game *game);
 void		handle_movement(t_game *game, t_coords old_pos, t_coords new_pos);
 void		mark_exit_for_update(t_game *game);
@@ -91,6 +90,6 @@ void		free_textures(t_game *game);
 
 void		init_map(t_map *map);
 void		init_game_struct(t_game *game);
-void		init_game(t_game *game, t_map *map);
+void		init_game(t_game *game, t_map *map); //algún leak hay timidín
 
 #endif

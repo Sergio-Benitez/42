@@ -6,7 +6,7 @@
 #    By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 17:37:52 by sbenitez          #+#    #+#              #
-#    Updated: 2024/10/29 17:38:51 by sbenitez         ###   ########.fr        #
+#    Updated: 2024/10/30 20:07:02 by sbenitez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ $(NAME): $(LIBFT) $(MLX42)
 #	@gcc -Wall -Wextra -Werror $(CBONUS) $(LIBFT) $(MLX42) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME)
 
 debug: $(LIBFT) $(MLX42)
-	@gcc -Wall -Wextra -Werror $(CFILES) $(LIBFT) $(MLX42) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME) -g -fsanitize=address
+	@gcc -Wall -Wextra -Werror $(CFILES) $(LIBFT) $(MLX42) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME) -g 
 
 bbug:
 	@gcc -Wall -Wextra -Werror $(CBONUSA) $(LIBFT) $(MLX42) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME) -g -fsanitize=address

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 21:12:21 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/30 21:26:21 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_game_struct(t_game *game)
 void	init_game(t_game *game, t_map *map)
 {
 	game->map = map;
-	game->mlx = mlx_init(map->width_px, map->height_px, "so_long", true);
+	game->mlx = mlx_init(map->width_px, map->height_px, "So_Long", true);
 	if (!game->mlx)
 	{
 		cleanup(game);
@@ -70,32 +70,33 @@ void	init_game(t_game *game, t_map *map)
 	charge_textures(game);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_map *map;
-    t_game *game;
+	t_map	*map;
+	t_game	*game;
 
-    if (argc != 2)
-    {
-        if (argc == 1)
-            return (write(2, "Error\nEnter a map to run.\n", 26), 1);
-        else
-            return (write(2, "Error\nToo many arguments.\n", 26), 1);
-    }
-    map = malloc(sizeof(t_map));
-    if (!map)
-        return (write(2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
-    init_map(map);
-    map = load_create_map(argv[1]);
-    if (!map)
-        return (free(map), 1);
-    game = malloc(sizeof(t_game));
-    if (!game)
-        return (cleanup(game), write(2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
-    init_game_struct(game);
-    init_game(game, map);
-    mlx_loop_hook(game->mlx, ft_hook, game);
-    mlx_loop(game->mlx);
-    cleanup(game);
-    return (EXIT_SUCCESS);
+	if (argc != 2)
+	{
+		if (argc == 1)
+			return (write(2, "Error\nEnter a map to run.\n", 26), 1);
+		else
+			return (write(2, "Error\nToo many arguments.\n", 26), 1);
+	}
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return (write(2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
+	init_map(map);
+	map = load_create_map(argv[1]);
+	if (!map)
+		return (free(map), 1);
+	game = malloc(sizeof(t_game));
+	if (!game)
+		return (cleanup(game), write(
+				2, "Error\nMemory allocation fail.\n", 30), EXIT_FAILURE);
+	init_game_struct(game);
+	init_game(game, map);
+	mlx_loop_hook(game->mlx, ft_hook, game);
+	mlx_loop(game->mlx);
+	cleanup(game);
+	return (EXIT_SUCCESS);
 }
