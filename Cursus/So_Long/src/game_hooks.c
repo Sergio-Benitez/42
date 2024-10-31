@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:53:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 00:21:21 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 00:46:59 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ void	handle_movement(t_game *game, t_coords old_pos, t_coords new_pos)
 				game->map->data[new_pos.y][new_pos.x] = '0';
 				game->map->collect_n--;
 				if (game->map->collect_n == 0)
-					mark_exit_for_update(game);
+					game->map->update_flags[game->map->exit_pos.y]
+					[game->map->exit_pos.x] = true;
 			}
 			game->map->player_pos = new_pos;
 			game->move_count++;
-			printf("Number of movements: %d\n", game->move_count);
+			ft_printf("Number of movements: %d\n", game->move_count);
 			if (game->map->data[new_pos.y][new_pos.x] == 'E'
 				&& game->map->collect_n == 0)
 				game->frame_count = -20;
@@ -96,25 +97,6 @@ void	update_flags(t_map *map)
 		while (j < map->width)
 		{
 			map->update_flags[i][j] = true;
-			j++;
-		}
-		i++;
-	}
-}
-
-void	mark_exit_for_update(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < game->map->height)
-	{
-		j = 0;
-		while (j < game->map->width)
-		{
-			if (game->map->data[i][j] == 'E')
-				game->map->update_flags[i][j] = true;
 			j++;
 		}
 		i++;

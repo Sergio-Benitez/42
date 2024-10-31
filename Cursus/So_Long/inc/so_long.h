@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 00:32:38 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 00:47:30 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define NUM_WALL_TEXTURES 3
 
 # include "../Libft/inc/libft.h"
+# include "../Libft/inc/ft_printf.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 # include <unistd.h>
@@ -78,10 +79,9 @@ mlx_image_t	*weight_wall(t_game *game);
 int			check_map(t_map *map);
 
 void		ft_hook(void *param);
-int			charge_textures(t_game *game); //leak indirecto
+int			charge_textures(t_game *game);
 void		handle_input(t_game *game);
 void		handle_movement(t_game *game, t_coords old_pos, t_coords new_pos);
-void		mark_exit_for_update(t_game *game);
 
 void		render_map(t_game *game);
 void		render_tile(t_game *game, int i, int j);
@@ -89,6 +89,6 @@ void		cleanup(t_game *game);
 void		free_textures(t_game *game);
 
 void		init_game_struct(t_game *game);
-void		init_game(t_game *game, t_map *map); //algún leak hay timidín
+void		init_game(t_game *game, t_map *map);
 
 #endif
