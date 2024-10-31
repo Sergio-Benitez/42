@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 00:32:48 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 01:41:59 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	init_game_struct(t_game *game)
 		while (i < NUM_WALL_TEXTURES)
 		{
 			game->img_wall[i] = NULL;
-			game->wall_weights[i] = 0;
 			i++;
 		}
 		game->img_player = NULL;

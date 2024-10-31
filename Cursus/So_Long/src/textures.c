@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 23:32:11 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 01:17:01 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 02:04:23 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,10 @@ int	charge_textures(t_game *game)
 			game->mlx, mlx_load_png("textures/floor2.png"));
 	game->img_wall[0] = mlx_texture_to_image(
 			game->mlx, mlx_load_png("textures/wall2.png"));
-	game->wall_weights[0] = 50;
 	game->img_wall[1] = mlx_texture_to_image(
 			game->mlx, mlx_load_png("textures/wall3.png"));
-	game->wall_weights[1] = 10;
-	game->img_wall[3] = mlx_texture_to_image(
+	game->img_wall[2] = mlx_texture_to_image(
 			game->mlx, mlx_load_png("textures/wall5.png"));
-	game->wall_weights[3] = 20;
 	game->img_player = mlx_texture_to_image(
 			game->mlx, mlx_load_png("textures/player2.png"));
 	game->img_collect = mlx_texture_to_image(
@@ -36,37 +33,23 @@ int	charge_textures(t_game *game)
 	return (EXIT_SUCCESS);
 }
 
-mlx_image_t	*weight_wall(t_game *game)
+mlx_image_t	*select_wall_texture(int x, int y, t_game *game)
 {
-	int	total_weight;
-	int	i;
-	int	random_value;
-	int	cumulative_weight;
+	int	sum;
 
-	total_weight = 0;
-	i = 0;
-	while (i < NUM_WALL_TEXTURES)
-	{
-		total_weight += game->wall_weights[i];
-		i++;
-	}
-	random_value = rand() % total_weight;
-	cumulative_weight = 0;
-	i = 0;
-	while (i < NUM_WALL_TEXTURES)
-	{
-		cumulative_weight += game->wall_weights[i];
-		if (random_value < cumulative_weight)
-			return (game->img_wall[i]);
-		i++;
-	}
-	return (game->img_wall[0]);
+	sum = ((x * 31) + (y * 17) + (x ^ y)) % 100;
+	if (sum < 80)
+		return (game->img_wall[0]);
+	else if (sum < 90)
+		return (game->img_wall[2]);
+	else
+		return (game->img_wall[1]);
 }
 
 void	render_map(t_game *game)
 {
-	int			i;
-	int			j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->map->height)
@@ -94,7 +77,7 @@ void	render_tile(t_game *game, int i, int j)
 	mlx_image_to_window(game->mlx, game->img_bg, j * TILE_SIZE, i * TILE_SIZE);
 	if (game->map->data[i][j] == '1')
 	{
-		wall_texture = weight_wall(game);
+		wall_texture = select_wall_texture(i, j, game);
 		mlx_image_to_window(game->mlx, wall_texture,
 			j * TILE_SIZE, i * TILE_SIZE);
 	}

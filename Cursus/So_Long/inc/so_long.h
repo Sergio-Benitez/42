@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 00:47:30 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 02:03:39 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_game
 	t_map		*map;
 	mlx_image_t	*img_bg;
 	mlx_image_t	*img_wall[NUM_WALL_TEXTURES];
-	int			wall_weights[NUM_WALL_TEXTURES];
 	mlx_image_t	*img_player;
 	mlx_image_t	*img_collect;
 	mlx_image_t	*img_exit_open;
@@ -75,7 +74,7 @@ void		flood_fill(t_map *map, char **map_data, int y, int x);
 char		**copy_map_data(char **data, int height, int width);
 void		free_matrix(void **matrix, int height);
 void		update_flags(t_map *map);
-mlx_image_t	*weight_wall(t_game *game);
+mlx_image_t	*select_wall_texture(int x, int y, t_game *game);
 int			check_map(t_map *map);
 
 void		ft_hook(void *param);
