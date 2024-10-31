@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:33:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/30 23:41:36 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:30:54 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void	find_pos(t_map *map)
 {
 	int	y;
 	int	x;
+	int	collect_index;
 
 	y = -1;
+	collect_index = 0;
 	while (++y < map->height)
 	{
 		x = -1;
@@ -32,6 +34,15 @@ void	find_pos(t_map *map)
 			{
 				map->exit_pos.y = y;
 				map->exit_pos.x = x;
+			}
+			else if (map->data[y][x] == 'C')
+            {
+				if (collect_index < map->collect_n)
+                {
+                    map->collect_pos[collect_index].x = x;
+                    map->collect_pos[collect_index].y = y;
+                    collect_index++;
+                }
 			}
 		}
 	}

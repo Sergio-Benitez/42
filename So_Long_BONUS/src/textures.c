@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 23:32:11 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 03:16:46 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:41:15 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	charge_textures(t_game *game)
 			game->mlx, mlx_load_png("textures/wall5.png"));
 	game->img_player = mlx_texture_to_image(
 			game->mlx, mlx_load_png("textures/player2.png"));
-	game->img_collect = mlx_texture_to_image(
-			game->mlx, mlx_load_png("textures/soul2.png"));
+//	game->img_collect = mlx_texture_to_image(
+//			game->mlx, mlx_load_png("textures/soul2.png"));
+	init_collectible_animation(game);
 	game->img_exit_open = mlx_texture_to_image(
 			game->mlx, mlx_load_png("textures/exit_open.png"));
 	game->img_exit_closed = mlx_texture_to_image(
@@ -82,8 +83,7 @@ void	render_tile(t_game *game, int i, int j)
 			j * TILE_SIZE, i * TILE_SIZE);
 	}
 	else if (game->map->data[i][j] == 'C')
-		mlx_image_to_window(game->mlx, game->img_collect,
-			j * TILE_SIZE, i * TILE_SIZE);
+		render_collectibles(game);
 	else if (game->map->data[i][j] == 'E')
 	{
 		if (game->map->collect_n == 0)

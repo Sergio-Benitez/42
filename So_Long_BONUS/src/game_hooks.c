@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:53:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 03:16:29 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:01:57 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_hook(void *param)
 		return ;
 	game->frame_count = 0;
 	handle_input(game);
+	update_collectible_animation(game);
+	update_collectible_flags(game);
 	render_map(game);
 }
 
@@ -52,6 +54,10 @@ void	handle_input(t_game *game)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_D))
 		new_pos.x += 1;
+	if (game->map->data[new_pos.y][new_pos.x] == 'C')
+    {
+        handle_collectible(game, new_pos.x, new_pos.y);
+    }
 	handle_movement(game, old_pos, new_pos);
 }
 
