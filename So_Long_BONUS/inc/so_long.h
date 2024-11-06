@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 14:08:09 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:38:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,19 @@ typedef struct s_game
 	t_map		*map;
 	mlx_image_t	*img_bg;
 	mlx_image_t	*img_wall[NUM_WALL_TEXTURES];
-	mlx_image_t	*img_player;
+	mlx_image_t *img_player;
+	mlx_image_t	*img_player_up;
+	mlx_image_t *img_player_down;
+	mlx_image_t *img_player_left;
+	mlx_image_t *img_player_right;
 	mlx_image_t	*img_collect;
 	mlx_image_t	*collect_frame[NUM_COLLECT_TEXTURES];
 	int			current_frame;
 	mlx_image_t	*img_exit_open;
 	mlx_image_t	*img_exit_closed;
 	int			move_count;
-	mlx_image_t *counter_bg;
+	mlx_image_t	*wmoves;
 	int			frame_count;
-	int			anim_speed;
-	int			anim_counter;
-	int			anim_direction;
 }				t_game;
 
 int			check_type(char *name);
@@ -98,13 +99,6 @@ void		free_textures(t_game *game);
 void		init_game_struct(t_game *game);
 void		init_game(t_game *game, t_map *map);
 
-void		display_move_count(t_game *game);
-void		mlx_image_to_color(mlx_image_t *img, uint32_t color);
-void		init_collectible_animation(t_game *game);
-void		render_collectibles(t_game *game);
-void		init_collectibles(t_game *game);
-void		update_collectible_flags(t_game *game);
-void		update_collectible_animation(t_game *game);
-void		handle_collectible(t_game *game, int x, int y);
+void		ft_moves(t_game *game);
 
 #endif

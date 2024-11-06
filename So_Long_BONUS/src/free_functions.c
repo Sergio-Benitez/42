@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 23:40:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 03:21:32 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:27:01 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void	free_textures(t_game *game)
 {
 	int	i;
 
-	if (game->counter_bg)
-		mlx_delete_image(game->mlx, game->counter_bg);
 	if (game->img_bg)
 		mlx_delete_image(game->mlx, game->img_bg);
 	if (game->img_player)

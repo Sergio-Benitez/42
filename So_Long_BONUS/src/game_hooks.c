@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:53:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 14:01:57 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:43:51 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	ft_hook(void *param)
 		return ;
 	game->frame_count = 0;
 	handle_input(game);
-	update_collectible_animation(game);
-	update_collectible_flags(game);
 	render_map(game);
 }
 
@@ -44,20 +42,28 @@ void	handle_input(t_game *game)
 		mlx_close_window(game->mlx);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_UP)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_W))
-		new_pos.y -= 1;
+		{
+			new_pos.y -= 1;
+			game->img_player = game->img_player_up;
+		}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_S))
-		new_pos.y += 1;
+		{
+			new_pos.y += 1;
+			game->img_player = game->img_player_down;
+		}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_A))
-		new_pos.x -= 1;
+		{
+			new_pos.x -= 1;
+			game->img_player = game->img_player_left;
+		}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_D))
-		new_pos.x += 1;
-	if (game->map->data[new_pos.y][new_pos.x] == 'C')
-    {
-        handle_collectible(game, new_pos.x, new_pos.y);
-    }
+		{
+			new_pos.x += 1;
+			game->img_player = game->img_player_right;
+		}
 	handle_movement(game, old_pos, new_pos);
 }
 
@@ -79,7 +85,7 @@ void	handle_movement(t_game *game, t_coords old_pos, t_coords new_pos)
 			}
 			game->map->player_pos = new_pos;
 			game->move_count++;
-			display_move_count(game);
+			ft_moves(game);
 			if (game->map->data[new_pos.y][new_pos.x] == 'E'
 				&& game->map->collect_n == 0)
 				game->frame_count = -20;

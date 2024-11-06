@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 13:57:23 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:28:09 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_game_struct(t_game *game)
 		game->img_exit_open = NULL;
 		game->img_exit_closed = NULL;
 		game->move_count = 0;
+		game->wmoves = NULL;
 		game->frame_count = 0;
 	}
 }
@@ -47,13 +48,6 @@ void	init_game(t_game *game, t_map *map)
 	}
 	game->move_count = 0;
 	game->frame_count = 0;
-    game->counter_bg = mlx_new_image(game->mlx, 160, 20); // Ancho y alto del área del contador
-    mlx_image_to_color(game->counter_bg, 0x80000000);
-	game->anim_speed = 5;
-	game->anim_counter = 0;
-	game->anim_direction = 1;
-	init_collectibles(game);
-	init_collectible_animation(game);
 	charge_textures(game);
 }
 
