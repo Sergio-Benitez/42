@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 00:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/31 00:19:26 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:21:16 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	check_chars(t_map *map)
 				map->exit_n++;
 			else if (map->data[y][x] == 'C')
 				map->collect_n++;
+			else if (map->data[y][x] == 'S')
+				map->enemy_n++;
 			else if (map->data[y][x] != '1' && map->data[y][x] != '0')
 				invalid = 1;
 		}

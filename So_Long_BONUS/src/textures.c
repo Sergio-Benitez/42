@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 23:32:11 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/11/06 19:37:40 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:11:49 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	charge_textures(t_game *game)
 			game->mlx, mlx_load_png("textures/wall5.png"));
 	game->img_player_up = mlx_texture_to_image(
 			game->mlx, mlx_load_png("textures/player_up.png"));
+	game->img_player = mlx_texture_to_image(
+			game->mlx, mlx_load_png("textures/player_down.png"));
 	game->img_player_down = mlx_texture_to_image(
 			game->mlx, mlx_load_png("textures/player_down.png"));
 	game->img_player_left = mlx_texture_to_image(

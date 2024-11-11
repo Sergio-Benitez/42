@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/11/06 19:38:12 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:23:39 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_map
 	t_coords	exit_pos;
 	int			collect_n;
 	t_coords	*collect_pos;
+	int			enemy_n;
+	t_coords	enemy_pos;
 }				t_map;
 
 typedef struct s_game
