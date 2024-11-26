@@ -6,12 +6,12 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 10:37:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:17:34 by sbenitez         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:46:48 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	42
