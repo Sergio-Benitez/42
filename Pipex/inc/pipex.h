@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:19:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/08 19:14:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:07:17 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,24 @@
 # define PIPEX_H
 
 # include "../Libft/inc/libft.h"
+# include <fcntl.h>
 # include <sys/wait.h>
-# include <unistd.h>
+# include <stdio.h>
+# include <errno.h>
+
+
+				//	PROCESS_PATH.C	//
+
+void	child(int *pipefd, char **argv, char **env);
+void	parent(int *pipefd, char **argv, char **env);
+char	*find_path(char *str, char **env, int len);
+char	**split_path(char *path, int start);
+char	*check_access(char **path, char *cmd);
+
+				// 		MAIN.C		//
+
+void	free_split(char **split);
+void	ft_exit_error(char *str);
+void	run_cmd(char *argv, char **env);
 
 #endif

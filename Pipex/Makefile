@@ -1,8 +1,7 @@
 NAME = pipex
 
 CFILES =	src/main.c \
-			#src/child_process.c \
-			#src/path.c
+			src/process_path.c
 
 LIBFT = Libft/libft.a
 
