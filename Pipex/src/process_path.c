@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:25:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/09 17:21:56 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:34:06 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	child(int *pipefd, char **argv, char **env)
 {
 	int	inputfd;
-	
+
 	close(pipefd[0]);
 	inputfd = open(argv[1], O_RDONLY);
 	if (inputfd < 0)
@@ -35,13 +35,12 @@ void	child(int *pipefd, char **argv, char **env)
 		exit(1);
 	}
 	run_cmd(argv[2], env);
-	
 }
 
 void	parent(int *pipefd, char **argv, char **env)
 {
 	int	outputfd;
-	
+
 	close(pipefd[1]);
 	wait(NULL);
 	outputfd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -68,7 +67,7 @@ void	parent(int *pipefd, char **argv, char **env)
 char	*find_path(char *str, char **env, int len)
 {
 	int	i;
-	
+
 	i = 0;
 	while (env[i])
 	{

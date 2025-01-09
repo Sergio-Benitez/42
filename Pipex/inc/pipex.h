@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:19:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/09 17:07:17 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:34:26 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <sys/wait.h>
 # include <stdio.h>
 # include <errno.h>
-
 
 				//	PROCESS_PATH.C	//
 
