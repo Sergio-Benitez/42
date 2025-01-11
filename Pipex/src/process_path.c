@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:25:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/09 18:34:06 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:35:59 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void	child(int *pipefd, char **argv, char **env)
 
 	close(pipefd[0]);
 	inputfd = open(argv[1], O_RDONLY);
-	if (inputfd < 0)
+	if (inputfd == -1)
 	{
 		perror("Error opening file");
 		exit(1);
 	}
-	if (dup2(inputfd, STDIN_FILENO) < 0)
+	if (dup2(inputfd, STDIN_FILENO) == -1)
 	{
 		perror("Error duplicating file descriptor");
 		exit(1);
 	}
 	close(inputfd);
-	if (dup2(pipefd[1], STDOUT_FILENO) < 0)
+	if (dup2(pipefd[1], STDOUT_FILENO) == -1)
 	{
 		perror("Error duplicating file descriptor");
 		exit(1);
@@ -42,20 +42,18 @@ void	parent(int *pipefd, char **argv, char **env)
 	int	outputfd;
 
 	close(pipefd[1]);
-	wait(NULL);
 	outputfd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (outputfd < 0)
+	if (outputfd == -1)
 	{
-		perror("Error writing file");
+		perror("Error opening file");
 		exit(1);
 	}
-	if (dup2(pipefd[0], STDIN_FILENO) < 0)
+	if (dup2(pipefd[0], STDIN_FILENO) == -1)
 	{
 		perror("Error duplicating file descriptor");
 		exit(1);
 	}
-	close(pipefd[0]);
-	if (dup2(outputfd, STDOUT_FILENO) < 0)
+	if (dup2(outputfd, STDOUT_FILENO) == -1)
 	{
 		perror("Error duplicating file descriptor");
 		exit(1);
@@ -99,7 +97,7 @@ char	**split_path(char *path, int start)
 
 char	*check_access(char **path_list, char *cmd)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (path_list[i])
@@ -107,9 +105,9 @@ char	*check_access(char **path_list, char *cmd)
 		if (!cmd)
 			return (NULL);
 		path_list[i] = ft_strjoin(path_list[i], cmd);
-		if ((access(path_list[i], X_OK)) == 0)
+		if (access(path_list[i], X_OK) == 0)
 			break ;
-		free (path_list[i]);
+		free(path_list[i]);
 		path_list[i] = NULL;
 		i++;
 	}
