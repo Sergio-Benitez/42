@@ -1,7 +1,8 @@
 NAME = push_swap
 
-CFILES =	src/parseo.c \
-#			src/process_path.c
+CFILES =	src/main.c \
+			src/lst_utils.c \
+			src/check_args.c
 
 LIBFT = Libft/libft.a
 
