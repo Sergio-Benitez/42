@@ -1,28 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/12 12:09:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/13 14:13:19 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/01/13 13:39:08 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/01/13 14:18:03 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "../Libft/inc/libft.h"
-# include <limits.h>
-
-typedef struct s_node
-{
-	int				value;
-	int				index;
-	int				position;
-	int				target_pos;
-	struct s_node	*next;
-}					t_node;
-
-#endif
+#include "../inc/push_swap.h"
