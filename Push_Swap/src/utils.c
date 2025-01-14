@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:17:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/14 14:31:28 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:00:52 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long long	ft_atoll(const char *str)
 {
 	long long	result;
-    int			sign;
+	int			sign;
 
 	result = 0;
 	sign = 1;
@@ -32,8 +32,8 @@ long long	ft_atoll(const char *str)
 		if (result > (LLONG_MAX - (*str - '0')) / 10)
 		{
 			if (sign == 1)
-				return LLONG_MAX;
-			return LLONG_MIN;
+				return (LLONG_MAX);
+			return (LLONG_MIN);
 		}
 		result = result * 10 + (*str - '0');
 		str++;
@@ -41,16 +41,12 @@ long long	ft_atoll(const char *str)
 	return (result * sign);
 }
 
-long long	*ft_llongize_args(char **clean_args)
+long long	*ft_llongize_args(char **clean_args, int size)
 {
 	long long	*llong_array;
-	int			size;
 	int			i;
 
-	size = 0;
-	while (clean_args[size])
-		size++;
-	llong_array = (long long*)malloc(size * sizeof(long long));
+	llong_array = (long long *)malloc(size * sizeof(long long));
 	if (!llong_array)
 		return (ft_putendl_fd("Error\nMemory allocation failed.\n", 2), NULL);
 	i = 0;

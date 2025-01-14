@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:57:42 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/14 14:38:00 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/14 20:18:31 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_check_int(char **clean_args)
 
 int	ft_check_limits(long long *llong_array)
 {
- 	int	i;
+	int	i;
 
 	i = 0;
 	while (llong_array[i])
@@ -65,31 +65,47 @@ int	ft_check_limits(long long *llong_array)
 	return (1);
 }
 
+int	ft_check_dups(long long *values, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (values[i] == values[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	ft_check_args(char **argv, t_node **stack_a)
 {
 	char		**clean_args;
+	int			size;
 	long long	*llong_array;
 
 	clean_args = ft_clean_quote(argv);
+	size = 0;
 	if (!clean_args)
 		return (ft_putendl_fd("Error\nInvalid arguments.\n", 2), 0);
- 	if (!ft_check_int(clean_args))
-		return (ft_putendl_fd("Error\nArguments must be integers.\n", 2), 0);	
-	llong_array = ft_llongize_args(clean_args);
+	if (!ft_check_int(clean_args))
+		return (ft_putendl_fd("Error\nArguments must be integers.\n", 2), 0);
+	while (clean_args[size])
+		size++;
+	llong_array = ft_llongize_args(clean_args, size);
+//	ft_free_split(clean_args)	
 	if (!ft_check_limits(llong_array))
 		return (ft_putendl_fd("Error\nArguments out of int range.\n", 2), 0);
-
-/*	if (!ft_check_duplicates(clean_args))
-		return (ft_putendl_fd("Error\nDuplicate arguments found.\n", 2), 0); */
-
- 	int	i = 0;
-	while (clean_args[i])				// PRINT ARGS
-	{
-		ft_printf("limpio: %s\n", clean_args[i]);
-		i++;
-	}
-	while (--i > -1)					// CREAR STACK A
-		ft_pushnode(stack_a, (int)llong_array[i]);
-		
+	if (!ft_check_dups(llong_array, size))
+		return (ft_putendl_fd("Error\nDuplicate arguments found.\n", 2), 0);
+ 	while (size-- > 0)
+		ft_pushnode(stack_a, (int)llong_array[size]);
 	return (1);
 }
