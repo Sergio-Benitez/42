@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:17:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/15 14:05:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:35:19 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,15 @@ long long	*ft_llongize_args(char **clean_args, int size)
 	return (llong_array);
 }
 
-void	ft_sort_llongtab(long long *tab, int size)
+int	ft_sort_llongtab(long long *tab, int size)
 {
 	int	i;
 	int	j;
 	int	temp;
+	int	flag;
 
 	i = 0;
+	flag = 0;
 	while (i < size - 1)
 	{
 		j = i + 1;
@@ -75,29 +77,47 @@ void	ft_sort_llongtab(long long *tab, int size)
 				temp = tab[i];
 				tab[i] = tab[j];
 				tab[j] = temp;
+				flag = 1;
 			}
 			j++;
 		}
 		i++;
 	}
+	return (flag);
 }
 
 void	ft_get_index(long long *tab, t_node **stack_a, int size)
 {
 	int		i;
-	t_node	*first;
+	t_node	*temp;
 	
 	i = 0;
-	first = *stack_a;
+	temp = *stack_a;
 	while (i < size)
 	{
-		while ((*stack_a) != NULL)
+		while (*stack_a)
 		{
 			if ((*stack_a)->value == (int)tab[i])
 				(*stack_a)->index = i;
 			*stack_a = (*stack_a)->next;
 		}
-		*stack_a = first;
+		*stack_a = temp;
 		i++;
 	}
+}
+
+void	ft_getpos(t_node **stack)
+{
+	int	i;
+	t_node	*temp;
+
+	i = 0;
+	temp = *stack;
+	while (*stack)
+	{
+		i++;
+		(*stack)->position = i;
+		*stack = (*stack)->next;
+	}
+	*stack = temp;
 }

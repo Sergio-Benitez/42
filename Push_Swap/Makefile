@@ -3,6 +3,7 @@ NAME = push_swap
 CFILES =	src/check_args.c \
 			src/free_functions.c \
 			src/lst_utils.c \
+			src/lst_utils2.c \
 			src/main.c \
 			src/utils.c
 
@@ -11,7 +12,7 @@ LIBFT = Libft/libft.a
 all: $(NAME)
 
 $(NAME): $(LIBFT)
-	@gcc -Wall -Wextra -Werror $(CFILES) $(LIBFT) -o $(NAME)
+	@gcc -Wall -Wextra -Werror -g $(CFILES) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@make -C Libft

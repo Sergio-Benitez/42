@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/15 14:15:44 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:37:55 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ void	ft_init(t_node **stack_a, int size, long long **llong_array)
 	
 	i = size;
 	while (i-- > 0)
-		ft_pushnode(stack_a, (int)llong_array[0][i]);
-	ft_sort_llongtab(*llong_array, size);
+		ft_pushnode(stack_a, (int)(*llong_array)[i]);
+	if (!ft_sort_llongtab(*llong_array, size))
+		(ft_printf("Arguments are already sorted.\n"), exit (0));
 	ft_get_index(*llong_array, stack_a, size);
+	ft_getpos(stack_a);
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -41,6 +42,7 @@ int	main(int argc, char **argv)
 //	t_node		*stack_b;
 
 	stack_a = NULL;
+//	stack_b = NULL;
 	size = 0;
 	if (argc < 2)
 		return (0);
@@ -49,6 +51,8 @@ int	main(int argc, char **argv)
 		return (0);
 	ft_init(&stack_a, size, &llong_array);
 	ft_print_stack(stack_a);
-//	ft_free_stack(x) pa mañana xd
+//	CREAR FUNCIÓN PARA HACER FREES
+	ft_free_stack(&stack_a);
+	free(llong_array);
 	return (0);
 }
