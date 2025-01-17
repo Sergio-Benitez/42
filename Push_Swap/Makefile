@@ -6,6 +6,7 @@ CFILES =	src/check_args.c \
 			src/lst_utils2.c \
 			src/main.c \
 			src/operations.c \
+			src/operations2.c \
 			src/utils.c
 
 LIBFT = Libft/libft.a

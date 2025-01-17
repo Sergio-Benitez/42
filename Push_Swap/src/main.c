@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/17 03:31:14 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:07:38 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_print_stack(t_node *stack)
 	}
 	while (stack)
 	{
-		ft_printf("Value: %d, Index: %d, Position: %d, Size = %d, Target Pos: %d\n\n",
+		ft_printf("Value: %d, Index: %d, Position: %d, Size = %d, Target Pos: %d\n",
 			stack->value, stack->index, stack->position, stack->size, stack->target_pos);
 		stack = stack->next;
 	}
@@ -59,19 +59,10 @@ int	main(int argc, char **argv)
 	ft_init(&stack_a, size, &llong_array);
 	ft_printf("STACK A:\n\n");
 	ft_print_stack(stack_a);
-	ft_printf("HACEMOS PB hasta que queden 3 en STAcK A:\n\n");
-	while (stack_a->size > 3)
-		ft_pb(&stack_a, &stack_b);
+	ft_sa(&stack_a);
 	ft_printf("STACK A:\n\n");
 	ft_print_stack(stack_a);
-	ft_printf("STACK B:\n\n");
-	ft_print_stack(stack_b);
-	ft_printf("HACEMOS PA:\n\n");
-	ft_pa(&stack_a, &stack_b);
-	ft_printf("STACK A:\n\n");
-	ft_print_stack(stack_a);
-	ft_printf("STACK B:\n\n");
-	ft_print_stack(stack_b);
+	ft_pb(&stack_a, &stack_b);
 	ft_free_exit(&stack_a, NULL, llong_array);
 	return (0);
 }

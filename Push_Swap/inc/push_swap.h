@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:09:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/17 03:14:53 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:06:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ void		ft_init(t_node **stack_a, int size, long long **llong_array);
 
 void		ft_pa(t_node **stack_a, t_node **stack_b);
 void		ft_pb(t_node **stack_a, t_node **stack_b);
+void		ft_ra(t_node **stack_a, int flag);
+void		ft_rb(t_node **stack_b, int flag);
+void		ft_rr(t_node **stack_a, t_node **stack_b);
+
+		//		OPERATIONS2.C		//
+
+void		ft_sa(t_node **stack_a);
 
 		//			UTILS.C			//
 
