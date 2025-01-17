@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:57:42 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/15 18:25:05 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:49:09 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,16 @@ long long	*ft_check_args(char **argv, int *size)
 
 	clean_args = ft_clean_quote(argv);
 	if (!clean_args)
-		return (ft_putendl_fd("Error\nInvalid arguments.\n", 2), NULL);
+		return (ft_putendl_fd("Error\nInvalid arguments.", 2), NULL);
 	if (!ft_check_int(clean_args))
-		return (ft_putendl_fd("Error\nArguments must be integers.\n", 2), NULL);
+		return (ft_putendl_fd("Error\nArguments must be integers.", 2), NULL);
 	while (clean_args[*size])
 		(*size)++;
 	llong_array = ft_llongize_args(clean_args, *size);
 	ft_free_matrix(clean_args);
 	if (!ft_check_limits(llong_array, *size))
-		return (ft_putendl_fd("Error\nArguments out of int range.\n", 2), NULL);
+		return (ft_putendl_fd("Error\nArguments out of int range.", 2), NULL);
 	if (!ft_check_dups(llong_array, *size))
-		return (ft_putendl_fd("Error\nDuplicate arguments found.\n", 2), NULL);
+		return (ft_putendl_fd("Error\nDuplicate arguments found.", 2), NULL);
 	return (llong_array);
 }

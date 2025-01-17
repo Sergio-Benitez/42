@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:17:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/15 18:35:19 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:25:49 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	ft_get_index(long long *tab, t_node **stack_a, int size)
 		while (*stack_a)
 		{
 			if ((*stack_a)->value == (int)tab[i])
-				(*stack_a)->index = i;
+				(*stack_a)->index = i + 1;
 			*stack_a = (*stack_a)->next;
 		}
 		*stack_a = temp;
