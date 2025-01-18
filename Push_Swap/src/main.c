@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/17 17:07:38 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:38:00 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,26 @@ int	main(int argc, char **argv)
 	if (!llong_array)
 		exit (1);
 	ft_init(&stack_a, size, &llong_array);
-	ft_printf("STACK A:\n\n");
-	ft_print_stack(stack_a);
-	ft_sa(&stack_a);
-	ft_printf("STACK A:\n\n");
-	ft_print_stack(stack_a);
 	ft_pb(&stack_a, &stack_b);
-	ft_free_exit(&stack_a, NULL, llong_array);
+	ft_pb(&stack_a, &stack_b);
+	ft_pb(&stack_a, &stack_b);
+	ft_pb(&stack_a, &stack_b);
+	ft_pb(&stack_a, &stack_b);
+	ft_printf("STACK A:\n\n");
+	ft_print_stack(stack_a);
+	ft_printf("STACK B:\n\n");
+	ft_print_stack(stack_b);
+	ft_rra(&stack_a, 0);
+	ft_rrb(&stack_b, 0);
+	ft_printf("STACK A:\n\n");
+	ft_print_stack(stack_a);
+	ft_printf("STACK B:\n\n");
+	ft_print_stack(stack_b);
+	ft_rrr(&stack_a, &stack_b);
+	ft_printf("STACK A:\n\n");
+	ft_print_stack(stack_a);
+	ft_printf("STACK B:\n\n");
+	ft_print_stack(stack_b);
+	ft_free_exit(&stack_a, &stack_b, llong_array);
 	return (0);
 }

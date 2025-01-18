@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:09:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/17 17:06:12 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:34:36 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ void		ft_rr(t_node **stack_a, t_node **stack_b);
 		//		OPERATIONS2.C		//
 
 void		ft_sa(t_node **stack_a);
+void		ft_sb(t_node **stack_b);
+void		ft_rra(t_node **stack_a, int flag);
+void		ft_rrb(t_node **stack_b, int flag);
+void		ft_rrr(t_node **stack_a, t_node **stack_b);
 
 		//			UTILS.C			//
 
