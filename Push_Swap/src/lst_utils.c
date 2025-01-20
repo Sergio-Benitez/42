@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:39:08 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/17 03:02:38 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:24:51 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,29 @@ void	ft_pushnode(t_node **stack, int value)
 	*stack = new_node;
 }
 
-/* void	ft_delnode(t_node **stack, int value)
+void	ft_recalculate(t_node **stack)
 {
+	ft_get_stacksize(stack);
+	ft_getpos(stack);
+}
+
+void	ft_get_stacksize(t_node **stack)
+{
+	int		i;
 	t_node	*temp;
-	
+
+	i = 0;
 	temp = *stack;
 	while (*stack)
 	{
-		if ((*stack)->value == value)
-		{
-			
-		}
+		*stack = (*stack)->next;
+		i++;
+	}
+	*stack = temp;
+	while (*stack)
+	{
+		(*stack)->size = i;
 		*stack = (*stack)->next;
 	}
 	*stack = temp;
-} */
+}

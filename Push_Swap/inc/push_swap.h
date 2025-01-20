@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:09:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/19 00:34:36 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:25:49 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ void		ft_free_exit(t_node **stack_a, t_node **stack_b, long long *array);
 
 t_node		*ft_newnode(int value);
 void		ft_pushnode(t_node **stack, int value);
+void		ft_recalculate(t_node **stack);
+void		ft_get_stacksize(t_node **stack);
 
 		//		LST_UTILS2.C		//
 
-void		ft_recalculate(t_node **stack);
-void		ft_get_stacksize(t_node **stack);
+void		ft_sort_three(t_node **stack);
 
 		//			MAIN.C			//
 

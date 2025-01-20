@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/19 00:38:00 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:06:38 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	ft_init(t_node **stack_a, int size, long long **llong_array)
 	ft_get_index(*llong_array, stack_a, size);
 	ft_getpos(stack_a);
 	ft_get_stacksize(stack_a);
+	if ((*stack_a)->size == 2 || (*stack_a)->size == 3)
+		ft_sort_three(stack_a);
 }
 
 int	main(int argc, char **argv)
@@ -57,12 +59,7 @@ int	main(int argc, char **argv)
 	if (!llong_array)
 		exit (1);
 	ft_init(&stack_a, size, &llong_array);
-	ft_pb(&stack_a, &stack_b);
-	ft_pb(&stack_a, &stack_b);
-	ft_pb(&stack_a, &stack_b);
-	ft_pb(&stack_a, &stack_b);
-	ft_pb(&stack_a, &stack_b);
-	ft_printf("STACK A:\n\n");
+/* 	ft_printf("STACK A:\n\n");
 	ft_print_stack(stack_a);
 	ft_printf("STACK B:\n\n");
 	ft_print_stack(stack_b);
@@ -76,7 +73,7 @@ int	main(int argc, char **argv)
 	ft_printf("STACK A:\n\n");
 	ft_print_stack(stack_a);
 	ft_printf("STACK B:\n\n");
-	ft_print_stack(stack_b);
+	ft_print_stack(stack_b); */
 	ft_free_exit(&stack_a, &stack_b, llong_array);
 	return (0);
 }

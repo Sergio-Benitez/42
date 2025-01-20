@@ -6,35 +6,34 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/17 03:17:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:17:04 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_recalculate(t_node **stack)
+void	ft_sort_three(t_node **stack)
 {
-	ft_get_stacksize(stack);
-	ft_getpos(stack);
-}
+	int	first;
+	int	second;
+	int	third;
 
-void	ft_get_stacksize(t_node **stack)
-{
-	int		i;
-	t_node	*temp;
-
-	i = 0;
-	temp = *stack;
-	while (*stack)
+	if ((*stack)->size == 2)
 	{
-		*stack = (*stack)->next;
-		i++;
+		ft_sa(stack);
+		return ;
 	}
-	*stack = temp;
-	while (*stack)
-	{
-		(*stack)->size = i;
-		*stack = (*stack)->next;
-	}
-	*stack = temp;
+	first = (*stack)->index;
+	second = (*stack)->next->index;
+	third = (*stack)->next->next->index;
+	if (first > second && second > third)
+		(ft_sa(stack), ft_rra(stack, 0));
+	else if (first > third && third > second)
+		ft_ra(stack, 0);
+	else if (second > first && first > third)
+		ft_rra(stack, 0);
+	else if (second > third && third > first)
+		(ft_sa(stack), ft_ra(stack, 0));
+	else if (third > first && first > second)
+		ft_sa(stack);
 }
