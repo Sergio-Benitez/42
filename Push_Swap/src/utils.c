@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:17:16 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/16 12:25:49 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:41:07 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_get_index(long long *tab, t_node **stack_a, int size)
 {
 	int		i;
 	t_node	*temp;
-	
+
 	i = 0;
 	temp = *stack_a;
 	while (i < size)
@@ -108,16 +108,16 @@ void	ft_get_index(long long *tab, t_node **stack_a, int size)
 
 void	ft_getpos(t_node **stack)
 {
-	int	i;
+	int		i;
 	t_node	*temp;
 
 	i = 0;
 	temp = *stack;
 	while (*stack)
 	{
-		i++;
 		(*stack)->position = i;
 		*stack = (*stack)->next;
+		i++;
 	}
 	*stack = temp;
 }

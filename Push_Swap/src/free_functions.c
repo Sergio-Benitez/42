@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:21:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/16 11:56:28 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:39:43 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_free_matrix(char **matrix)
 {
 	int	i;
-	
+
 	i = 0;
 	while (matrix[i])
 	{
@@ -24,10 +24,11 @@ void	ft_free_matrix(char **matrix)
 	}
 	free(matrix);
 }
+
 void	ft_free_stack(t_node **stack)
 {
 	t_node	*temp;
-	
+
 	while (*stack)
 	{
 		temp = *stack;

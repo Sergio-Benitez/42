@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:39:08 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/20 19:24:51 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:39:51 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_node	*ft_newnode(int value)
 
 void	ft_pushnode(t_node **stack, int value)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = ft_newnode(value);
 	if (!new_node)
@@ -64,4 +64,15 @@ void	ft_get_stacksize(t_node **stack)
 		*stack = (*stack)->next;
 	}
 	*stack = temp;
+}
+
+int	is_sorted(t_node *stack)
+{
+	while (stack->next != NULL)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }

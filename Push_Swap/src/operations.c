@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:12:07 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/17 16:26:55 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:40:33 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_ra(t_node **stack_a, int flag)
 {
 	t_node	*temp;
 	t_node	*first;
-	
+
 	temp = *stack_a;
 	first = (*stack_a)->next;
 	while ((*stack_a)->next)
@@ -77,7 +77,7 @@ void	ft_rb(t_node **stack_b, int flag)
 {
 	t_node	*temp;
 	t_node	*first;
-	
+
 	temp = *stack_b;
 	first = (*stack_b)->next;
 	while ((*stack_b)->next)
