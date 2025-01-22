@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/21 13:43:52 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/22 19:49:52 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,47 @@ void	ft_pb_all(t_node **stack_a, t_node **stack_b)
 	}
 }
 
+int	ft_get_target(t_node **a, int b_idx, int target_idx, int target_pos)
+{
+	t_node	*temp_a;
+
+	temp_a = *a;
+	while (temp_a)
+	{
+		if (temp_a->index > b_idx && temp_a->index < target_idx)
+		{
+			target_idx = temp_a->index;
+			target_pos = temp_a->position;
+		}
+		temp_a = temp_a->next;
+	}
+	if (target_idx != INT_MAX)
+		return (target_pos);
+	temp_a = *a;
+	while (temp_a)
+	{
+		if (temp_a->index < target_idx)
+		{
+			target_idx = temp_a->index;
+			target_pos = temp_a->position;
+		}
+		temp_a = temp_a->next;
+	}
+	return (target_pos);
+}
+
 void	ft_get_targetpos(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp_b;
+	int		target_pos;
 
 	temp_b = *stack_b;
-	while (stack_b)
+	target_pos = 0;
+	while (temp_b)
 	{
-		
+		target_pos = ft_get_target(stack_a, temp_b->index, INT_MAX, target_pos);
+		temp_b->target_pos = target_pos;
+		temp_b = temp_b->next;
 	}
 }
 
@@ -78,10 +111,11 @@ void	ft_push_swap(t_node **stack_a, t_node **stack_b)
 	ft_sort_three(stack_a);
 	while (*stack_b)
 	{
-		get_target_position(stack_a, stack_b);
-		get_cost(stack_a, stack_b);
-		do_cheapest_move(stack_a, stack_b);
+		ft_get_targetpos(stack_a, stack_b);
+		break;
+//		get_cost(stack_a, stack_b);
+//		do_cheapest_move(stack_a, stack_b);
 	}
-	if (!is_sorted(*stack_a))
-		shift_stack(stack_a);
+//	if (!is_sorted(*stack_a))
+//		shift_stack(stack_a);
 }

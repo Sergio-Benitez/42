@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:09:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/21 13:10:05 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:52:16 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int			is_sorted(t_node *stack);
 
 void		ft_sort_three(t_node **stack);
 void		ft_pb_all(t_node **stack_a, t_node **stack_b);
+int			ft_get_target(t_node **a, int b_idx, int target_idx, int target_pos);
+void		ft_get_targetpos(t_node **stack_a, t_node **stack_b);
 void		ft_push_swap(t_node **stack_a, t_node **stack_b);
 
 		//			MAIN.C			//
