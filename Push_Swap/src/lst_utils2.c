@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/22 19:49:52 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:11:02 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,10 @@ void	ft_push_swap(t_node **stack_a, t_node **stack_b)
 	while (*stack_b)
 	{
 		ft_get_targetpos(stack_a, stack_b);
+		ft_get_cost(stack_a, stack_b);
 		break;
-//		get_cost(stack_a, stack_b);
 //		do_cheapest_move(stack_a, stack_b);
 	}
-//	if (!is_sorted(*stack_a))
+//	if (!ft_is_sorted(*stack_a))
 //		shift_stack(stack_a);
 }

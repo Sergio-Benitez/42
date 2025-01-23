@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:39:08 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/21 13:39:51 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:25:34 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_get_stacksize(t_node **stack)
 	*stack = temp;
 }
 
-int	is_sorted(t_node *stack)
+int	ft_is_sorted(t_node *stack)
 {
 	while (stack->next != NULL)
 	{

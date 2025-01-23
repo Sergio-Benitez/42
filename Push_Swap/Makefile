@@ -4,6 +4,7 @@ CFILES =	src/check_args.c \
 			src/free_functions.c \
 			src/lst_utils.c \
 			src/lst_utils2.c \
+			src/lst_utils3.c \
 			src/main.c \
 			src/operations.c \
 			src/operations2.c \

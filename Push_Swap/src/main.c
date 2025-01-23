@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/21 13:39:21 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:13:26 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_print_stack(t_node *stack)
 	}
 	while (stack)
 	{
-		ft_printf("Value: %d, Index: %d, Position: %d, Size = %d, Target Pos: %d\n",
-			stack->value, stack->index, stack->position, stack->size, stack->target_pos);
+		ft_printf("Value: %d, Index: %d, Position: %d, Size = %d, Target Pos: %d, Cost A: %d, Cost B: %d\n",
+			stack->value, stack->index, stack->position, stack->size, stack->target_pos, stack->cost_a, stack->cost_b);
 		stack = stack->next;
 	}
 }
