@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:09:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/23 19:15:11 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/23 21:42:58 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void		ft_shift_stack(t_node **stack_a);
 
 		//			MAIN.C			//
 
-void		ft_print_stack(t_node *stack);
 void		ft_init(t_node **stack_a, int size, long long **llong_array);
 
 		//		OPERATIONS.C		//

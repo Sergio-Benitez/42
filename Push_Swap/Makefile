@@ -11,18 +11,27 @@ CFILES =	src/check_args.c \
 			src/operations2.c \
 			src/utils.c
 
+OBJDIR = obj
+OBJFILES = $(CFILES:src/%.c=$(OBJDIR)/%.o)
+
 LIBFT = Libft/libft.a
 
 all: $(NAME)
 
-$(NAME): $(LIBFT)
-	@gcc -Wall -Wextra -Werror -g $(CFILES) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJFILES) $(LIBFT)
+	@gcc -Wall -Wextra -Werror -g $(OBJFILES) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@make -C Libft
 
+$(OBJDIR)/%.o: src/%.c | $(OBJDIR)
+	@gcc -Wall -Wextra -Werror -g -c $< -o $@
+
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
+
 clean:
-	@rm -rf $(NAME)
+	@rm -rf $(OBJDIR) $(NAME)
 
 fclean: clean
 	@make fclean -C Libft
