@@ -2,6 +2,7 @@ NAME = push_swap
 
 CFILES =	src/check_args.c \
 			src/free_functions.c \
+			src/ft_move.c \
 			src/lst_utils.c \
 			src/lst_utils2.c \
 			src/lst_utils3.c \

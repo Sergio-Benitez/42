@@ -6,13 +6,13 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/23 14:13:26 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/23 19:19:24 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_print_stack(t_node *stack)
+/* void	ft_print_stack(t_node *stack)
 {
 	if (!stack)
 	{
@@ -25,7 +25,7 @@ void	ft_print_stack(t_node *stack)
 			stack->value, stack->index, stack->position, stack->size, stack->target_pos, stack->cost_a, stack->cost_b);
 		stack = stack->next;
 	}
-}
+} */
 
 void	ft_init(t_node **stack_a, int size, long long **llong_array)
 {
@@ -39,6 +39,7 @@ void	ft_init(t_node **stack_a, int size, long long **llong_array)
 	ft_get_index(*llong_array, stack_a, size);
 	ft_getpos(stack_a);
 	ft_get_stacksize(stack_a);
+	
 }
 
 int	main(int argc, char **argv)
@@ -62,11 +63,11 @@ int	main(int argc, char **argv)
 	else
 		ft_push_swap(&stack_a, &stack_b);
 
-	ft_printf("STACK A:\n\n");
+/* 	ft_printf("STACK A:\n\n");
 	ft_print_stack(stack_a);
 	ft_printf("\nSTACK B:\n\n");
 	ft_print_stack(stack_b);
-
+ */
 	ft_free_exit(&stack_a, &stack_b, llong_array);
 	return (0);
 }

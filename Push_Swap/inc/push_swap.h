@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:09:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/23 14:33:31 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/23 19:15:11 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ long long	*ft_check_args(char **argv, int *size);
 void		ft_free_matrix(char **matrix);
 void		ft_free_stack(t_node **stack);
 void		ft_free_exit(t_node **stack_a, t_node **stack_b, long long *array);
+int			ft_get_lowestidxpos(t_node **stack);
+
+		//			FT_MOVE.C		//
+
+void		ft_do_rrr(t_node **stack_a, t_node **stack_b, int *cost_a, int *cost_b);
+void		ft_do_rr(t_node **stack_a, t_node **stack_b, int *cost_a, int *cost_b);
+void		ft_do_ra(t_node **stack_a, int *cost);
+void		ft_do_rb(t_node **stack_b, int *cost);
+void		ft_shift_stack(t_node **stack_a);
 
 		//		LST_UTILS.C			//
 
@@ -60,11 +69,14 @@ void		ft_push_swap(t_node **stack_a, t_node **stack_b);
 
 		//		LST_UTILS3.C		//
 
+int			ft_abs(int nb);
 void		ft_get_cost(t_node **stack_a, t_node **stack_b);
+void		ft_move(t_node **stack_a, t_node **stack_b, int cost_a, int cost_b);
+void		ft_move_cheapest(t_node **stack_a, t_node **stack_b);
+void		ft_shift_stack(t_node **stack_a);
 
 		//			MAIN.C			//
 
-int			ft_absolutize(int nb);
 void		ft_print_stack(t_node *stack);
 void		ft_init(t_node **stack_a, int size, long long **llong_array);
 
