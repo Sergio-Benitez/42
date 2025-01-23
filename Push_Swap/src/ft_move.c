@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 17:30:10 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/23 17:38:27 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/23 21:48:24 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,3 @@ void	ft_do_rb(t_node **stack_b, int *cost)
 		}
 	}
 }
-
