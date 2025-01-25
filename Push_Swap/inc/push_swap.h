@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:09:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/23 21:49:48 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:06:34 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ long long	*ft_check_args(char **argv, int *size);
 
 		//		FREE_FUNCTIONS.C	//
 
-void		ft_free_matrix(char **matrix);
+void		ft_free_llongarray(long long *array, int flag);
+void		ft_free_matrix(char **matrix, int flag);
 void		ft_free_stack(t_node **stack);
 void		ft_free_exit(t_node **stack_a, t_node **stack_b, long long *array);
 int			ft_get_lowestidxpos(t_node **stack);

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:57:42 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/24 12:42:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:06:14 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,18 +102,18 @@ long long	*ft_check_args(char **argv, int *size)
 
 	clean_args = ft_clean_quote(argv);
 	if (!clean_args || !clean_args[0])
-		return (ft_putendl_fd("Error", 2), NULL);
+		ft_free_matrix(clean_args, 0);
 	if (!ft_check_int(clean_args))
-		return (ft_putendl_fd("Error", 2), NULL);
+		ft_free_matrix(clean_args, 0);
 	while (clean_args[*size])
 		(*size)++;
 	llong_array = ft_llongize_args(clean_args, *size);
-	ft_free_matrix(clean_args);
+	ft_free_matrix(clean_args, 1);
 	if (!llong_array)
-		return (ft_putendl_fd("Error", 2), NULL);
+		ft_free_llongarray(llong_array, 0);
 	if (!ft_check_limits(llong_array, *size))
-		return (ft_putendl_fd("Error", 2), NULL);
+		ft_free_llongarray(llong_array, 0);
 	if (!ft_check_dups(llong_array, *size))
-		return (ft_putendl_fd("Error", 2), NULL);
+		ft_free_llongarray(llong_array, 0);
 	return (llong_array);
 }

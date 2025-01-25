@@ -31,9 +31,10 @@ $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
 clean:
-	@rm -rf $(OBJDIR) $(NAME)
+	@rm -rf $(OBJDIR)
 
 fclean: clean
+	@rm -rf $(NAME)
 	@make fclean -C Libft
 
 re: fclean all

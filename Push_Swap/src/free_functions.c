@@ -6,13 +6,23 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:21:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/23 19:15:48 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:46:25 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_free_matrix(char **matrix)
+void	ft_free_llongarray(long long *array, int flag)
+{
+	free(array);
+	if (!flag)
+	{
+		ft_putendl_fd("Error", 2);
+		exit (1);
+	}
+}
+
+void	ft_free_matrix(char **matrix, int flag)
 {
 	int	i;
 
@@ -23,6 +33,11 @@ void	ft_free_matrix(char **matrix)
 		i++;
 	}
 	free(matrix);
+	if (!flag)
+	{
+		ft_putendl_fd("Error", 2);
+		exit (1);
+	}
 }
 
 void	ft_free_stack(t_node **stack)
@@ -43,7 +58,8 @@ void	ft_free_exit(t_node **stack_a, t_node **stack_b, long long *array)
 		ft_free_stack(stack_a);
 	if (stack_b)
 		ft_free_stack(stack_b);
-	free(array);
+	if (array)
+		free(array);
 }
 
 int	ft_get_lowestidxpos(t_node **stack)
