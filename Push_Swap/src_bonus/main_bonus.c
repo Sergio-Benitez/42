@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/27 20:41:30 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:05:54 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc_bonus/push_swap_bonus.h"
+#include <stdio.h>
 
 void	ft_init(t_node **stack_a, int size, long long **llong_array)
 {
@@ -42,10 +43,13 @@ int	main(int argc, char **argv)
 	ft_init(&stack_a, size, &llong_array);
 	if (stack_a->size == 1)
 		ft_free_exit(&stack_a, &stack_b, llong_array);
-	else if (stack_a->size == 2 || stack_a->size == 3)
-		ft_sort_three(&stack_a);
-	else if (stack_a->size > 3)
-		ft_push_swap(&stack_a, &stack_b);
+	else
+	{
+		ft_free_llongarray(llong_array, 1);
+		llong_array = NULL;
+		ft_do_pushswap(&stack_a, &stack_b, ft_read_instructions());
+	}
+	ft_check_result(stack_a, stack_b);
 	ft_free_exit(&stack_a, &stack_b, llong_array);
 	return (0);
 }
