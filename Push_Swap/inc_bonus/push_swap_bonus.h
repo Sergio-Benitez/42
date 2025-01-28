@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:04:44 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/28 20:07:49 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:27:48 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ long long	*ft_check_args(char **argv, int *size);
 
 void		*ft_realloc(void *ptr, size_t new_size);
 char		**ft_read_instructions(void);
+void		ft_exec_instruc(t_node **stack_a, t_node **stack_b, char *instruct);
 void		ft_do_pushswap(t_node **stack_a, t_node **stack_b, char **instruct);
 void		ft_check_result(t_node *stack_a, t_node *stack_b);
 
@@ -88,6 +89,7 @@ void		ft_shift_stack(t_node **stack_a);
 
 		//			MAIN.C			//
 
+void		ft_free_ssi(t_node **a, t_node **b, char **i);
 void		ft_init(t_node **stack_a, int size, long long **llong_array);
 
 		//		OPERATIONS.C		//

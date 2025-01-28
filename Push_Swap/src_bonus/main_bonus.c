@@ -6,12 +6,23 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/28 20:05:54 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:25:58 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc_bonus/push_swap_bonus.h"
 #include <stdio.h>
+
+void	ft_free_ssi(t_node **a, t_node **b, char **i)
+{
+	if (a)
+		ft_free_stack(a);
+	if (b)
+		ft_free_stack(b);
+	if (i)
+		ft_free_matrix(i, 1);
+	exit (1);
+}
 
 void	ft_init(t_node **stack_a, int size, long long **llong_array)
 {
