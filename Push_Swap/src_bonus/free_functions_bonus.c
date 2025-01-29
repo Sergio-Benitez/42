@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:21:36 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/28 20:23:05 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:23:16 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,16 @@ void	ft_free_exit(t_node **stack_a, t_node **stack_b, long long *array)
 		ft_free_stack(stack_b);
 	if (array)
 		free(array);
+	exit (0);
 }
 
-int	ft_get_lowestidxpos(t_node **stack)
+void	ft_free_ssi(t_node **a, t_node **b, char **i)
 {
-	t_node	*temp;
-	int		lowest_index;
-	int		lowest_pos;
-
-	temp = *stack;
-	lowest_index = INT_MAX;
-	lowest_pos = temp->position;
-	while (temp)
-	{
-		if (temp->index < lowest_index)
-		{
-			lowest_index = temp->index;
-			lowest_pos = temp->position;
-		}
-		temp = temp->next;
-	}
-	return (lowest_pos);
+	if (a)
+		ft_free_stack(a);
+	if (b)
+		ft_free_stack(b);
+	if (i)
+		ft_free_matrix(i, 1);
+	exit (1);
 }

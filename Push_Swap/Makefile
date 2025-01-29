@@ -13,12 +13,10 @@ CFILES =	src/check_args.c \
 			src/utils.c
 
 CBONUS =	src_bonus/check_args_bonus.c \
-			src_bonus/do_push_swap.c \
+			src_bonus/do_push_swap_bonus.c \
 			src_bonus/free_functions_bonus.c \
 			src_bonus/ft_move_bonus.c \
 			src_bonus/lst_utils_bonus.c \
-			src_bonus/lst_utils2_bonus.c \
-			src_bonus/lst_utils3_bonus.c \
 			src_bonus/main_bonus.c \
 			src_bonus/operations_bonus.c \
 			src_bonus/operations2_bonus.c \

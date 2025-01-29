@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:53:27 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/28 16:55:46 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:16:21 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_sa(t_node **stack_a)
 	first->next = second->next;
 	second->next = first;
 	*stack_a = second;
-	ft_recalculate(stack_a);
 }
 
 void	ft_sb(t_node **stack_b)
@@ -37,7 +36,6 @@ void	ft_sb(t_node **stack_b)
 	first->next = second->next;
 	second->next = first;
 	*stack_b = second;
-	ft_recalculate(stack_b);
 }
 
 void	ft_rra(t_node **stack_a)
@@ -52,7 +50,6 @@ void	ft_rra(t_node **stack_a)
 	second_last->next = NULL;
 	last->next = *stack_a;
 	*stack_a = last;
-	ft_recalculate(stack_a);
 }
 
 void	ft_rrb(t_node **stack_b)
@@ -67,7 +64,6 @@ void	ft_rrb(t_node **stack_b)
 	second_last->next = NULL;
 	last->next = *stack_b;
 	*stack_b = last;
-	ft_recalculate(stack_b);
 }
 
 void	ft_rrr(t_node **stack_a, t_node **stack_b)

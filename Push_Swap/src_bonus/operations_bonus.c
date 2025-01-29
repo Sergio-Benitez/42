@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:12:07 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/28 16:55:19 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:15:59 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	ft_pa(t_node **stack_a, t_node **stack_b)
 	*stack_b = temp;
 	if (!(*stack_b))
 		free(*stack_b);
-	ft_recalculate(stack_a);
-	ft_recalculate(stack_b);
 }
 
 void	ft_pb(t_node **stack_a, t_node **stack_b)
@@ -45,8 +43,6 @@ void	ft_pb(t_node **stack_a, t_node **stack_b)
 		*stack_b = *stack_a;
 		*stack_a = temp;
 	}
-	ft_recalculate(stack_a);
-	ft_recalculate(stack_b);
 }
 
 void	ft_ra(t_node **stack_a)
@@ -66,7 +62,6 @@ void	ft_ra(t_node **stack_a)
 		}
 	}
 	*stack_a = first;
-	ft_recalculate(stack_a);
 }
 
 void	ft_rb(t_node **stack_b)
@@ -86,7 +81,6 @@ void	ft_rb(t_node **stack_b)
 		}
 	}
 	*stack_b = first;
-	ft_recalculate(stack_b);
 }
 
 void	ft_rr(t_node **stack_a, t_node **stack_b)
