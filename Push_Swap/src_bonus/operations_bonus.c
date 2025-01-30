@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:12:07 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/30 13:18:16 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:36:07 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_pa(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp;
 
-	if (!(*stack_b))
+	if (!stack_b || !*stack_b)
 		return ;
 	temp = (*stack_b)->next;
 	(*stack_b)->next = *stack_a;
@@ -36,6 +36,8 @@ void	ft_pb(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp;
 
+	if (!stack_a || !*stack_a)
+		return ;
 	temp = (*stack_a)->next;
 	if (!*stack_b)
 	{
@@ -58,7 +60,7 @@ void	ft_ra(t_node **stack_a)
 	t_node	*temp;
 	t_node	*first;
 
-	if ((*stack_a)->size < 2)
+	if (!stack_a || !*stack_a || (*stack_a)->size < 2)
 		return ;
 	temp = *stack_a;
 	first = (*stack_a)->next;
@@ -79,7 +81,7 @@ void	ft_rb(t_node **stack_b)
 	t_node	*temp;
 	t_node	*first;
 
-	if ((*stack_b)->size < 2)
+	if (!stack_b || !*stack_b || (*stack_b)->size < 2)
 		return ;
 	temp = *stack_b;
 	first = (*stack_b)->next;

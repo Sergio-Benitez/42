@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:39:08 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/29 20:37:58 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:38:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_pushnode(t_node **stack, int value)
 
 int	ft_is_sorted(t_node *stack)
 {
+	if (!stack)
+		return (0);
 	while (stack->next != NULL)
 	{
 		if (stack->value > stack->next->value)
