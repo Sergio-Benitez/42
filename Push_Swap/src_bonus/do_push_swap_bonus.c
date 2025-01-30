@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:09:54 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/29 20:39:33 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:45:02 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	ft_exec_instruct(t_node **a, t_node **b, char *instruct)
 		ft_sa(a);
 	else if (ft_strncmp(instruct, "sb", 2) == 0)
 		ft_sb(b);
+	else if (ft_strncmp(instruct, "ss", 2) == 0)
+		return (1);
 	else if (ft_strncmp(instruct, "pa", 2) == 0)
 		ft_pa(a, b);
 	else if (ft_strncmp(instruct, "pb", 2) == 0)

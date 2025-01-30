@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:12:07 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/29 20:15:59 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:18:16 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@ void	ft_pa(t_node **stack_a, t_node **stack_b)
 	(*stack_b)->next = *stack_a;
 	*stack_a = *stack_b;
 	*stack_b = temp;
+	ft_get_stacksize(stack_a);
 	if (!(*stack_b))
+	{
 		free(*stack_b);
+		stack_b = NULL;
+	}
+	else
+		ft_get_stacksize(stack_b);
 }
 
 void	ft_pb(t_node **stack_a, t_node **stack_b)
@@ -43,6 +49,8 @@ void	ft_pb(t_node **stack_a, t_node **stack_b)
 		*stack_b = *stack_a;
 		*stack_a = temp;
 	}
+	ft_get_stacksize(stack_a);
+	ft_get_stacksize(stack_b);
 }
 
 void	ft_ra(t_node **stack_a)
@@ -50,6 +58,8 @@ void	ft_ra(t_node **stack_a)
 	t_node	*temp;
 	t_node	*first;
 
+	if ((*stack_a)->size < 2)
+		return ;
 	temp = *stack_a;
 	first = (*stack_a)->next;
 	while ((*stack_a)->next)
@@ -69,6 +79,8 @@ void	ft_rb(t_node **stack_b)
 	t_node	*temp;
 	t_node	*first;
 
+	if ((*stack_b)->size < 2)
+		return ;
 	temp = *stack_b;
 	first = (*stack_b)->next;
 	while ((*stack_b)->next)
@@ -85,6 +97,9 @@ void	ft_rb(t_node **stack_b)
 
 void	ft_rr(t_node **stack_a, t_node **stack_b)
 {
+	if (!stack_a || !*stack_a || (*stack_a)->size < 2 || !stack_b
+		|| !*stack_b || (*stack_b)->size < 2)
+		return ;
 	ft_ra(stack_a);
 	ft_rb(stack_b);
 }

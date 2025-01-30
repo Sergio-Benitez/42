@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:40:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/01/29 20:55:13 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:22:26 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		exit (0);
 	llong_array = ft_check_args(argv, &size);
 	ft_init(&stack_a, size, &llong_array);
-	if (stack_a->size == 1 || ft_is_sorted(stack_a))
+	if (stack_a->size == 1)
 		ft_free_exit(&stack_a, &stack_b, llong_array);
 	else
 	{
