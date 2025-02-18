@@ -1,7 +1,8 @@
 NAME = philo
 #BONUS_NAME = philo_bonus
 
-CFILES =	src/main.c \
+CFILES =	src/data_init.c \
+			src/main.c \
 			src/utils.c
 
 #CBONUS =	src_bonus/check_args_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:01:54 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/02/05 18:29:38 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:30:58 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ int	ft_check_int(char **av)
 	return (1);
 }
 
-long	*ft_parse_args(t_table *table, int ac, char **av)
+long	*ft_parse_args(int ac, char **av)
 {
 	long	*args;
 	int		i;
 
 	if (!ft_check_int(av))
 		ft_exit_error("Arguments must be integers.");
-	args = malloc(sizeof(long) * (ac - 1));
+	args = malloc(sizeof(long) * (ac));
 	if (!args)
 		ft_exit_error("Memory allocation failed.");
 	i = 0;
@@ -87,9 +87,10 @@ long	*ft_parse_args(t_table *table, int ac, char **av)
  		else if (i > 0 && i < 4 && args[i] < 60)
 		{
 			free(args);
-			ft_exit_error("Time must be at least 60 ms.");
+			ft_exit_error("Use timestamps major than 60ms.");
 		} 
 		i++;
 	}
+	args[i] = -1;
 	return (args);
 }

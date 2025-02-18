@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:02:21 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/02/05 18:29:24 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:31:36 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,21 @@ typedef struct	s_table
 }				t_table;
 
 
+// DATA_INIT.C
+
+void	ft_data_init(t_table *table, long *args);
 
 // MAIN.C
 
+// SAFE_FUNCTIONS.C
+
+void	*safe_malloc(size_t bytes);
 
 // UTILS.C
 
 void	ft_exit_error(char *str);
 long	ft_atol(const char *str);
 int		ft_check_int(char **av);
-long	*ft_parse_args(t_table *table, int ac, char **av);
+long	*ft_parse_args(int ac, char **av);
 
 #endif
