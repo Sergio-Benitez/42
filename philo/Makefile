@@ -3,6 +3,7 @@ NAME = philo
 
 CFILES =	src/data_init.c \
 			src/main.c \
+			src/safe_functions.c \
 			src/utils.c
 
 #CBONUS =	src_bonus/check_args_bonus.c \
