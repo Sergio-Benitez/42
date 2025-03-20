@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:02:21 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/02/18 17:31:36 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:23:41 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_table
 	long	time_to_sleep;
 	long	nbr_limit_meals;
 	long	start_simulation;
+	int		is_anyone_dead;
 	bool	end_simulation;
 	t_fork	*forks;
 	t_philo	*philos;
@@ -73,5 +74,10 @@ void	ft_exit_error(char *str);
 long	ft_atol(const char *str);
 int		ft_check_int(char **av);
 long	*ft_parse_args(int ac, char **av);
+void	ft_usleep(int usec);
+long	ft_get_time();
+int	ft_is_everyone_alive(t_table *table);
+int	ft_everyone_eated(t_table *table);
+void	*ft_mt_routine(void	*args);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:01:54 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/02/18 17:30:58 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:27:25 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ long	*ft_parse_args(int ac, char **av)
 
 	if (!ft_check_int(av))
 		ft_exit_error("Arguments must be integers.");
-	args = malloc(sizeof(long) * (ac));
-	if (!args)
-		ft_exit_error("Memory allocation failed.");
+	args = safe_malloc(sizeof(long) * (ac));
 	i = 0;
 	while (i < ac - 1)
 	{
@@ -84,7 +82,7 @@ long	*ft_parse_args(int ac, char **av)
 			free(args);
 			ft_exit_error("Arguments must fit within integer limits.");
 		}
- 		else if (i > 0 && i < 4 && args[i] < 60)
+ 		else if (i > 0 && i < 4 && args[i] <= 60)
 		{
 			free(args);
 			ft_exit_error("Use timestamps major than 60ms.");

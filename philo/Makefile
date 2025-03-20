@@ -4,7 +4,9 @@ NAME = philo
 CFILES =	src/data_init.c \
 			src/main.c \
 			src/safe_functions.c \
-			src/utils.c
+			src/utils.c \
+			src/dinner_start.c \
+			src/monitor_routine.c \
 
 #CBONUS =	src_bonus/check_args_bonus.c \
 			src_bonus/do_push_swap_bonus.c \
