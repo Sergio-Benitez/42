@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:02:21 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/03/20 17:23:41 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/03/31 21:19:27 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,25 @@ typedef struct	s_table
 
 // DATA_INIT.C
 
+int		ft_usleep(int usec);
+long	ft_get_time();
 void	ft_data_init(t_table *table, long *args);
+
+// DINNER_START.C
+
+void	*ft_ph_routine(void *args);
+void	ft_dinner_start(t_table *table);
 
 // MAIN.C
 
+// MONITOR_ROUTINE.C
+
+void	*ft_mt_routine(void	*args);
+
 // SAFE_FUNCTIONS.C
 
+int		ft_anyone_died(t_table *table);
+int		ft_everyone_eated(t_table *table);
 void	*safe_malloc(size_t bytes);
 
 // UTILS.C
@@ -74,10 +87,6 @@ void	ft_exit_error(char *str);
 long	ft_atol(const char *str);
 int		ft_check_int(char **av);
 long	*ft_parse_args(int ac, char **av);
-void	ft_usleep(int usec);
-long	ft_get_time();
-int	ft_is_everyone_alive(t_table *table);
-int	ft_everyone_eated(t_table *table);
-void	*ft_mt_routine(void	*args);
+
 
 #endif

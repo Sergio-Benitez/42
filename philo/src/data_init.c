@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:17:08 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/03/20 16:40:40 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/03/31 21:13:40 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos)
 	}
 }
 
-static void	philo_init(t_table *table)
+static void	ft_philo_init(t_table *table)
 {
 	int		i;
 	t_philo	*philo;
@@ -49,15 +49,15 @@ static void	philo_init(t_table *table)
 
 long	ft_get_time()
 {
-	struct timeval *tv;
+	struct timeval tv;
 	long 			ret;
 
-	gettimeofday(tv, NULL);
-	ret = tv->tv_sec / 1000 + tv->tv_usec * 1000;
+	gettimeofday(&tv, NULL);
+	ret = tv.tv_sec / 1000 + tv.tv_usec * 1000;
 	return (ret);
 }
 
-void	ft_usleep(int usec)
+int	ft_usleep(int usec)
 {
 	if (usleep(usec * 1000) == -1)
 		return (0);
@@ -85,4 +85,5 @@ void	ft_data_init(t_table *table, long *args)
 		pthread_mutex_init(&table->forks[i].fork, NULL);
 		table->forks[i].fork_id = i;
 	}
+	ft_philo_init(table);
 }

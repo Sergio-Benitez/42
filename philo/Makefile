@@ -49,7 +49,6 @@ clean:
 fclean: clean
 	@rm -rf $(NAME) 
 #	$(BONUS_NAME)
-	@make fclean -C
 
 re: fclean all
 
