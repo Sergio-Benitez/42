@@ -6,13 +6,13 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:17:08 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/03/31 21:13:40 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:09:08 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-static void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos)
+void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos)
 {
 	int	philo_nbr;
 
@@ -29,7 +29,7 @@ static void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos)
 	}
 }
 
-static void	ft_philo_init(t_table *table)
+void	ft_philo_init(t_table *table)
 {
 	int		i;
 	t_philo	*philo;
@@ -45,23 +45,6 @@ static void	ft_philo_init(t_table *table)
 		philo->table = table;
 		assign_forks(philo, table->forks, i);
 	}
-}
-
-long	ft_get_time()
-{
-	struct timeval tv;
-	long 			ret;
-
-	gettimeofday(&tv, NULL);
-	ret = tv.tv_sec / 1000 + tv.tv_usec * 1000;
-	return (ret);
-}
-
-int	ft_usleep(int usec)
-{
-	if (usleep(usec * 1000) == -1)
-		return (0);
-	return  (1);
 }
 
 void	ft_data_init(t_table *table, long *args)

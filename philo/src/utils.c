@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:01:54 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/03/19 16:27:25 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:20:53 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,14 @@ long	*ft_parse_args(int ac, char **av)
 	}
 	args[i] = -1;
 	return (args);
+}
+
+void	ft_print_action(char *str, t_philo *philo, char *color)
+{
+	long	time;
+
+	pthread_mutex_lock(&philo->table->print_lock);
+	time = ft_get_time() - philo->table->start_simulation;
+	printf("%s[%ld] %d %s\n", color, time, philo->id, str);
+	pthread_mutex_unlock(&philo->table->print_lock);
 }

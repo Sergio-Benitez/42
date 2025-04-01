@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   safe_functions.c                                   :+:      :+:    :+:   */
+/*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 17:31:02 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/02/18 17:31:19 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/04/01 14:14:25 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/04/01 14:15:05 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	*safe_malloc(size_t bytes)
+void	*ft_ph_routine(void *args)
 {
-	void	*ret;
-	ret = malloc(bytes);
-	if (!ret)
-		ft_exit_error("Error with the malloc");
-	return(ret);
+	t_philo *philo;
+
+	philo = (t_philo *)args;
+	if (philo->id % 2 == 0)
+		ft_usleep(100);
+	while (1/*funcion pa ver si han cascao*/)
+	{
+	//	ft_ph_eat(philo);
+	//	ft_ph_sleep(philo);
+	//	ft_ph_fuck(philo);
+
+	}
+	return (NULL);
 }

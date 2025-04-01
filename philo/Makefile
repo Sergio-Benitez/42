@@ -2,11 +2,12 @@ NAME = philo
 #BONUS_NAME = philo_bonus
 
 CFILES =	src/data_init.c \
-			src/main.c \
-			src/safe_functions.c \
-			src/utils.c \
 			src/dinner_start.c \
+			src/main.c \
 			src/monitor_routine.c \
+			src/philo_routine.c \
+			src/utils.c \
+			src/utils2.c \
 
 #CBONUS =	src_bonus/check_args_bonus.c \
 			src_bonus/do_push_swap_bonus.c \

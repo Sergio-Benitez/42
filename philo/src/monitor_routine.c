@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:21:14 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/03/31 21:20:12 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:27:36 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,22 @@
 int		ft_anyone_died(t_table *table)
 {
 	int		i;
-	
+	long	aux;
+
 	i = -1;
+	pthread_mutex_lock(&table->eat_lock);
 	while (++i < table->philo_nbr)
 	{
-		//mutex
-		if (ft_get_time() - table->philos[i].last_meal_time >= table->philos[i].table->time_to_die)
+		aux = ft_get_time() - table->philos[i].last_meal;
+		if (aux >= table->time_to_die)
 		{
-			//desmutex
-			return (1);
+			ft_print_action("died", &table->philos[i], RED);
+			pthread_mutex_unlock(&table->eat_lock);
+			return (0);
 		}
-		//desmutex
 	}
-	return (0);
+	pthread_mutex_unlock(&table->eat_lock);
+	return (1);
 }
 
 int	ft_everyone_eated(t_table *table)
@@ -57,7 +60,7 @@ void	*ft_mt_routine(void	*args)
 	{
 		if ((table->nbr_limit_meals > 0 && ft_everyone_eated(table))
 			|| ft_anyone_died(table))
-			table->end_simulation = true;//mutex quiza no pq los filosofos devuelven 
+			table->end_simulation = true;//mutex 
 		if (table->end_simulation)//NULL al detectar esta flag
 			break ;
 	}
