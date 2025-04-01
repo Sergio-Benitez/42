@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:01:54 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/01 14:20:53 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/01 19:44:46 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ long	*ft_parse_args(int ac, char **av)
 			free(args);
 			ft_exit_error("Arguments must fit within integer limits.");
 		}
- 		else if (i > 0 && i < 4 && args[i] <= 60)
+		else if (i > 0 && i < 4 && args[i] <= 60)
 		{
 			free(args);
 			ft_exit_error("Use timestamps major than 60ms.");
-		} 
+		}
 		i++;
 	}
 	args[i] = -1;

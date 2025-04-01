@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:04:10 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/01 14:35:43 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/01 19:47:57 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ void	ft_clean(t_table *table)
 void	*safe_malloc(size_t bytes)
 {
 	void	*ret;
+
 	ret = malloc(bytes);
 	if (!ret)
 		ft_exit_error("Error with the malloc");
-	return(ret);
+	return (ret);
 }
-long	ft_get_time()
+
+long	ft_get_time(void)
 {
-	struct timeval tv;
-	long 			ret;
+	struct timeval	tv;
+	long			ret;
 
 	gettimeofday(&tv, NULL);
 	ret = tv.tv_sec * 1000 + tv.tv_usec / 1000;

@@ -6,19 +6,19 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:02:21 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/01 14:33:54 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/01 19:43:29 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# define YELLOW "\033[0;93m"
-# define BLUE "\033[0;96m"
-# define GREEN "\033[0;32m"
-# define ORANGE "\033[0;33m"
-# define RED "\033[0;31m"
-# define WHITE "\033[37;1m"
+# define YELLOW "\033[0;93m"	// 
+# define BLUE "\033[0;96m"		// EAT
+# define GREEN "\033[0;32m"		// SLEEP
+# define ORANGE "\033[0;33m"	// TAKE FORK
+# define RED "\033[0;31m"		// DIED
+# define WHITE "\033[37;1m"		// 
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -28,16 +28,16 @@
 # include <sys/time.h>
 # include <limits.h>
 
-typedef pthread_mutex_t t_mtx;
-typedef struct	s_table t_table;
+typedef pthread_mutex_t	t_mtx;
+typedef struct s_table	t_table;
 
-typedef struct	s_fork
+typedef struct s_fork
 {
 	t_mtx	fork;
 	int		fork_id;
 }				t_fork;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int			id;
 	long		meals_counter;
@@ -49,7 +49,7 @@ typedef struct	s_philo
 	t_table		*table;
 }				t_philo;
 
-typedef struct	s_table
+typedef struct s_table
 {
 	long	philo_nbr;
 	long	time_to_die;
@@ -66,7 +66,6 @@ typedef struct	s_table
 	t_philo	*philos;
 }				t_table;
 
-
 // DATA_INIT.C
 
 void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos);
@@ -81,12 +80,17 @@ void	ft_dinner_start(t_table *table);
 
 // MONITOR_ROUTINE.C
 
+int		ft_check_alive(t_philo *philo);
 int		ft_anyone_died(t_table *table);
-int		ft_everyone_eated(t_table *table);
+int		ft_everyone_eaten(t_table *table);
 void	*ft_mt_routine(void	*args);
 
 // PHILO_ROUTINE.C
 
+void	ft_think(t_philo *philo);
+void	ft_sleep(t_philo *philo);
+void	ft_take_forks(t_philo *philo);
+void	ft_eat(t_philo *philo);
 void	*ft_ph_routine(void *args);
 
 // UTILS.C
@@ -102,7 +106,7 @@ void	ft_print_action(char *str, t_philo *philo, char *color);
 void	ft_clean(t_table *table);
 void	*safe_malloc(size_t bytes);
 void	ft_usleep(int usec);
-long	ft_get_time();
+long	ft_get_time(void);
 void	ft_destroy_mutex(t_table *table);
 
 #endif
