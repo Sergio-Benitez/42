@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:06:58 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/08 15:34:26 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:53:17 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,12 @@ char	**ft_copy_env(char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	char	**env_cpy;
 	t_shell	*shell;
 	
 	(void)argc;
 	(void)argv;
-	env_cpy = ft_copy_env(env);
-	shell = ft_init_shell();
-	ft_get_input(env_cpy, shell);
-	ft_free_matrix(env_cpy);
-	free(shell);
+	shell = ft_init_shell(ft_copy_env(env));
+	ft_get_input(shell);
+	ft_clean(shell->env, shell, NULL);
 	return (0);
 }

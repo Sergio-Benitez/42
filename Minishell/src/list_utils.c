@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_shell.c                                       :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 14:40:03 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/09 15:57:37 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/04/08 17:38:47 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/04/09 18:38:11 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-t_shell	*ft_init_shell(char **env)
+void	ft_addback_tkn(t_token **lst, char *tkn, int type)
 {
-	t_shell	*shell;
+	t_token	*new;
+	t_token	*temp;
 
-	shell = safe_malloc(sizeof(t_shell));
-	shell->input = NULL;
-	shell->token = NULL;
-	shell->env = env;
-	return (shell);
+	if (!lst || !tkn)
+		return;
+	new = safe_malloc(sizeof(t_token));
+	new->tkn = ft_strdup(tkn);
+//	free(tkn);
+	new->type = type;
+	new->next = NULL;
+	if (!*lst)
+	{
+		*lst = new;
+		return;
+	}
+	temp = *lst;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new;
 }

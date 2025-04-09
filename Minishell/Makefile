@@ -3,7 +3,9 @@ NAME = minishell
 CFILES =	src/clean.c \
 			src/get_input.c \
 			src/init_shell.c \
+			src/list_utils.c \
 			src/main.c \
+			src/tknize_quotes.c \
 			src/utils.c
 
 LIBFT = inc/libft/libft.a
@@ -12,7 +14,7 @@ OBJDIR = obj
 OBJFILES = $(CFILES:src/%.c=$(OBJDIR)/%.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g 
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 all: $(NAME)
 
