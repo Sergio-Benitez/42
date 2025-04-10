@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:38:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/09 18:38:11 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:07:23 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	ft_addback_tkn(t_token **lst, char *tkn, int type)
 		return;
 	new = safe_malloc(sizeof(t_token));
 	new->tkn = ft_strdup(tkn);
-//	free(tkn);
 	new->type = type;
 	new->next = NULL;
+	new->join = false;
 	if (!*lst)
 	{
 		*lst = new;
@@ -33,4 +33,13 @@ void	ft_addback_tkn(t_token **lst, char *tkn, int type)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
+}
+void	ft_update_join(t_token **lst)
+{
+	t_token	*temp;
+
+	temp = *lst;
+	while (temp->next)
+		temp = temp->next;
+	temp->join = true;
 }

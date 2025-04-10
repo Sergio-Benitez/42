@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/09 18:55:03 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:05:51 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <stdbool.h>
 
 /* # define WORD 0
 # define QS 1
@@ -32,6 +33,7 @@ typedef struct s_token
 {
 	char			*tkn;
 	int				type;
+	bool			join;
 	struct s_token	*next;
 }					t_token;
 
@@ -46,11 +48,10 @@ typedef struct s_shell
 
 void	ft_free_matrix(char **matrix);
 void	ft_free_tknlst(t_token **token);
-void	ft_clean(char **matrix, t_shell *shell, t_token *token);
+void	ft_clean(char **matrix, t_token *token, t_shell *shell);
 
 // GET_INPUT.C
 
-void	ft_tokenize(t_shell *shell);
 void	ft_get_input(t_shell *shell);
 
 // INIT_SHELL.C
@@ -60,21 +61,29 @@ t_shell	*ft_init_shell(char **env);
 // LIST_UTILS.C
 
 void	ft_addback_tkn(t_token **lst, char *tkn, int type);
+void	ft_update_join(t_token **lst);
 
 // MAIN.C
-
-char	**ft_copy_env(char **env);
 
 // UTILS.C
 
 void	ft_exit_error(char *error);
 void	*safe_malloc(size_t bytes);
 void	ft_print_tokens(t_token *token);
+char	**ft_copy_env(char **env);
 
 // TKNIZE_QUOTES.C
 
 int		ft_dquote_tkn(t_shell *shell, int *i);
 int		ft_squote_tkn(t_shell *shell, int *i);
 int		ft_quotes(t_shell *shell, int *i);
+void	ft_join_qtoken(t_shell *shell);
+
+// TOKENIZE.C
+
+void	ft_redir_tkn(t_shell *shell, int *i);
+void	ft_word_tkn(t_shell *shell, int *i);
+void	ft_tokenize(t_shell *shell);
+
 
 #endif

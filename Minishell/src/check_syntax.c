@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   check_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 14:35:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 15:48:51 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/04/10 15:49:46 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/04/10 15:52:30 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	ft_get_input(t_shell *shell)
+void	ft_check_syntax(t_shell *shell)
 {
-	while ((shell->input = readline("minishell> ")) != NULL)
-	{
-		add_history(shell->input);
-		ft_tokenize(shell);
-		ft_check_syntax(shell);
+	t_token	*head;
 
-
-		
-		ft_print_tokens(shell->token);
-		free(shell->input);
-		if (shell->token != NULL)
-			ft_free_tknlst(&shell->token);
-	}
+	head = shell->token;
 }

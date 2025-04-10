@@ -6,6 +6,7 @@ CFILES =	src/clean.c \
 			src/list_utils.c \
 			src/main.c \
 			src/tknize_quotes.c \
+			src/tokenize.c \
 			src/utils.c
 
 LIBFT = inc/libft/libft.a
