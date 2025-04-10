@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   expand_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 14:35:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 18:28:49 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/04/10 18:16:26 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/04/10 19:16:27 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	ft_get_input(t_shell *shell)
+int	ft_find_dollar(t_shell *shell)
 {
-	while ((shell->input = readline("minishell> ")) != NULL)
+	t_token	*temp;
+
+	temp = shell->token;
+	while (temp)
 	{
-		shell->exit_status = 0;
-		add_history(shell->input);
-		ft_tokenize(shell);
-		ft_check_syntax(shell);
-		ft_expand_var(shell);
-		
-		
-		ft_print_tokens(shell->token);
-		printf("\033[0;33mExit status: %d\n\033[0;37m", shell->exit_status);
-		free(shell->input);
-		if (shell->token != NULL)
-			ft_free_tknlst(&shell->token);
+		if (ft_strchr(temp->tkn, '$') != 0)
+			return (1);
+		temp = temp->next;
 	}
+	return (0);
+}
+
+void	ft_expand_var(t_shell *shell)
+{
+	if (ft_find_dollar(shell))
+		printf("Dollar encontrao\n");
 }

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:40:03 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/09 15:57:37 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:11:02 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ t_shell	*ft_init_shell(char **env)
 	shell->input = NULL;
 	shell->token = NULL;
 	shell->env = env;
+	shell->exit_status = 0;
 	return (shell);
 }

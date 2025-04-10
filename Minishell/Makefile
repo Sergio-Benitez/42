@@ -1,6 +1,8 @@
 NAME = minishell
 
-CFILES =	src/clean.c \
+CFILES =	src/check_syntax.c \
+			src/clean.c \
+			src/expand_var.c \
 			src/get_input.c \
 			src/init_shell.c \
 			src/list_utils.c \

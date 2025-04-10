@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 13:05:51 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:33:23 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 # define MINISHELL_H
 
 # include "libft/inc/libft.h"
-# include <unistd.h>
-# include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <unistd.h>
+# include <stdio.h>
 # include <stdbool.h>
 
-/* # define WORD 0
-# define QS 1
-# define QD 2
+# define WORD 0
+# define SQ 1
+# define DQ 2
 # define PI 3
-# define R1 4
-# define R2 5
-# define L1 6
-# define L2 7 */
+# define RR1 4
+# define RR2 5
+# define LR1 6
+# define LR2 7
 
 typedef struct s_token
 {
@@ -41,14 +41,25 @@ typedef struct s_shell
 {
 	char	*input;
 	char	**env;
+	int		exit_status;
 	t_token	*token;
 }				t_shell;
+
+//CHECK_SYNTAX.C
+
+int		ft_check_pipe(t_shell *shell);
+int		ft_check_redir(t_shell *shell);
+void	ft_check_syntax(t_shell *shell);
 
 // CLEAN.C
 
 void	ft_free_matrix(char **matrix);
 void	ft_free_tknlst(t_token **token);
 void	ft_clean(char **matrix, t_token *token, t_shell *shell);
+
+// EXPAND_VAR.C
+
+void	ft_expand_var(t_shell *shell);
 
 // GET_INPUT.C
 

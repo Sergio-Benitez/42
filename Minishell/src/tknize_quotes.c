@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:52:27 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 13:10:25 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:52:11 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	ft_quotes(t_shell *shell, int *i)
 	{
 		if (!ft_dquote_tkn(shell, i))
 		{
+			shell->exit_status = 1;
 			ft_free_tknlst(&shell->token);
 			return (0);
 		}
@@ -82,6 +83,7 @@ int	ft_quotes(t_shell *shell, int *i)
 	{
 		if (!ft_squote_tkn(shell, i))
 		{
+			shell->exit_status = 1;
 			ft_free_tknlst(&shell->token);
 			return (0);
 		}
@@ -104,7 +106,7 @@ void	ft_join_qtoken(t_shell *shell)
 			joined = ft_strjoin(curr->tkn, next->tkn);
 			free(curr->tkn);
 			curr->tkn = joined;
-			curr->join = next->join; // conservar join si sigue encadenado
+			curr->join = next->join;
 			curr->next = next->next;
 			free(next->tkn);
 			free(next);
