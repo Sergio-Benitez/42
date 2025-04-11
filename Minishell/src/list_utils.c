@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:38:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 12:07:23 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:54:50 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_addback_tkn(t_token **lst, char *tkn, int type)
 	new->type = type;
 	new->next = NULL;
 	new->join = false;
+	new->expand = false;
 	if (!*lst)
 	{
 		*lst = new;

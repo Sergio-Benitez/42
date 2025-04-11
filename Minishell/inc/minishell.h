@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 18:33:23 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:42:16 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_token
 	char			*tkn;
 	int				type;
 	bool			join;
+	bool			expand;
 	struct s_token	*next;
 }					t_token;
 
@@ -42,6 +43,7 @@ typedef struct s_shell
 	char	*input;
 	char	**env;
 	int		exit_status;
+	int		last_exit_st;
 	t_token	*token;
 }				t_shell;
 
