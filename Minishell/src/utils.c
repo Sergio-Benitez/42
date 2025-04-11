@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:54:33 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/11 12:56:06 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:14:03 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	*safe_malloc(size_t bytes)
 
 void	ft_print_tokens(t_token *token)
 {
-    while (token)
-    {
-        printf("Token: [%s]   Type: [%d]   Expand: [%d]\n", token->tkn, token->type, token->expand);
-        token = token->next;
-    }
+	while (token)
+	{
+		printf("Token: [%s]   Type: [%d]   Expand: [%d]\n", token->tkn, token->type, token->expand);
+		token = token->next;
+	}
 }
 char	**ft_copy_env(char **env)
 {

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/11 13:42:16 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:39:33 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,14 @@ void	ft_free_matrix(char **matrix);
 void	ft_free_tknlst(t_token **token);
 void	ft_clean(char **matrix, t_token *token, t_shell *shell);
 
+// EXPAND_UTILS.C
+
+int		ft_cntstrchr(const char *s, int c);
+
+
 // EXPAND_VAR.C
 
+int		ft_find_dollar(t_shell *shell);
 void	ft_expand_var(t_shell *shell);
 
 // GET_INPUT.C

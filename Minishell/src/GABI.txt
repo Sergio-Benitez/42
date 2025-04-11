@@ -1,0 +1,11 @@
+echo "$USER manololo $USER"
+
+tkn = "$USER manololo $USER"
+
+start = 0
+end = 4
+
+"sbenitez manololo $USER" == ft_strlen(tkn) - (end - start + 1) + tamañode lo  q vale USER en el env
+
+
+copiamos token hasta start, 
