@@ -6,13 +6,13 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:55:13 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/11 19:59:07 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:04:40 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int	ft_cntstrchr(const char *s, int c)
+int	ft_intstrchr(const char *s, int c)
 {
 	int	i;
 
@@ -20,10 +20,44 @@ int	ft_cntstrchr(const char *s, int c)
 	while (s[i])
 	{
 		if (s[i] == (char)c)
-			return (i);
+			return (i + 1);
 		i++;
 	}
 	if ((char)c == '\0')
 		return (-1);
 	return (-1);
+}
+
+int	ft_find_end(char *tkn)
+{
+	int	i;
+
+	i = 0;
+	while (tkn[i] != '<' && tkn[i] != '>' && tkn[i] != '|' && tkn[i] != ' '
+		&& tkn[i] != '\0' && tkn[i] != '$' && tkn[i] != '\'' && tkn[i] != '\"')
+			i++;
+	return (i);
+}
+
+t_xpnd	*ft_init_expand(void)
+{
+	t_xpnd	*xpnd;
+
+	xpnd = safe_malloc(sizeof (t_xpnd));
+	xpnd->start = -1;
+	xpnd->end = -1;
+	xpnd->var = NULL;
+	xpnd->value = NULL;
+	return (xpnd);
+}
+
+char	*ft_substr_malloc(const char *input, int start, int len)
+{
+	char	*substr;
+
+	if (!input || start < 0 || len < 0)
+		return (NULL);
+	substr = safe_malloc(sizeof(char) * (len + 1));
+	ft_strlcpy(substr, &input[start], len);
+	return (substr);
 }

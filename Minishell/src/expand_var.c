@@ -6,11 +6,26 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:16:26 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/11 20:41:14 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:26:32 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+char	*ft_getenv(char **env, char *var)
+{
+	int		i;
+
+	i = 0;
+	while (env[i])
+	{
+		if (!ft_strncmp(env[i], var, ft_strlen(var))
+			&& env[i][ft_strlen(var)] == '=')
+			return (ft_strdup(&env[i][ft_strlen(var) + 1]));
+		i++;
+	}
+	return (NULL);
+}
 
 int	ft_find_dollar(t_shell *shell)
 {
@@ -31,38 +46,64 @@ int	ft_find_dollar(t_shell *shell)
 	return (flag);
 }
 
-int	ft_find_end(char *tkn)
+void	ft_insert_exp(t_xpnd *xpnd, t_token *t)
 {
-	int	i;
+	char		*res;
+	int			i;
+	size_t		j;
 
-	i = 0;
-	while (tkn[i] != '<' && tkn[i] != '>' && tkn[i] != '|' && tkn[i] != ' '
-		&& tkn[i] != '\0' && tkn[i] != '$' && tkn[i] != '\'')
-			i++;
-	return (i);
+	res = safe_malloc(ft_strlen(t->tkn) - (xpnd->end - xpnd->start + 1)
+			+ ft_strlen(xpnd->value) + 1);
+	i = -1;
+	j = -1;
+	while (++i < xpnd->start - 1)
+		res[i] = t->tkn[i];
+	while (++j < ft_strlen(xpnd->value))
+	{
+		res[i] = xpnd->value[j];
+		i++;
+	}
+	j = xpnd->end;
+	while (t->tkn[j])
+	{
+		res[i] = t->tkn[j];
+		i++;
+		j++;
+	}
+	free(xpnd->value);
+	xpnd->value = NULL;
+	res[i] = '\0';
+	free(t->tkn);
+	t->tkn = res;
 }
 
-/* void	ft_expand_this(t_shell *shell, t_token *token)
+void	ft_expand_token(t_shell *shell, t_token *token)
 {
-	int	i;
-	int	start;
-	int	end;
+	t_xpnd	*xpnd;
+	int		i;
 
+	xpnd = ft_init_expand();
 	i = 0;
-	start = 0;
-	end = 0;
 	while (token->tkn[i] && ft_strchr(token->tkn, '$')
-			&& token->tkn[ft_cntstrchr(token->tkn, '$') + 1] != ' ')
+		&& token->tkn[ft_intstrchr(token->tkn, '$') + 1] != ' ')
 	{
-		start = ft_cntstrchr(token->tkn, '$');
-		end = ft_find_end(&token->tkn[start]);
-		// ft_getenv -> struct
-		// ft_strlen_definitivo(string + ft_getenv - (end + start +1)
-		// new_str = char *ft_my_strcpy(char *token->tkn, start, char *ft_getenv)
-		// free(token->tkn)
-		// token->tkn = new_str;
+		xpnd->start = ft_intstrchr(token->tkn, '$');
+		xpnd->end = xpnd->start + ft_find_end(&token->tkn[xpnd->start]);
+//		printf("end: %i\n", xpnd->end);
+		xpnd->var = ft_substr_malloc(token->tkn, xpnd->start,
+				(xpnd->end - xpnd->start + 1));
+//		printf("VAR: %s\n", xpnd->var);
+		xpnd->value = ft_getenv(shell->env, xpnd->var);
+		free(xpnd->var);
+		xpnd->var = NULL;
+		if (!xpnd->value)
+			xpnd->value = ft_strdup("");
+		ft_insert_exp(xpnd, token);
+		i = -1;
+		i++;
 	}
-} */
+	ft_free_expand(xpnd);
+}
 
 void	ft_expand_var(t_shell *shell)
 {
@@ -72,7 +113,7 @@ void	ft_expand_var(t_shell *shell)
 	while (temp)
 	{
 		if (temp->expand == true)
-//			ft_expand_this(shell, temp);
+			ft_expand_token(shell, temp);
 		temp = temp->next;
 	}
 }

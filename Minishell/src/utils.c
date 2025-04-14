@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:54:33 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/11 19:14:03 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:31:55 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	**ft_copy_env(char **env)
 			cpy[i][j] = env[i][j];
 			j++;
 		}
+		cpy[i][j] = '\0';
 		i++;
 	}
 	cpy[i] = NULL;

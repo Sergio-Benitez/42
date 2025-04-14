@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:28:00 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 13:01:23 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:55:30 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@ void	ft_free_tknlst(t_token **token)
 	}
 	*token = NULL;
 }
+void	ft_free_expand(t_xpnd *xpnd)
+{
+	if (xpnd)
+	{
+		if (xpnd->var)
+			free(xpnd->var);
+		if (xpnd->value)
+			free(xpnd->value);
+		free(xpnd);
+	}
+}
+
 void	ft_clean(char **matrix, t_token *token, t_shell *shell)
 {
 	if (matrix)

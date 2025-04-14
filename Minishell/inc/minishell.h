@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/11 20:39:33 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:06:51 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@
 # define RR2 5
 # define LR1 6
 # define LR2 7
+
+typedef struct s_xpnd
+{
+	int		start;
+	int		end;
+	char	*var;
+	char	*value;
+}				t_xpnd;
+
 
 typedef struct s_token
 {
@@ -57,16 +66,22 @@ void	ft_check_syntax(t_shell *shell);
 
 void	ft_free_matrix(char **matrix);
 void	ft_free_tknlst(t_token **token);
+void	ft_free_expand(t_xpnd *xpnd);
 void	ft_clean(char **matrix, t_token *token, t_shell *shell);
 
 // EXPAND_UTILS.C
 
-int		ft_cntstrchr(const char *s, int c);
-
+int		ft_intstrchr(const char *s, int c);
+int		ft_find_end(char *tkn);
+t_xpnd	*ft_init_expand(void);
+char	*ft_substr_malloc(const char *input, int start, int len);
 
 // EXPAND_VAR.C
 
+char	*ft_getenv(char **env, char *var);
 int		ft_find_dollar(t_shell *shell);
+void	ft_insert_exp(t_xpnd *xpnd, t_token *t);
+void	ft_expand_token(t_shell *shell, t_token *token);
 void	ft_expand_var(t_shell *shell);
 
 // GET_INPUT.C
