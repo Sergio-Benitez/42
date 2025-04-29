@@ -6,11 +6,21 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:52:27 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/28 11:22:37 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:08:55 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+void	ft_closed_error(char *s)
+{
+	char	*str;
+
+	str = "unexpected error while looking for matching ";
+	str = ft_strjoin(str, s);
+	ft_putstr_fd(str, 2);
+	free(str);
+}
 
 int	ft_dquote_tkn(t_shell *shell, int *i)
 {
@@ -18,27 +28,26 @@ int	ft_dquote_tkn(t_shell *shell, int *i)
 	int		j;
 	int		flag;
 
-	j = *i + 1;
+	j = *i;
 	flag = 0;
-	while (shell->input[j])
+	while (shell->input[j++])
 	{
 		if (shell->input[j] == 34)
 		{
 			flag = 1;
 			token = ft_substr(shell->input, *i, (j - *i) + 1);
 			ft_addback_tkn(&shell->token, token, 2);
-			if (shell->input[j + 1] != '<' && shell->input[j + 1] != '>' 
+			if (shell->input[j + 1] != '<' && shell->input[j + 1] != '>'
 				&& shell->input[j + 1] != '|' && shell->input[j + 1] != ' '
 				&& shell->input[j + 1] != '\0')
 				ft_update_join(&shell->token);
 			free(token);
 			break ;
 		}
-		j++;
 	}
 	*i = j + 1;
 	if (flag == 0)
-		return (printf("Error: quotes must be closed\n"), 0);
+		return (ft_closed_error("`\"'\n"), 0);
 	return (1);
 }
 
@@ -48,27 +57,26 @@ int	ft_squote_tkn(t_shell *shell, int *i)
 	int		j;
 	int		flag;
 
-	j = *i + 1;
+	j = *i;
 	flag = 0;
-	while (shell->input[j])
+	while (shell->input[j++])
 	{
 		if (shell->input[j] == 39)
 		{
 			flag = 1;
 			token = ft_substr(shell->input, *i, (j - *i) + 1);
 			ft_addback_tkn(&shell->token, token, 1);
-			if (shell->input[j + 1] != '<' && shell->input[j + 1] != '>' 
+			if (shell->input[j + 1] != '<' && shell->input[j + 1] != '>'
 				&& shell->input[j + 1] != '|' && shell->input[j + 1] != ' '
 				&& shell->input[j + 1] != '\0')
 				ft_update_join(&shell->token);
 			free(token);
 			break ;
 		}
-		j++;
 	}
 	*i = j + 1;
 	if (flag == 0)
-		return (printf("Error: quotes must be closed\n"), 0);
+		return (ft_closed_error("`\''\n"), 0);
 	return (1);
 }
 

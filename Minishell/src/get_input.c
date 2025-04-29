@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:35:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/28 11:46:44 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:06:31 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	ft_get_input(t_shell *shell)
 {
-	while ((shell->input = readline("minishell> ")) != NULL)
+	while (1)
 	{
+		shell->input = readline("minishell> ");
+		if (!shell->input)
+			break ; //libera
 		shell->exit_status = 0;
 		if (ft_strncmp(shell->input, "", 1))
 			add_history(shell->input);
@@ -24,9 +27,14 @@ void	ft_get_input(t_shell *shell)
 		if (ft_find_dollar(shell))
 			ft_expand_var(shell);
 		ft_dequotize(shell);
-		
+		if (shell->token)
+		{
+			//if (ft_get_commands(shell));
+				//pase a ejecutor
+				//libera cosas
+		}
+		//libera
 		ft_print_tokens(shell->token);
-//		printf("\033[0;33mExit status: %d\n\033[0;37m", shell->exit_status);
 		free(shell->input);
 		shell->last_exit_st = shell->exit_status;
 		if (shell->token != NULL)

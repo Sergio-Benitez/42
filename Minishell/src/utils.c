@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:54:33 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/14 12:31:55 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:24:59 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ void	ft_print_tokens(t_token *token)
 {
 	while (token)
 	{
-		printf("Token: [%s]   Type: [%d]   Expand: [%d]\n", token->tkn, token->type, token->expand);
+		printf("Token: [%s]\t", token->tkn);
+		printf("Type: [%i]\n", token->type);
 		token = token->next;
 	}
 }
+
 char	**ft_copy_env(char **env)
 {
 	int		i;
@@ -47,7 +49,7 @@ char	**ft_copy_env(char **env)
 		i++;
 	cpy = safe_malloc(sizeof(char *) * (i + 1));
 	i = 0;
-	while(env[i])
+	while (env[i])
 	{
 		cpy[i] = safe_malloc(sizeof (char) * (ft_strlen(env[i]) + 1));
 		j = 0;

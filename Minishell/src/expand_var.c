@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:16:26 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/28 10:29:44 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:40:21 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,7 @@ void	ft_insert_exp(t_xpnd *xpnd, t_token *t)
 	}
 	j = xpnd->end;
 	while (t->tkn[j])
-	{
-		res[i] = t->tkn[j];
-		i++;
-		j++;
-	}
+		res[i++] = t->tkn[j++];
 	free(xpnd->value);
 	xpnd->value = NULL;
 	res[i] = '\0';
@@ -85,14 +81,13 @@ void	ft_expand_token(t_shell *shell, t_token *token)
 	xpnd = ft_init_expand();
 	i = 0;
 	while (token->tkn[i] && ft_strchr(token->tkn, '$')
-		&& token->tkn[ft_intstrchr(token->tkn, '$') + 1] != ' ')
+		&& token->tkn[ft_intstrchr(token->tkn, '$')] != ' '
+		&& token->tkn[ft_intstrchr(token->tkn, '$')] != '\"')
 	{
 		xpnd->start = ft_intstrchr(token->tkn, '$');
 		xpnd->end = xpnd->start + ft_find_end(&token->tkn[xpnd->start]);
-//		printf("end: %i\n", xpnd->end);
 		xpnd->var = ft_substr_malloc(token->tkn, xpnd->start,
 				(xpnd->end - xpnd->start + 1));
-//		printf("VAR: %s\n", xpnd->var);
 		xpnd->value = ft_getenv(shell->env, xpnd->var);
 		free(xpnd->var);
 		xpnd->var = NULL;
@@ -116,5 +111,4 @@ void	ft_expand_var(t_shell *shell)
 			ft_expand_token(shell, temp);
 		temp = temp->next;
 	}
-
 }

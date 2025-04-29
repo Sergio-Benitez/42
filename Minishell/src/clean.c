@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:28:00 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/14 14:55:30 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:34:10 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free_matrix(char **matrix)
 	int	i;
 
 	if (!matrix)
-		return;
+		return ;
 	i = 0;
 	while (matrix[i])
 	{
@@ -33,14 +33,14 @@ void	ft_free_tknlst(t_token **token)
 
 	while (*token)
 	{
-	//	printf("deleted token\n");
-		temp = (*token)->next; // Guardar el siguiente nodo
-		free((*token)->tkn);   // Liberar el contenido del token
-		free(*token);        // Liberar el nodo actual
-		*token = temp;       // Avanzar al siguiente nodo
+		temp = (*token)->next;
+		free((*token)->tkn);
+		free(*token);
+		*token = temp;
 	}
 	*token = NULL;
 }
+
 void	ft_free_expand(t_xpnd *xpnd)
 {
 	if (xpnd)

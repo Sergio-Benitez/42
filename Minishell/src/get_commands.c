@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 17:06:58 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 16:45:36 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/04/29 17:52:30 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/04/29 19:26:22 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	ft_fill_commands(t_shell *shell)
 {
-	t_shell	*shell;
+	
+}
 
-	(void)argc;
-	(void)argv;
-	shell = ft_init_shell(ft_copy_env(env));
-	ft_get_input(shell);
-	ft_clean(shell->env, NULL, shell);
-	return (0);
+void	ft_get_commands(t_shell *shell)
+{
+	ft_addback_commands(&shell->cmd_lst);
+	while (shell->token)
+	{
+		if (shell->token->type == PI)
+			ft_addback_commands(&shell->cmd_lst);
+		else if (shell->token->type == WORD)
+			ft_fill_cmd(); //to do
+		shell->token = shell->token->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:31:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/28 12:01:49 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:23:32 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ void	ft_dequotize(t_shell *shell)
 	temp = shell->token;
 	while (temp)
 	{
-		if (temp->type == 1 || temp->type == 2 || temp->type == 0)
+		if (temp->type == SQ || temp->type == DQ || temp->type == WORD)
 		{
 			new_tkn = ft_remove_quotes(temp->tkn);
 			if (new_tkn)
 			{
 				free(temp->tkn);
 				temp->tkn = new_tkn;
+				temp->type = WORD;
 			}
 		}
 		temp = temp->next;

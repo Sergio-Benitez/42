@@ -6,11 +6,16 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:49:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 18:08:42 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:32:16 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+void	ft_pipe_syntax(void)
+{
+	ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
+}
 
 int	ft_check_pipe(t_shell *shell)
 {
@@ -21,19 +26,19 @@ int	ft_check_pipe(t_shell *shell)
 		return (1);
 	if (temp->type == PI)
 	{
-		ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
+		ft_pipe_syntax();
 		return (ft_free_tknlst(&shell->token), 0);
 	}
 	while (temp)
 	{
 		if (temp->type == PI && temp->next && temp->next->type == PI)
 		{
-			ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
+			ft_pipe_syntax();
 			return (ft_free_tknlst(&shell->token), 0);
 		}
 		if (temp->next == NULL && temp->type == PI)
 		{
-			ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
+			ft_pipe_syntax();
 			return (ft_free_tknlst(&shell->token), 0);
 		}
 		temp = temp->next;
@@ -62,7 +67,6 @@ int	ft_check_redir(t_shell *shell)
 	}
 	return (1);
 }
-
 
 void	ft_check_syntax(t_shell *shell)
 {
