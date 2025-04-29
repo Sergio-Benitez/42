@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/14 18:06:51 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/28 12:02:06 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ void	ft_free_tknlst(t_token **token);
 void	ft_free_expand(t_xpnd *xpnd);
 void	ft_clean(char **matrix, t_token *token, t_shell *shell);
 
+// DEQUOTIZE.C
+
+char	*ft_remove_quotes(char *tkn);
+void	ft_dequotize(t_shell *shell);
+
 // EXPAND_UTILS.C
 
 int		ft_intstrchr(const char *s, int c);
@@ -111,7 +116,7 @@ char	**ft_copy_env(char **env);
 int		ft_dquote_tkn(t_shell *shell, int *i);
 int		ft_squote_tkn(t_shell *shell, int *i);
 int		ft_quotes(t_shell *shell, int *i);
-void	ft_join_qtoken(t_shell *shell);
+void	ft_join_token(t_shell *shell);
 
 // TOKENIZE.C
 

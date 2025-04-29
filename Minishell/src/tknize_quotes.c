@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:52:27 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/11 20:13:20 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:22:37 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ int	ft_squote_tkn(t_shell *shell, int *i)
 			flag = 1;
 			token = ft_substr(shell->input, *i, (j - *i) + 1);
 			ft_addback_tkn(&shell->token, token, 1);
-			if (shell->input[j + 1] == 39)
+			if (shell->input[j + 1] != '<' && shell->input[j + 1] != '>' 
+				&& shell->input[j + 1] != '|' && shell->input[j + 1] != ' '
+				&& shell->input[j + 1] != '\0')
 				ft_update_join(&shell->token);
 			free(token);
 			break ;
@@ -93,7 +95,7 @@ int	ft_quotes(t_shell *shell, int *i)
 	return (1);
 }
 
-void	ft_join_qtoken(t_shell *shell)
+void	ft_join_token(t_shell *shell)
 {
 	t_token	*curr;
 	t_token	*next;

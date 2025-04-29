@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:35:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/11 19:40:55 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:46:44 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_get_input(t_shell *shell)
 		ft_check_syntax(shell);
 		if (ft_find_dollar(shell))
 			ft_expand_var(shell);
-		
+		ft_dequotize(shell);
 		
 		ft_print_tokens(shell->token);
 //		printf("\033[0;33mExit status: %d\n\033[0;37m", shell->exit_status);

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:16:26 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/14 18:26:32 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/28 10:29:44 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,5 @@ void	ft_expand_var(t_shell *shell)
 			ft_expand_token(shell, temp);
 		temp = temp->next;
 	}
+
 }

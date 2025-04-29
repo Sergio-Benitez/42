@@ -9,3 +9,16 @@ end = 4
 
 
 copiamos token hasta start, 
+
+sbenitez@c1r1s6:~$ echo $USER"$USER"'$USER''"$USER"'"'$USER'"
+						sbenitezsbenitez$USER"$USER"'sbenitez'
+
+echo ""uhjkhnkj"hjbmb"'''' defdjhfkjb "iujiouhj"f'f'f'f'f''f'f'f'f'f'f'
+uhjkhnkjhjbmb defdjhfkjb iujiouhjfffffffffff
+
+
+FALTA EXPANSION DE $?
+FALTA SEÑALES
+PREGUNTAR EXIT STATUS 
+LOS COMANDOS LOS HAGO YO O K PAZA
+DESPUE DESO, TA FINITO!?

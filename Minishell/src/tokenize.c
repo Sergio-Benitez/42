@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:23:35 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/10 13:04:16 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:42:02 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ void	ft_word_tkn(t_shell *shell, int *i)
 		j++;
 	token = ft_substr(shell->input, *i, (j - *i));
 	ft_addback_tkn(&shell->token, token, 0);
+	if (shell->input[j] != '\0' && shell->input[j] != '<'
+		&& shell->input[j] != '>' && shell->input[j] != '|'
+		&& shell->input[j] != ' ')
+		ft_update_join(&shell->token);
 	free(token);
 	*i = j;
 }
@@ -78,7 +82,6 @@ void	ft_tokenize(t_shell *shell)
 		}
 		else
 			ft_word_tkn(shell, &i);
-		ft_join_qtoken(shell);
 	}
 	
 }
