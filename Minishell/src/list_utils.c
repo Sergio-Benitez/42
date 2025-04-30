@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:38:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 18:25:27 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/30 14:10:17 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,6 @@ void	ft_addback_tkn(t_token **lst, char *tkn, int type)
 	temp->next = new;
 }
 
-void	ft_update_join(t_token **lst)
-{
-	t_token	*temp;
-
-	temp = *lst;
-	while (temp->next)
-		temp = temp->next;
-	temp->join = true;
-}
-
 void	ft_addback_cmd(t_cmd **lst)
 {
 	t_cmd	*new;
@@ -60,7 +50,7 @@ void	ft_addback_cmd(t_cmd **lst)
 	new->hd = false;
 	new->is_cmd = false;
 	new->is_btn = false;
-	new->exit_status = 0;
+//	new->exit_status = 0;
 	new->next = NULL;
 	if (!*lst)
 	{
@@ -71,4 +61,14 @@ void	ft_addback_cmd(t_cmd **lst)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
+}
+
+void	ft_update_join(t_token **lst)
+{
+	t_token	*temp;
+
+	temp = *lst;
+	while (temp->next)
+		temp = temp->next;
+	temp->join = true;
 }

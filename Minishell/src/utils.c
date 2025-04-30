@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:54:33 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 19:24:59 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:14:18 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,33 @@ char	**ft_copy_env(char **env)
 	}
 	cpy[i] = NULL;
 	return (cpy);
+}
+
+void	ft_print_cmdlst(t_cmd *cmd_lst)
+{
+    t_cmd	*current;
+    int		i;
+
+    current = cmd_lst;
+    while (current)
+    {
+        if (current->args)
+        {
+            printf("  Args: ");
+            i = 0;
+            while (current->args[i])
+                printf("[%s], ", current->args[i++]);
+        }
+		printf("\n");
+        if (current->infile)
+            printf("  Infile: %s\n", current->infile);
+        if (current->outfile)
+            printf("  Outfile: %s\n", current->outfile);
+        if (current->delimiter)
+            printf("  Delimiter: %s\n", current->delimiter);
+        printf("  Append: %d\n", current->append);
+        printf("  Heredoc: %d\n", current->hd);
+        printf("  Is Built-in: %d\n\n", current->is_btn);
+        current = current->next;
+    }
 }

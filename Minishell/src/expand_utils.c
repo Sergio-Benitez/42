@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:55:13 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 16:34:49 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:02:52 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,16 @@ char	*ft_substr_malloc(const char *input, int start, int len)
 	substr = safe_malloc(sizeof(char) * (len + 1));
 	ft_strlcpy(substr, &input[start], len);
 	return (substr);
+}
+void	ft_free_expand(t_xpnd *xpnd)
+{
+	if (xpnd)
+	{
+		if (xpnd->var)
+			free(xpnd->var);
+		if (xpnd->value)
+			free(xpnd->value);
+		free(xpnd);
+		xpnd = NULL;
+	}
 }

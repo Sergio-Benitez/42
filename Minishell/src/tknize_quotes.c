@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:52:27 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 17:08:55 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/30 11:23:52 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_closed_error(char *s)
 {
 	char	*str;
 
-	str = "unexpected error while looking for matching ";
+	str = "minishell: syntax error while looking for matching ";
 	str = ft_strjoin(str, s);
 	ft_putstr_fd(str, 2);
 	free(str);

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:28:00 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 16:34:10 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:03:31 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_free_matrix(char **matrix)
 		i++;
 	}
 	free(matrix);
+	matrix = NULL;
 }
 
 void	ft_free_tknlst(t_token **token)
@@ -41,16 +42,45 @@ void	ft_free_tknlst(t_token **token)
 	*token = NULL;
 }
 
-void	ft_free_expand(t_xpnd *xpnd)
+void	ft_free_cmdlst(t_cmd **cmd_lst)
 {
-	if (xpnd)
-	{
-		if (xpnd->var)
-			free(xpnd->var);
-		if (xpnd->value)
-			free(xpnd->value);
-		free(xpnd);
-	}
+    t_cmd	*temp;
+
+    while (*cmd_lst)
+    {
+        temp = (*cmd_lst)->next;
+        if ((*cmd_lst)->args)
+            ft_free_matrix((*cmd_lst)->args); // Liberar la matriz de argumentos
+        if ((*cmd_lst)->infile)
+            free((*cmd_lst)->infile); // Liberar el archivo de entrada
+        if ((*cmd_lst)->outfile)
+            free((*cmd_lst)->outfile); // Liberar el archivo de salida
+        if ((*cmd_lst)->delimiter)
+            free((*cmd_lst)->delimiter); // Liberar el delimitador del heredoc
+        free(*cmd_lst); // Liberar el nodo actual
+        *cmd_lst = temp; // Avanzar al siguiente nodo
+    }
+    *cmd_lst = NULL; // Asegurarse de que el puntero quede en NULL
+}
+
+void	ft_cleanup_shell(t_shell *shell)
+{
+    if (shell->input)
+    {
+        free(shell->input);
+        shell->input = NULL;
+    }
+    if (shell->token)
+    {
+        ft_free_tknlst(&shell->token);
+        shell->token = NULL;
+    }
+    if (shell->cmd_lst)
+    {
+        ft_free_cmdlst(&shell->cmd_lst);
+        shell->cmd_lst = NULL;
+    }
+    shell->last_exit_st = shell->exit_status;
 }
 
 void	ft_clean(char **matrix, t_token *token, t_shell *shell)
@@ -60,5 +90,8 @@ void	ft_clean(char **matrix, t_token *token, t_shell *shell)
 	if (token)
 		ft_free_tknlst(&token);
 	if (shell)
+	{
 		free(shell);
+		shell = NULL;
+	}
 }

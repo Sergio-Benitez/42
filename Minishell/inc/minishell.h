@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 18:45:42 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:12:06 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_cmd
 	bool			hd;
 	bool			is_cmd;
 	bool			is_btn;
-	int				exit_status;
+//	int				exit_status;
 	struct s_cmd	*next;
 }				t_cmd;
 
@@ -81,8 +81,15 @@ void	ft_check_syntax(t_shell *shell);
 
 void	ft_free_matrix(char **matrix);
 void	ft_free_tknlst(t_token **token);
-void	ft_free_expand(t_xpnd *xpnd);
+void	ft_free_cmdlst(t_cmd **cmd_lst);
+void	ft_cleanup_shell(t_shell *shell);
 void	ft_clean(char **matrix, t_token *token, t_shell *shell);
+
+// COMMANDS_UTILS.C
+
+int		ft_strcmp(char *s1, char *s2);
+int		ft_count_args(t_token *token);
+int		ft_isbuiltin(char *str);
 
 // DEQUOTIZE.C
 
@@ -95,6 +102,7 @@ int		ft_intstrchr(const char *s, int c);
 int		ft_find_end(char *tkn);
 t_xpnd	*ft_init_expand(void);
 char	*ft_substr_malloc(const char *input, int start, int len);
+void	ft_free_expand(t_xpnd *xpnd);
 
 // EXPAND_VAR.C
 
@@ -106,11 +114,7 @@ void	ft_expand_var(t_shell *shell);
 
 // GET_COMMANDS.C
 
-void	ft_get_commands(t_shell *shell);
-
-// GET_INPUT.C
-
-void	ft_get_input(t_shell *shell);
+int		ft_get_commands(t_shell *shell);
 
 // INIT_SHELL.C
 
@@ -119,9 +123,12 @@ t_shell	*ft_init_shell(char **env);
 // LIST_UTILS.C
 
 void	ft_addback_tkn(t_token **lst, char *tkn, int type);
+void	ft_addback_cmd(t_cmd **lst);
 void	ft_update_join(t_token **lst);
 
 // MAIN.C
+
+void	ft_minishell(t_shell *shell);
 
 // UTILS.C
 
@@ -129,6 +136,7 @@ void	ft_exit_error(char *error);
 void	*safe_malloc(size_t bytes);
 void	ft_print_tokens(t_token *token);
 char	**ft_copy_env(char **env);
+void	ft_print_cmdlst(t_cmd *cmd_lst);
 
 // TKNIZE_QUOTES.C
 

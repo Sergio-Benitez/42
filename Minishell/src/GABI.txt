@@ -17,11 +17,7 @@ echo ""uhjkhnkj"hjbmb"'''' defdjhfkjb "iujiouhj"f'f'f'f'f''f'f'f'f'f'f'
 uhjkhnkjhjbmb defdjhfkjb iujiouhjfffffffffff
 
 
-FALTA EXPANSION DE $?
-LOS COMANDOS
-FALTA SEÑALES
-PREGUNTAR EXIT STATUS 
-DESPUE DESO, TA FINITO!?
-
+CREAR LISTA DE COMANDOS -> si hay in/outfiles, crear archivos y check si hay comandos, si no, no se manda a exec
+MANEJO DE SEÑALES
 
 norminette cosas:
