@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/30 14:16:16 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/30 20:02:50 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,17 @@ void	ft_fill_cmd(t_shell *shell)
 
 int	ft_get_commands(t_shell *shell)
 {
+	t_token	*temp;
+
+	temp = shell->token;
 	ft_addback_cmd(&shell->cmd_lst);
-	while (shell->token)
+	while (temp)
 	{
-		if (shell->token->type == PI)
-		{
+		if (temp->type == PI)
 			ft_addback_cmd(&shell->cmd_lst);
-		}
-		else if (shell->token->type == WORD)
-		{
-//			printf("mondongo");
+		else if (temp->type == WORD)
 			ft_fill_cmd(shell);
-		}
-//		if (shell->token->next)
-			shell->token = shell->token->next;
-/* 		else
-			break ; */
+		temp = temp->next;
 	}
 	return (1);
 }

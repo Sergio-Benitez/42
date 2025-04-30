@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:28:00 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/30 12:03:31 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/04/30 19:34:01 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	ft_free_matrix(char **matrix)
 	i = 0;
 	while (matrix[i])
 	{
-		free(matrix[i]);
+		if (matrix[i])
+			free(matrix[i]);
 		i++;
 	}
 	free(matrix);
@@ -35,7 +36,8 @@ void	ft_free_tknlst(t_token **token)
 	while (*token)
 	{
 		temp = (*token)->next;
-		free((*token)->tkn);
+		if ((*token)->tkn)
+			free((*token)->tkn);
 		free(*token);
 		*token = temp;
 	}
@@ -44,23 +46,23 @@ void	ft_free_tknlst(t_token **token)
 
 void	ft_free_cmdlst(t_cmd **cmd_lst)
 {
-    t_cmd	*temp;
+	t_cmd	*temp;
 
-    while (*cmd_lst)
-    {
-        temp = (*cmd_lst)->next;
-        if ((*cmd_lst)->args)
-            ft_free_matrix((*cmd_lst)->args); // Liberar la matriz de argumentos
-        if ((*cmd_lst)->infile)
-            free((*cmd_lst)->infile); // Liberar el archivo de entrada
-        if ((*cmd_lst)->outfile)
-            free((*cmd_lst)->outfile); // Liberar el archivo de salida
-        if ((*cmd_lst)->delimiter)
-            free((*cmd_lst)->delimiter); // Liberar el delimitador del heredoc
-        free(*cmd_lst); // Liberar el nodo actual
-        *cmd_lst = temp; // Avanzar al siguiente nodo
-    }
-    *cmd_lst = NULL; // Asegurarse de que el puntero quede en NULL
+	while (*cmd_lst)
+	{
+		temp = (*cmd_lst)->next;
+		if ((*cmd_lst)->args)
+			ft_free_matrix((*cmd_lst)->args);
+		if ((*cmd_lst)->infile)
+			free((*cmd_lst)->infile);
+		if ((*cmd_lst)->outfile)
+			free((*cmd_lst)->outfile);
+		if ((*cmd_lst)->delimiter)
+			free((*cmd_lst)->delimiter);
+		free(*cmd_lst);
+		*cmd_lst = temp;
+	}
+	*cmd_lst = NULL;
 }
 
 void	ft_cleanup_shell(t_shell *shell)
