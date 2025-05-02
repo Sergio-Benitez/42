@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:28:00 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/30 19:34:01 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/02 21:36:09 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,22 @@ void	ft_free_cmdlst(t_cmd **cmd_lst)
 
 void	ft_cleanup_shell(t_shell *shell)
 {
-    if (shell->input)
-    {
-        free(shell->input);
-        shell->input = NULL;
-    }
-    if (shell->token)
-    {
-        ft_free_tknlst(&shell->token);
-        shell->token = NULL;
-    }
-    if (shell->cmd_lst)
-    {
-        ft_free_cmdlst(&shell->cmd_lst);
-        shell->cmd_lst = NULL;
-    }
-    shell->last_exit_st = shell->exit_status;
+	if (shell->input)
+	{
+		free(shell->input);
+		shell->input = NULL;
+	}
+	if (shell->token)
+	{
+		ft_free_tknlst(&shell->token);
+		shell->token = NULL;
+	}
+	if (shell->cmd_lst)
+	{
+		ft_free_cmdlst(&shell->cmd_lst);
+		shell->cmd_lst = NULL;
+	}
+	shell->last_exit_st = shell->exit_status;
 }
 
 void	ft_clean(char **matrix, t_token *token, t_shell *shell)

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 20:17:27 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/02 21:41:08 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	ft_expand_var(t_shell *shell);
 // GET_COMMANDS.C
 
 void	ft_fill_cmd(t_shell *shell, t_token *token, t_token **next_token);
+void	ft_process_token(t_shell *shell, t_token **temp);
 int		ft_get_commands(t_shell *shell);
 
 // INIT_SHELL.C
@@ -139,7 +140,7 @@ void	ft_minishell(t_shell *shell);
 
 // PROCESS_REDIRECTION.C
 
-void	ft_process_redirection(t_shell *shell, t_token *token, t_token **next_token);
+void	ft_process_redir(t_shell *shell, t_token *token, t_token **next_token);
 void	ft_process_input(t_cmd *cmd, t_token *token);
 void	ft_process_output(t_cmd *cmd, t_token *token);
 void	ft_process_append(t_cmd *cmd, t_token *token);

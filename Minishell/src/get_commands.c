@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 20:17:15 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/02 21:41:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,37 @@ void	ft_fill_cmd(t_shell *shell, t_token *token, t_token **next_token)
 		temp->is_btn = 1;
 }
 
+void	ft_process_token(t_shell *shell, t_token **temp)
+{
+	t_token	*next;
+
+	if ((*temp)->type == PI)
+	{
+		ft_addback_cmd(&shell->cmd_lst);
+		*temp = (*temp)->next;
+	}
+	else if ((*temp)->type == WORD)
+	{
+		ft_fill_cmd(shell, *temp, &next);
+		*temp = next;
+	}
+	else if ((*temp)->type == LR1 || (*temp)->type == RR1
+		|| (*temp)->type == LR2 || (*temp)->type == RR2)
+	{
+		ft_process_redir(shell, *temp, &next);
+		*temp = next;
+	}
+	else
+		*temp = (*temp)->next;
+}
+
 int	ft_get_commands(t_shell *shell)
 {
 	t_token	*temp;
-	t_token *next;
 
 	temp = shell->token;
 	ft_addback_cmd(&shell->cmd_lst);
 	while (temp)
-	{
-		if (temp->type == PI)
-		{
-			ft_addback_cmd(&shell->cmd_lst);
-			temp = temp->next;
-		}
-		else if (temp->type == WORD)
-		{
-			ft_fill_cmd(shell, temp, &next);
-			temp = next;
-		}
-		else if (temp->type == LR1 || temp->type == RR1
-				|| temp->type == LR2 || temp->type == RR2)
-		{
-			ft_process_redirection(shell, temp, &next);
-			temp = next;
-		}
-		else
-			temp = temp->next;
-	}
+		ft_process_token(shell, &temp);
 	return (1);
 }
