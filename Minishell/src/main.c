@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:06:58 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/30 19:57:48 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:06:58 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_minishell(t_shell *shell)
 		ft_print_tokens(shell->token); // PRINT TOKENS
 		if (shell->token)
 		{
-			if (ft_get_commands(shell)){}
+			if (ft_get_commands(shell))
 				ft_print_cmdlst(shell->cmd_lst); // PRINT COMMANDS
 				//pase a ejecutor
 		}
