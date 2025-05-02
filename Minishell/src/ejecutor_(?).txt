@@ -1,0 +1,92 @@
+// Comportamientos de bash a considerar
+
+---------------------------------------------------------------------
+//  Redirección de entrada (<)
+	//- Bash intenta abrir el archivo para lectura.
+	//- Si el archivo no existe o no es legible, genera un error.
+	//- No crea el archivo si no existe.
+
+// Durante la ejecución:
+int fd = open(cmd->infile, O_RDONLY);
+if (fd == -1)
+{
+    ft_putstr_fd("minishell: ", 2);
+    ft_putstr_fd(cmd->infile, 2);
+    ft_putendl_fd(": No such file or directory", 2);
+    // Manejar el error, posiblemente salir con código de error
+    return (1);
+}
+// Usar fd como entrada estándar
+dup2(fd, STDIN_FILENO);
+close(fd);
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+//  Redirección de salida (>)
+	//- Bash crea el archivo si no existe.
+	//- Si el archivo existe, lo trunca a longitud cero.
+	//- Si no puede crear o abrir el archivo, genera un error.
+
+// Durante la ejecución:
+int fd = open(cmd->outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+if (fd == -1)
+{
+    ft_putstr_fd("minishell: ", 2);
+    ft_putstr_fd(cmd->outfile, 2);
+    ft_putendl_fd(": Permission denied", 2);
+    // Manejar el error
+    return (1);
+}
+// Usar fd como salida estándar
+dup2(fd, STDOUT_FILENO);
+close(fd);
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+//  Redirección de salida con append (>>)
+	//- Bash crea el archivo si no existe.
+	//- Si el archivo existe, añade al final.
+	//- Si no puede crear o abrir el archivo, genera un error.
+
+// Durante la ejecución:
+int fd = open(cmd->outfile, O_WRONLY | O_CREAT | O_APPEND, 0644);
+if (fd == -1)
+{
+    ft_putstr_fd("minishell: ", 2);
+    ft_putstr_fd(cmd->outfile, 2);
+    ft_putendl_fd(": Permission denied", 2);
+    // Manejar el error
+    return (1);
+}
+// Usar fd como salida estándar
+dup2(fd, STDOUT_FILENO);
+close(fd);
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+//  Heredoc (<<)
+	//- Bash lee líneas de la entrada hasta encontrar el delimitador.
+	//- Las líneas leídas se pasan como entrada estándar al comando.
+
+// Durante la ejecución:
+int pipefd[2];
+char *line;
+
+pipe(pipefd);
+while (1)
+{
+    line = readline("> ");  // O tu propio prompt para heredoc
+    if (!line || ft_strcmp(line, cmd->delimiter) == 0)
+    {
+        if (line)
+            free(line);
+        break;
+    }
+    ft_putendl_fd(line, pipefd[1]);
+    free(line);
+}
+close(pipefd[1]);
+// Usar pipefd[0] como entrada estándar
+dup2(pipefd[0], STDIN_FILENO);
+close(pipefd[0]);
+---------------------------------------------------------------------

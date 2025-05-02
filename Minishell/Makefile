@@ -6,12 +6,14 @@ CFILES =	src/check_syntax.c \
 			src/clean.c \
 			src/commands_utils.c \
 			src/dequotize.c \
+			src/expand_exitstatus.c \
 			src/expand_utils.c \
 			src/expand_var.c \
 			src/get_commands.c \
 			src/init_shell.c \
 			src/list_utils.c \
 			src/main.c \
+			src/process_redirection.c \
 			src/tknize_quotes.c \
 			src/tokenize.c \
 			src/utils.c

@@ -1,23 +1,9 @@
-echo "mierdas$USER manololo $USER"
+**Variables de entorno**: Bash expande variables en nombres de archivo.
+Asegúrate de que esto ya se haya manejado antes de llegar a `ft_process_redirection`.
 
-tkn = "mierdas$USER manololo $USER"
-
-start = 0
-end = 4
-
-"mierdassbenitez manololo $USER" == ft_strlen(tkn) - (end - start + 1) + tamañode lo  q vale USER en el env
-
-
-copiamos token hasta start, 
-
-sbenitez@c1r1s6:~$ echo $USER"$USER"'$USER''"$USER"'"'$USER'"
-						sbenitezsbenitez$USER"$USER"'sbenitez'
-
-echo ""uhjkhnkj"hjbmb"'''' defdjhfkjb "iujiouhj"f'f'f'f'f''f'f'f'f'f'f'
-uhjkhnkjhjbmb defdjhfkjb iujiouhjfffffffffff
+**Wildcards**: Bash expande wildcards (*,?,...) en nombres de archivo.
+También debes asegurarte de que esto se haya manejado antes.
 
 
 CREAR LISTA DE COMANDOS -> si hay in/outfiles, crear archivos y check si hay comandos, si no, no se manda a exec
 MANEJO DE SEÑALES
-
-norminette cosas:

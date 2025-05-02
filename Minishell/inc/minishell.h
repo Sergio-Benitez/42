@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/30 13:12:06 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/02 20:17:27 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,12 @@ int		ft_isbuiltin(char *str);
 char	*ft_remove_quotes(char *tkn);
 void	ft_dequotize(t_shell *shell);
 
+// EXPAND_EXITSTATUS.C
+
+char	*ft_middle_case(char *token, char *dollar_pos, char *status_str);
+void	ft_replace_start(char **token, char *status_str, char *dollar_pos);
+void	ft_expand_exitstatus(t_shell *shell, t_token *token);
+
 // EXPAND_UTILS.C
 
 int		ft_intstrchr(const char *s, int c);
@@ -114,6 +120,7 @@ void	ft_expand_var(t_shell *shell);
 
 // GET_COMMANDS.C
 
+void	ft_fill_cmd(t_shell *shell, t_token *token, t_token **next_token);
 int		ft_get_commands(t_shell *shell);
 
 // INIT_SHELL.C
@@ -129,6 +136,14 @@ void	ft_update_join(t_token **lst);
 // MAIN.C
 
 void	ft_minishell(t_shell *shell);
+
+// PROCESS_REDIRECTION.C
+
+void	ft_process_redirection(t_shell *shell, t_token *token, t_token **next_token);
+void	ft_process_input(t_cmd *cmd, t_token *token);
+void	ft_process_output(t_cmd *cmd, t_token *token);
+void	ft_process_append(t_cmd *cmd, t_token *token);
+void	ft_process_heredoc(t_cmd *cmd, t_token *token);
 
 // UTILS.C
 

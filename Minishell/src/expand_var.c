@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:16:26 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/30 12:24:50 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:52:18 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,19 +103,14 @@ void	ft_expand_token(t_shell *shell, t_token *token)
 void	ft_expand_var(t_shell *shell)
 {
 	t_token	*temp;
-	t_xpnd	xpnd;
 
 	temp = shell->token;
 	while (temp)
 	{
 		if (temp->expand == true)
 		{
-			if (ft_strncmp(temp->tkn, "$?", 2) == 0)
-			{
-				xpnd.value = ft_itoa(shell->last_exit_st);
-				free(temp->tkn);
-				temp->tkn = xpnd.value;
-			}
+			if (ft_strnstr(temp->tkn, "$?", ft_strlen(temp->tkn)))
+				ft_expand_exitstatus(shell, temp);
 			else
 				ft_expand_token(shell, temp);
 		}
