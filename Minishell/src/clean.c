@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:28:00 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 21:36:09 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:50:19 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,16 @@ void	ft_free_tknlst(t_token **token)
 void	ft_free_cmdlst(t_cmd **cmd_lst)
 {
 	t_cmd	*temp;
+	t_cmd	*next;
 
-	while (*cmd_lst)
+	temp = *cmd_lst;
+	while (temp)
 	{
-		temp = (*cmd_lst)->next;
-		if ((*cmd_lst)->args)
-			ft_free_matrix((*cmd_lst)->args);
-		if ((*cmd_lst)->infile)
-			free((*cmd_lst)->infile);
-		if ((*cmd_lst)->outfile)
-			free((*cmd_lst)->outfile);
-		if ((*cmd_lst)->delimiter)
-			free((*cmd_lst)->delimiter);
-		free(*cmd_lst);
-		*cmd_lst = temp;
+		next = temp->next;
+		ft_free_cmd_args(temp);
+		ft_free_cmd_files(temp);
+		free(temp);
+		temp = next;
 	}
 	*cmd_lst = NULL;
 }

@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_shell.c                                       :+:      :+:    :+:   */
+/*   clean2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 14:40:03 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/05 12:27:55 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/05/05 13:06:30 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/05/05 13:06:31 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-t_shell	*ft_init_shell(char **env)
+void	ft_free_cmd_args(t_cmd *cmd)
 {
-	t_shell	*shell;
+	int	i;
 
-	shell = safe_malloc(sizeof(t_shell));
-	shell->input = NULL;
-	shell->env = env;
-	shell->exit_status = 0;
-	shell->last_exit_st = 0;
-	shell->token = NULL;
-	shell->cmd_lst = NULL;
-	return (shell);
+	i = 0;
+	if (cmd->args)
+    {
+		while (cmd->args[i])
+			free(cmd->args[i++]);
+		free(cmd->args);
+	}
+}
+
+void	ft_free_cmd_files(t_cmd *cmd)
+{
+	if (cmd->infile)
+		free(cmd->infile);
+	if (cmd->outfile)
+		free(cmd->outfile);
+	if (cmd->delimiter)
+		free(cmd->delimiter);
+	if (cmd->fd_in != -1)
+		close(cmd->fd_in);
+	if (cmd->fd_out != -1)
+		close(cmd->fd_out);
 }

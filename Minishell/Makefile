@@ -4,6 +4,7 @@ NAME = minishell
 
 CFILES =	src/check_syntax.c \
 			src/clean.c \
+			src/clean2.c \
 			src/commands_utils.c \
 			src/dequotize.c \
 			src/expand_exitstatus.c \

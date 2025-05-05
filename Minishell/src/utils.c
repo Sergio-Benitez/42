@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:54:33 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 21:42:32 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:46:55 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,29 +68,28 @@ char	**ft_copy_env(char **env)
 
 void	ft_print_cmdlst(t_cmd *cmd_lst)
 {
-	t_cmd	*current;
-	int		i;
+	int	i;
 
-	current = cmd_lst;
-	while (current)
+	while (cmd_lst)
 	{
-		if (current->args)
+		i = 0;
+		printf("\n  Args: ");
+		if (cmd_lst->args)
 		{
-			printf("  Args: ");
-			i = 0;
-			while (current->args[i])
-				printf("[%s], ", current->args[i++]);
+			while (cmd_lst->args[i])
+				printf("[%s], ", cmd_lst->args[i++]);
 		}
-		printf("\n");
-		if (current->infile)
-			printf("  Infile: %s\n", current->infile);
-		if (current->outfile)
-			printf("  Outfile: %s\n", current->outfile);
-		if (current->delimiter)
-			printf("  Delimiter: %s\n", current->delimiter);
-		printf("  Append: %d\n", current->append);
-		printf("  Heredoc: %d\n", current->hd);
-		printf("  Is Built-in: %d\n\n", current->is_btn);
-		current = current->next;
+		else
+			printf("[NULL]");
+		if (cmd_lst->infile)
+			printf("\n  Infile: %s (fd: %d)", cmd_lst->infile, cmd_lst->fd_in);
+		if (cmd_lst->outfile)
+			printf("\n  Outfile: %s (fd: %d)", cmd_lst->outfile, cmd_lst->fd_out);
+		if (cmd_lst->delimiter)
+			printf("\n  Delimiter: %s", cmd_lst->delimiter);
+		printf("\n  Append: %d", cmd_lst->append);
+		printf("\n  Heredoc: %d", cmd_lst->hd);
+		printf("\n  Is Built-in: %d\n", cmd_lst->is_btn);
+		cmd_lst = cmd_lst->next;
 	}
 }

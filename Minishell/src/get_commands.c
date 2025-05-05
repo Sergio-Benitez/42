@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 21:41:12 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:09:27 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,23 @@ void	ft_process_token(t_shell *shell, t_token **temp)
 		*temp = (*temp)->next;
 }
 
+int	ft_has_commands(t_shell *shell)
+{
+	t_cmd	*cmd;
+
+	if (!shell || !shell->cmd_lst)
+		return (0);
+    
+	cmd = shell->cmd_lst;
+	while (cmd)
+	{
+		if (cmd->args && cmd->args[0])
+			return (1);
+		cmd = cmd->next;
+	}
+    return (0);
+}
+
 int	ft_get_commands(t_shell *shell)
 {
 	t_token	*temp;
@@ -72,5 +89,7 @@ int	ft_get_commands(t_shell *shell)
 	ft_addback_cmd(&shell->cmd_lst);
 	while (temp)
 		ft_process_token(shell, &temp);
+	if (!ft_has_commands(shell))
+		return (0);
 	return (1);
 }

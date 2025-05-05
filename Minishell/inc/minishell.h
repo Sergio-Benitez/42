@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 21:41:08 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:06:51 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <fcntl.h>
 
 # define WORD 0
 # define SQ 1
@@ -54,8 +55,9 @@ typedef struct s_cmd
 	char			*outfile;
 	bool			append; // hay que apendear cuando sea >>
 	bool			hd;
-	bool			is_cmd;
 	bool			is_btn;
+	int				fd_in;
+	int				fd_out;
 //	int				exit_status;
 	struct s_cmd	*next;
 }				t_cmd;
@@ -85,11 +87,17 @@ void	ft_free_cmdlst(t_cmd **cmd_lst);
 void	ft_cleanup_shell(t_shell *shell);
 void	ft_clean(char **matrix, t_token *token, t_shell *shell);
 
+// CLEAN2.C
+
+void	ft_free_cmd_args(t_cmd *cmd);
+void	ft_free_cmd_files(t_cmd *cmd);
+
 // COMMANDS_UTILS.C
 
 int		ft_strcmp(char *s1, char *s2);
 int		ft_count_args(t_token *token);
 int		ft_isbuiltin(char *str);
+int		ft_has_commands(t_shell *shell);
 
 // DEQUOTIZE.C
 
