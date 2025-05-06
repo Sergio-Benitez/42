@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:54:33 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/05 12:46:55 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:32:35 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void	ft_print_cmdlst(t_cmd *cmd_lst)
 		if (cmd_lst->infile)
 			printf("\n  Infile: %s (fd: %d)", cmd_lst->infile, cmd_lst->fd_in);
 		if (cmd_lst->outfile)
-			printf("\n  Outfile: %s (fd: %d)", cmd_lst->outfile, cmd_lst->fd_out);
+			printf("\n  Outfile: %s (fd: %d)",
+				cmd_lst->outfile, cmd_lst->fd_out);
 		if (cmd_lst->delimiter)
 			printf("\n  Delimiter: %s", cmd_lst->delimiter);
 		printf("\n  Append: %d", cmd_lst->append);

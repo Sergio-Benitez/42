@@ -1,12 +1,10 @@
-**Variables de entorno**: Bash expande variables en nombres de archivo.
-Asegúrate de que esto ya se haya manejado antes de llegar a `ft_process_redirection`.
-
-**Wildcards**: Bash expande wildcards (*,?,...) en nombres de archivo.
-También debes asegurarte de que esto se haya manejado antes.
-
-
 done creo - CREAR LISTA DE COMANDOS -> si hay in/outfiles, crear archivos y check si hay comandos, si no, no se manda a exec
 
 - MANEJO DE SEÑALES (ctrl D, ctrl C, ctrl \, exit)
+- EXIT STATUS SOBRE LA MARCHA, EN CASO DE PIPES Y TAL
+
+DUDAS:
+
+main.c linea 40: ft_cleanup_shell(shell); // puedo mover abajo y quitar el de arriba?
 
 NORMINETTEEEEEEEEEE

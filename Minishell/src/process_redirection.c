@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 20:09:38 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/05 12:40:32 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:10:35 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@ void	ft_process_input(t_cmd *cmd, t_token *token)
 		free(cmd->infile);
 	cmd->infile = ft_strdup(token->next->tkn);
 	cmd->fd_in = open(cmd->infile, O_RDONLY);
-/*	if (cmd->fd_in == -1)
+	if (cmd->fd_in == -1)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->infile, 2);
 		ft_putendl_fd(": No such file or directory", 2);
-	// No terminamos el proceso, solo alertamos
-	} */
-
-	// Nota: bash verifica que el archivo exista, pero no lo crea
+	}
 }
 
 void	ft_process_output(t_cmd *cmd, t_token *token)
@@ -38,13 +35,12 @@ void	ft_process_output(t_cmd *cmd, t_token *token)
 	cmd->outfile = ft_strdup(token->next->tkn);
 	cmd->append = false;
 	cmd->fd_out = open(cmd->outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-/* 	if (cmd->fd_out == -1)
+	if (cmd->fd_out == -1)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->outfile, 2);
 		ft_putendl_fd(": Permission denied", 2);
-	} */
-	// Nota: bash crea el archivo si no existe, o lo trunca si ya existe
+	}
 }
 
 void	ft_process_append(t_cmd *cmd, t_token *token)
@@ -56,13 +52,12 @@ void	ft_process_append(t_cmd *cmd, t_token *token)
 	cmd->outfile = ft_strdup(token->next->tkn);
 	cmd->append = 1;
 	cmd->fd_out = open(cmd->outfile, O_WRONLY | O_CREAT | O_APPEND, 0644);
-/* 	if (cmd->fd_out == -1)
+	if (cmd->fd_out == -1)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->outfile, 2);
 		ft_putendl_fd(": Permission denied", 2);
-	} */
-	// Nota: bash crea el archivo si no existe, o añade al final si ya existe
+	}
 }
 
 void	ft_process_heredoc(t_cmd *cmd, t_token *token)
@@ -71,7 +66,6 @@ void	ft_process_heredoc(t_cmd *cmd, t_token *token)
 		free(cmd->delimiter);
 	cmd->delimiter = ft_strdup(token->next->tkn);
 	cmd->hd = true;
-	// Nota: heredoc se procesará durante la ejecución (?)
 }
 
 void	ft_process_redir(t_shell *shell, t_token *token, t_token **next_tkn)

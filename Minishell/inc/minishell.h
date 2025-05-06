@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/05 13:06:51 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:10:54 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		ft_check_pipe(t_shell *shell);
 int		ft_check_redir(t_shell *shell);
 void	ft_check_syntax(t_shell *shell);
 
-// CLEAN.C
+// CLEAN.C //
 
 void	ft_free_matrix(char **matrix);
 void	ft_free_tknlst(t_token **token);
@@ -110,7 +110,7 @@ char	*ft_middle_case(char *token, char *dollar_pos, char *status_str);
 void	ft_replace_start(char **token, char *status_str, char *dollar_pos);
 void	ft_expand_exitstatus(t_shell *shell, t_token *token);
 
-// EXPAND_UTILS.C
+// EXPAND_UTILS.C //
 
 int		ft_intstrchr(const char *s, int c);
 int		ft_find_end(char *tkn);
@@ -118,7 +118,7 @@ t_xpnd	*ft_init_expand(void);
 char	*ft_substr_malloc(const char *input, int start, int len);
 void	ft_free_expand(t_xpnd *xpnd);
 
-// EXPAND_VAR.C
+// EXPAND_VAR.C //
 
 char	*ft_getenv(char **env, char *var);
 int		ft_find_dollar(t_shell *shell);
@@ -126,10 +126,12 @@ void	ft_insert_exp(t_xpnd *xpnd, t_token *t);
 void	ft_expand_token(t_shell *shell, t_token *token);
 void	ft_expand_var(t_shell *shell);
 
-// GET_COMMANDS.C
+// GET_COMMANDS.C //
 
 void	ft_fill_cmd(t_shell *shell, t_token *token, t_token **next_token);
 void	ft_process_token(t_shell *shell, t_token **temp);
+int		ft_has_commands(t_shell *shell);
+int		ft_invalid_file(t_shell *shell);
 int		ft_get_commands(t_shell *shell);
 
 // INIT_SHELL.C
@@ -146,7 +148,7 @@ void	ft_update_join(t_token **lst);
 
 void	ft_minishell(t_shell *shell);
 
-// PROCESS_REDIRECTION.C
+// PROCESS_REDIRECTION.C //
 
 void	ft_process_redir(t_shell *shell, t_token *token, t_token **next_token);
 void	ft_process_input(t_cmd *cmd, t_token *token);
@@ -154,7 +156,7 @@ void	ft_process_output(t_cmd *cmd, t_token *token);
 void	ft_process_append(t_cmd *cmd, t_token *token);
 void	ft_process_heredoc(t_cmd *cmd, t_token *token);
 
-// UTILS.C
+// UTILS.C //
 
 void	ft_exit_error(char *error);
 void	*safe_malloc(size_t bytes);
@@ -162,7 +164,7 @@ void	ft_print_tokens(t_token *token);
 char	**ft_copy_env(char **env);
 void	ft_print_cmdlst(t_cmd *cmd_lst);
 
-// TKNIZE_QUOTES.C
+// TKNIZE_QUOTES.C //
 
 void	ft_closed_error(char *s);
 int		ft_dquote_tkn(t_shell *shell, int *i);

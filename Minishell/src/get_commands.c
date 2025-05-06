@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/05 13:09:27 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:34:41 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	ft_has_commands(t_shell *shell)
 
 	if (!shell || !shell->cmd_lst)
 		return (0);
-    
 	cmd = shell->cmd_lst;
 	while (cmd)
 	{
@@ -78,7 +77,24 @@ int	ft_has_commands(t_shell *shell)
 			return (1);
 		cmd = cmd->next;
 	}
-    return (0);
+	return (0);
+}
+
+int	ft_invalid_file(t_shell *shell)
+{
+	t_cmd	*temp;
+
+	temp = shell->cmd_lst;
+	while (temp)
+	{
+		if (temp->fd_in == -1 || temp->fd_out == -1)
+		{
+			shell->exit_status = 1;
+			return (0);
+		}
+		temp = temp->next;
+	}
+	return (1);
 }
 
 int	ft_get_commands(t_shell *shell)
@@ -89,7 +105,7 @@ int	ft_get_commands(t_shell *shell)
 	ft_addback_cmd(&shell->cmd_lst);
 	while (temp)
 		ft_process_token(shell, &temp);
-	if (!ft_has_commands(shell))
+	if (!ft_has_commands(shell) || !ft_invalid_file(shell))
 		return (0);
 	return (1);
 }
