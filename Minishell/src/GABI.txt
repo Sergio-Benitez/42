@@ -1,7 +1,7 @@
 done creo - CREAR LISTA DE COMANDOS -> si hay in/outfiles, crear archivos y check si hay comandos, si no, no se manda a exec
 
 - MANEJO DE SEÑALES (ctrl D, ctrl C, ctrl \, exit)
-- EXIT STATUS SOBRE LA MARCHA, EN CASO DE PIPES Y TAL
+- EXIT STATUS SOBRE LA MARCHA, EN CASO DE PIPES Y TAL, complejo xD
 
 DUDAS:
 

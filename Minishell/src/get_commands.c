@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/06 14:34:41 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:39:13 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_has_commands(t_shell *shell)
 	return (0);
 }
 
-int	ft_invalid_file(t_shell *shell)
+/* int	ft_invalid_file(t_shell *shell)
 {
 	t_cmd	*temp;
 
@@ -95,7 +95,7 @@ int	ft_invalid_file(t_shell *shell)
 		temp = temp->next;
 	}
 	return (1);
-}
+} */
 
 int	ft_get_commands(t_shell *shell)
 {
@@ -105,7 +105,7 @@ int	ft_get_commands(t_shell *shell)
 	ft_addback_cmd(&shell->cmd_lst);
 	while (temp)
 		ft_process_token(shell, &temp);
-	if (!ft_has_commands(shell) || !ft_invalid_file(shell))
+	if (!ft_has_commands(shell))
 		return (0);
 	return (1);
 }

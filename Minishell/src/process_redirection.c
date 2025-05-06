@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 20:09:38 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/06 14:10:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:38:07 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_process_input(t_cmd *cmd, t_token *token)
 	cmd->fd_in = open(cmd->infile, O_RDONLY);
 	if (cmd->fd_in == -1)
 	{
+		cmd->exit_status = 1;
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->infile, 2);
 		ft_putendl_fd(": No such file or directory", 2);
@@ -37,6 +38,7 @@ void	ft_process_output(t_cmd *cmd, t_token *token)
 	cmd->fd_out = open(cmd->outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (cmd->fd_out == -1)
 	{
+		cmd->exit_status = 1;
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->outfile, 2);
 		ft_putendl_fd(": Permission denied", 2);
@@ -54,6 +56,7 @@ void	ft_process_append(t_cmd *cmd, t_token *token)
 	cmd->fd_out = open(cmd->outfile, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (cmd->fd_out == -1)
 	{
+		cmd->exit_status = 1;
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->outfile, 2);
 		ft_putendl_fd(": Permission denied", 2);

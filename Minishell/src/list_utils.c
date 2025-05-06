@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:38:47 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/06 12:27:31 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:37:18 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_addback_cmd(t_cmd **lst)
 	new->is_btn = false;
 	new->fd_in = -2;
 	new->fd_out = -2;
-//	new->exit_status = 0;
+	new->exit_status = 0;
 	new->next = NULL;
 	if (!*lst)
 	{

@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 19:45:43 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 20:04:56 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:02:29 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ void	ft_expand_exitstatus(t_shell *shell, t_token *token)
 		return ;
 	pos = dollar_pos - token->tkn;
 	if (pos == 0)
-	{
 		ft_replace_start(&token->tkn, status_str, dollar_pos);
-	}
 	else
 	{
 		result = ft_middle_case(token->tkn, dollar_pos, status_str);
