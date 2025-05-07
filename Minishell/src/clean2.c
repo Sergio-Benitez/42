@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 13:06:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/06 10:34:22 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:11:18 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,4 @@ void	ft_free_cmd_files(t_cmd *cmd)
 		free(cmd->outfile);
 	if (cmd->delimiter)
 		free(cmd->delimiter);
-	if (cmd->fd_in != -1)
-		close(cmd->fd_in);
-	if (cmd->fd_out != -1)
-		close(cmd->fd_out);
 }

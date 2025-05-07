@@ -1,10 +1,47 @@
-done creo - CREAR LISTA DE COMANDOS -> si hay in/outfiles, crear archivos y check si hay comandos, si no, no se manda a exec
-
 - MANEJO DE SEÑALES (ctrl D, ctrl C, ctrl \, exit)
+
 - EXIT STATUS SOBRE LA MARCHA, EN CASO DE PIPES Y TAL, complejo xD
+
+	Ejemplos:
+--------------------------------------------------
+
+	sbenitez@c1r5s3:~$ cat <infile
+	bash: infile: No such file or directory
+	sbenitez@c1r5s3:~$ echo $?
+	1
+
+--------------------------------------------------
+
+	sbenitez@c1r5s3:~$ cat <infile | echo $?
+	0
+	bash: infile: No such file or directory
+
+--------------------------------------------------
+
+	sbenitez@c1r5s3:~$ echo $? | cat <infile
+	bash: infile: No such file or directory
+
+--------------------------------------------------
+
+	sbenitez@c1r5s3:~$ cat <infile | echo $?
+	0
+	bash: infile: No such file or directory
+	sbenitez@c1r5s3:~$ echo $?
+	0
+
+--------------------------------------------------
+
+	sbenitez@c1r5s3:~$ echo $? | cat <infile
+	bash: infile: No such file or directory
+	sbenitez@c1r5s3:~$ echo $?
+	1
+
+--------------------------------------------------
+
 
 DUDAS:
 
-main.c linea 40: ft_cleanup_shell(shell); // puedo mover abajo y quitar el de arriba?
+	yooooookuuuseeeeeee
+
 
 NORMINETTEEEEEEEEEE

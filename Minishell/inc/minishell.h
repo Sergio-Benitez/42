@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/06 17:39:24 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:33:31 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define RR2 5
 # define LR1 6
 # define LR2 7
+
+extern int	g_signal_flag;
 
 typedef struct s_xpnd
 {
@@ -56,8 +58,6 @@ typedef struct s_cmd
 	bool			append; // hay que apendear cuando sea >>
 	bool			hd;
 	bool			is_btn;
-	int				fd_in;
-	int				fd_out;
 	int				exit_status;
 	struct s_cmd	*next;
 }				t_cmd;
@@ -131,7 +131,6 @@ void	ft_expand_var(t_shell *shell);
 void	ft_fill_cmd(t_shell *shell, t_token *token, t_token **next_token);
 void	ft_process_token(t_shell *shell, t_token **temp);
 int		ft_has_commands(t_shell *shell);
-//int		ft_invalid_file(t_shell *shell);
 int		ft_get_commands(t_shell *shell);
 
 // INIT_SHELL.C

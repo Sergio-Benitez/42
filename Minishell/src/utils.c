@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 20:54:33 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/06 10:32:35 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:31:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*safe_malloc(size_t bytes)
 
 	ret = malloc(bytes);
 	if (!ret)
-		ft_exit_error("Error with the malloc");
+		ft_exit_error("minishell: Memory allocation error");
 	return (ret);
 }
 
@@ -82,10 +82,9 @@ void	ft_print_cmdlst(t_cmd *cmd_lst)
 		else
 			printf("[NULL]");
 		if (cmd_lst->infile)
-			printf("\n  Infile: %s (fd: %d)", cmd_lst->infile, cmd_lst->fd_in);
+			printf("\n  Infile: %s", cmd_lst->infile);
 		if (cmd_lst->outfile)
-			printf("\n  Outfile: %s (fd: %d)",
-				cmd_lst->outfile, cmd_lst->fd_out);
+			printf("\n  Outfile: %s", cmd_lst->outfile);
 		if (cmd_lst->delimiter)
 			printf("\n  Delimiter: %s", cmd_lst->delimiter);
 		printf("\n  Append: %d", cmd_lst->append);

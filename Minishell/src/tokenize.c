@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:23:35 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 17:10:26 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:29:35 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	ft_tokenize(t_shell *shell)
 	i = 0;
 	while (shell->input[i])
 	{
-		if (shell->input[i] == ' ')
+		if (shell->input[i] == ' ' || shell->input[i] == '\t')
 			i++;
-		else if (shell->input[i] == 34 || shell->input[i] == 39)
+		else if (shell->input[i] == '\'' || shell->input[i] == '"')
 		{
 			if (!ft_quotes(shell, &i))
 				break ;
