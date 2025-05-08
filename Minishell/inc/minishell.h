@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:08:56 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/07 13:33:31 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/08 18:26:04 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <signal.h>
 
 # define WORD 0
 # define SQ 1
@@ -154,6 +155,11 @@ void	ft_process_input(t_cmd *cmd, t_token *token);
 void	ft_process_output(t_cmd *cmd, t_token *token);
 void	ft_process_append(t_cmd *cmd, t_token *token);
 void	ft_process_heredoc(t_cmd *cmd, t_token *token);
+
+// SIGNALS.C
+
+void	ft_handle_sigint(int signum);
+void	ft_setup_signals(void);
 
 // UTILS.C //
 

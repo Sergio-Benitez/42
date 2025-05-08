@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:28:00 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/05 12:50:19 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:26:26 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	ft_cleanup_shell(t_shell *shell)
 		ft_free_cmdlst(&shell->cmd_lst);
 		shell->cmd_lst = NULL;
 	}
-	shell->last_exit_st = shell->exit_status;
 }
 
 void	ft_clean(char **matrix, t_token *token, t_shell *shell)

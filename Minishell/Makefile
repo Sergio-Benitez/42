@@ -15,6 +15,7 @@ CFILES =	src/check_syntax.c \
 			src/list_utils.c \
 			src/main.c \
 			src/process_redirection.c \
+			src/signals.c \
 			src/tknize_quotes.c \
 			src/tokenize.c \
 			src/utils.c

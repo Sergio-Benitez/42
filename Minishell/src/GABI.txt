@@ -1,4 +1,4 @@
-- MANEJO DE SEÑALES (ctrl D, ctrl C, ctrl \, exit)
+done creooo - MANEJO DE SEÑALES (ctrl D, ctrl C, ctrl \, exit)
 
 - EXIT STATUS SOBRE LA MARCHA, EN CASO DE PIPES Y TAL, complejo xD
 

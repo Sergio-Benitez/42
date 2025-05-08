@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:49:46 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/29 16:32:16 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:13:21 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ void	ft_check_syntax(t_shell *shell)
 {
 	if (!ft_check_pipe(shell))
 	{
-		shell->exit_status = 1;
+		shell->exit_status = 2;
 		return ;
 	}
 	if (!ft_check_redir(shell))
 	{
-		shell->exit_status = 1;
+		shell->exit_status = 2;
 		return ;
 	}
 }

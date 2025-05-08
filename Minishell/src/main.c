@@ -6,38 +6,49 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:06:58 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/07 13:51:18 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:27:03 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int	g_signal_flag;
+int	ft_read_input(t_shell *shell)
+{
+	if (shell->exit_status != 130)
+		shell->last_exit_st = shell->exit_status;
+	ft_setup_signals();
+	shell->input = readline("minishell> ");
+	if (!shell->input)
+	{
+		ft_putstr_fd("exit\n", 1);
+		return (0);
+	}
+	if (g_signal_flag)
+	{
+		shell->exit_status = g_signal_flag;
+		shell->last_exit_st = g_signal_flag;
+	}
+	else
+		shell->exit_status = 0;
+	if (ft_strncmp(shell->input, "", 1))
+		add_history(shell->input);
+	return (1);
+}
 
 void	ft_minishell(t_shell *shell)
 {
 	while (1)
 	{
-		g_signal_flag = 0;
-		shell->input = readline("minishell> ");
-		if (!shell->input)
+		if (!ft_read_input(shell))
 			break ;
-		shell->exit_status = 0;
-		if (ft_strncmp(shell->input, "", 1))
-			add_history(shell->input);
 		ft_tokenize(shell);
 		ft_check_syntax(shell);
 		if (ft_find_dollar(shell))
 			ft_expand_var(shell);
 		ft_dequotize(shell);
-		// DALE CAÑA, JUANMA!!
-		ft_print_tokens(shell->token); // PRINT TOKENS
-		if (shell->token)
-		{
-			if (ft_get_commands(shell))
-				ft_print_cmdlst(shell->cmd_lst); // PRINT COMMANDS
-				//pase a ejecutor
-		}
+		ft_print_tokens(shell->token);
+		if (shell->token && ft_get_commands(shell))
+			ft_print_cmdlst(shell->cmd_lst);
 		ft_cleanup_shell(shell);
 	}
 	ft_cleanup_shell(shell);
