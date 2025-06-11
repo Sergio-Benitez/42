@@ -6,31 +6,19 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:25:31 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/11/26 20:05:20 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/06/09 13:00:37 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-void	init_game_struct(t_game *game)
-{
-	if (game)
-	{
-		game->mlx = NULL;
-		game->map = NULL;
-		game->img_bg = NULL;
-		game->img_wall = NULL;
-		game->img_player = NULL;
-		game->img_collect = NULL;
-		game->img_exit = NULL;
-		game->move_count = 0;
-		game->wmoves = NULL;
-		game->frame_count = 0;
-	}
-}
-
 void	init_game(t_game *game, t_map *map)
 {
+	game->img_bg = NULL;
+	game->img_wall = NULL;
+	game->img_player = NULL;
+	game->img_collect = NULL;
+	game->img_exit = NULL;
 	game->map = map;
 	game->mlx = mlx_init(map->width_px, map->height_px, "So_Long", true);
 	if (!game->mlx)
@@ -58,8 +46,7 @@ int	main(int argc, char **argv)
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (EXIT_FAILURE);
-	map = load_create_map(argv[1]);
-	if (!map)
+	if (!load_create_map(argv[1]), map)
 		return (free(map), 1);
 	game = malloc(sizeof(t_game));
 	if (!game)

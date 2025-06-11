@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean2.c                                           :+:      :+:    :+:   */
+/*   exec_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 13:06:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/07 13:11:18 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/05/30 11:26:49 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/05/30 11:48:43 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	ft_free_cmd_args(t_cmd *cmd)
+int	exec_env(t_shell *shell)
 {
 	int	i;
 
 	i = 0;
-	if (cmd->args)
+	ft_add_modify_env(shell->env, "_=/usr/bin/env", 1);
+	while (shell->env[i])
 	{
-		while (cmd->args[i])
-			free(cmd->args[i++]);
-		free(cmd->args);
+		if (ft_strchr(shell->env[i], '='))
+			printf("%s\n", shell->env[i]);
+		i++;
 	}
+	return (0);
 }
 
-void	ft_free_cmd_files(t_cmd *cmd)
+char	**ft_modify_existing_env(char **env, char *str, int index)
 {
-	if (cmd->infile)
-		free(cmd->infile);
-	if (cmd->outfile)
-		free(cmd->outfile);
-	if (cmd->delimiter)
-		free(cmd->delimiter);
+	free(env[index]);
+	env[index] = ft_strdup(str);
+	return (env);
 }

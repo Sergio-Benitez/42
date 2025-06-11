@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:02:27 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/04/30 19:54:32 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/29 17:21:22 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ int	ft_count_args(t_token *token)
 
 	i = 0;
 	while (token && (token->type == 0 || token->type == SQ || token->type == LR1
-			|| token->type == RR1 || token->type == RR2))
+			|| token->type == RR1 || token->type == RR2 || token->type == LR2))
 	{
-		if (token->type == LR1 || token->type == RR1 || token->type == RR2)
+		if (token->type == LR1 || token->type == RR1 || token->type == RR2
+			|| token->type == LR2)
 			token = token->next->next;
 		else
 		{
@@ -53,7 +54,7 @@ int	ft_isbuiltin(char *str)
 {
 	if (!ft_strcmp(str, "echo"))
 		return (1);
-	else if (!ft_strcmp(str, "cd"))
+	if (!ft_strcmp(str, "cd"))
 		return (1);
 	else if (!ft_strcmp(str, "pwd"))
 		return (1);

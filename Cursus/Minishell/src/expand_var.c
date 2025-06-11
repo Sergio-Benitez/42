@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:16:26 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 19:52:18 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/29 16:16:23 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,18 @@ void	ft_insert_exp(t_xpnd *xpnd, t_token *t)
 void	ft_expand_token(t_shell *shell, t_token *token)
 {
 	t_xpnd	*xpnd;
-	int		i;
 
 	xpnd = ft_init_expand();
-	i = 0;
-	while (token->tkn[i] && ft_strchr(token->tkn, '$')
+	while (token->tkn[0] && ft_strchr(token->tkn, '$')
 		&& token->tkn[ft_intstrchr(token->tkn, '$')] != ' '
 		&& token->tkn[ft_intstrchr(token->tkn, '$')] != '\"')
 	{
 		xpnd->start = ft_intstrchr(token->tkn, '$');
+		if (token->tkn[xpnd->start] == '?')
+		{
+			ft_expand_exitstatus(shell, token);
+			continue ;
+		}
 		xpnd->end = xpnd->start + ft_find_end(&token->tkn[xpnd->start]);
 		xpnd->var = ft_substr_malloc(token->tkn, xpnd->start,
 				(xpnd->end - xpnd->start + 1));
@@ -94,8 +97,6 @@ void	ft_expand_token(t_shell *shell, t_token *token)
 		if (!xpnd->value)
 			xpnd->value = ft_strdup("");
 		ft_insert_exp(xpnd, token);
-		i = -1;
-		i++;
 	}
 	ft_free_expand(xpnd);
 }
@@ -108,12 +109,7 @@ void	ft_expand_var(t_shell *shell)
 	while (temp)
 	{
 		if (temp->expand == true)
-		{
-			if (ft_strnstr(temp->tkn, "$?", ft_strlen(temp->tkn)))
-				ft_expand_exitstatus(shell, temp);
-			else
-				ft_expand_token(shell, temp);
-		}
+			ft_expand_token(shell, temp);
 		temp = temp->next;
 	}
 }

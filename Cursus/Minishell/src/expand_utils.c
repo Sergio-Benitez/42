@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:55:13 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/02 21:36:45 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/29 16:15:09 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	ft_find_end(char *tkn)
 	int	i;
 
 	i = 0;
-	while (tkn[i] != '<' && tkn[i] != '>' && tkn[i] != '|' && tkn[i] != ' '
-		&& tkn[i] != '\0' && tkn[i] != '$' && tkn[i] != '\'' && tkn[i] != '\"')
+	while (tkn[i] && (ft_isalnum(tkn[i]) || tkn[i] == '_'))
 		i++;
 	return (i);
 }

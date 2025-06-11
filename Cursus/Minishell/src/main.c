@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:06:58 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/08 19:27:03 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/30 17:34:31 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_read_input(t_shell *shell)
 {
-	if (shell->exit_status != 130)
-		shell->last_exit_st = shell->exit_status;
+	shell->last_exit_st = shell->exit_status;
 	ft_setup_signals();
 	shell->input = readline("minishell> ");
 	if (!shell->input)
@@ -25,7 +24,6 @@ int	ft_read_input(t_shell *shell)
 	}
 	if (g_signal_flag)
 	{
-		shell->exit_status = g_signal_flag;
 		shell->last_exit_st = g_signal_flag;
 	}
 	else
@@ -46,9 +44,10 @@ void	ft_minishell(t_shell *shell)
 		if (ft_find_dollar(shell))
 			ft_expand_var(shell);
 		ft_dequotize(shell);
-		ft_print_tokens(shell->token);
 		if (shell->token && ft_get_commands(shell))
-			ft_print_cmdlst(shell->cmd_lst);
+		{
+			ft_exec_commands(shell);
+		}
 		ft_cleanup_shell(shell);
 	}
 	ft_cleanup_shell(shell);

@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   clean2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 20:19:06 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/10/29 15:26:30 by sbenitez         ###   ########.fr       */
+/*   Created: 2025/05/05 13:06:30 by sbenitez          #+#    #+#             */
+/*   Updated: 2025/05/27 13:21:12 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "../inc/minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_free_cmd_args(t_cmd *cmd)
 {
-	int		i;
-	int		j;
-	char	*str;
+	int	i;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!str)
-		return (NULL);
-	while (s1[i] != '\0')
+	if (!cmd->args)
+		return ;
+	while (cmd->args[i])
 	{
-		str[i] = s1[i];
+		free(cmd->args[i]);
+		cmd->args[i] = NULL;
 		i++;
 	}
-	while (s2[j] != '\0')
-	{
-		str[i + j] = s2[j];
-		j++;
-	}
-	str[i + j] = '\0';
-	return (str);
+	free(cmd->args);
+	cmd->args = NULL;
+}
+
+void	ft_free_cmd_files(t_cmd *cmd)
+{
+	if (cmd->infile)
+		free(cmd->infile);
+	if (cmd->outfile)
+		free(cmd->outfile);
+	if (cmd->delimiter)
+		free(cmd->delimiter);
 }

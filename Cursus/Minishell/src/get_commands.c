@@ -6,11 +6,24 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:52:30 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/05/07 13:07:39 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/05/30 17:34:17 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+int	ft_cmdsize(t_cmd *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
 
 void	ft_fill_cmd(t_shell *shell, t_token *token, t_token **next_token)
 {
@@ -22,7 +35,7 @@ void	ft_fill_cmd(t_shell *shell, t_token *token, t_token **next_token)
 	while (temp->next)
 		temp = temp->next;
 	if (!temp->args)
-		temp->args = ft_calloc(sizeof(char *), (ft_count_args(token) + 1));
+		temp->args = ft_calloc((ft_count_args(token) + 2), sizeof(char *));
 	else
 		while (temp->args[i])
 			i++;
@@ -88,7 +101,7 @@ int	ft_get_commands(t_shell *shell)
 	ft_addback_cmd(&shell->cmd_lst);
 	while (temp)
 		ft_process_token(shell, &temp);
-	if (!ft_has_commands(shell))
+	if (!ft_has_commands(shell) || ft_cmdsize(shell->cmd_lst) > LOL)
 		return (0);
 	return (1);
 }
