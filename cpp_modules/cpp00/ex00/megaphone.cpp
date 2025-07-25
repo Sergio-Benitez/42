@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 19:41:13 by sbenitez          #+#    #+#             */
-/*   Updated: 2025/07/24 21:04:55 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:42:26 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	for (int i = 1; i < argc; i++)
 	{
 		std::string current = argv[i];
-		for (int c = 0; c < current.length(); c++)
+		for (std::size_t c = 0; c < current.length(); c++)
 			current[c] = std::toupper(current[c]);
 		std::cout << current;
 
