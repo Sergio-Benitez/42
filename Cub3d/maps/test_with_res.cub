@@ -1,0 +1,14 @@
+R 800 600
+NO ./textures/north_wall.png
+SO ./textures/south_wall.png
+WE ./textures/west_wall.png
+EA ./textures/east_wall.png
+
+F 70,130,180
+C 135,206,235
+
+1111111
+1000001
+100N001
+1000001
+1111111

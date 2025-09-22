@@ -1,0 +1,13 @@
+NO ./textures/north_wall_blue.png
+SO ./textures/south_wall_blue.png
+WE ./textures/west_wall_blue.png
+EA ./textures/east_wall_blue.png
+
+F 70,130,180
+C 135,206,235
+
+1111111
+1000001
+100N001
+1000001
+1111111
