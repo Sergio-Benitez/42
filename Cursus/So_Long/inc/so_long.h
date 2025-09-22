@@ -6,7 +6,7 @@
 /*   By: sbenitez <sbenitez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:12:29 by sbenitez          #+#    #+#             */
-/*   Updated: 2024/11/25 21:51:58 by sbenitez         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:58:42 by sbenitez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,13 @@ typedef struct s_game
 {
 	mlx_t		*mlx;
 	t_map		*map;
+	mlx_texture_t	*bg;
 	mlx_image_t	*img_bg;
 	mlx_image_t	*img_wall;
 	mlx_image_t	*img_player;
-	mlx_image_t	*img_player_up;
-	mlx_image_t	*img_player_down;
-	mlx_image_t	*img_player_left;
-	mlx_image_t	*img_player_right;
 	mlx_image_t	*img_collect;
 	mlx_image_t	*img_exit;
 	int			move_count;
-	mlx_image_t	*wmoves;
 	int			frame_count;
 }				t_game;
 
